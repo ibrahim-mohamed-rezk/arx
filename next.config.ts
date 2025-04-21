@@ -7,7 +7,7 @@ const withNextIntl = createNextIntlPlugin("./src//i18n/request.ts");
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ["placehold.co"],
+    domains: ["placehold.co", "placehold.co/160x160"],
   },
 };
 
