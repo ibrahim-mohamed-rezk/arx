@@ -1,13 +1,12 @@
+// next.config.js or next.config.ts
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
-const withNextIntl = createNextIntlPlugin("./src//i18n/request.ts");
-/** @type {import('next').NextConfig} */
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    domains: ["placehold.co"],
+    domains: ["via.placeholder.com", "placehold.co"],
   },
 };
 
