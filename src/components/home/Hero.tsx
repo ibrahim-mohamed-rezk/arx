@@ -1,16 +1,27 @@
+"use client";
+
+import { useState } from "react";
+
 const Hero = () => {
+  const [activeImage, setSctiveImage] = useState(0);
+
   return (
     <div className="w-full h-screen relative ">
-      <div className="w-full flex items-center justify-center px-[clamp(10px,2.6041667vw,200px)] fixed top-0 h-screen z-10">
+      <div className="w-full flex items-center justify-center px-[clamp(10px,3.6041667vw,200px)] fixed top-0 h-screen z-10">
         <div className="w-full flex justify-between items-center">
           {/* hero background */}
-          <div className="w-full absolute top-0 left-0 right-0 bottom-0 h-screen z-0">
-            <img
-              src="/images/home/banner1.png"
-              className="w-full h-full object-cover"
-              alt="banner"
-            />
-          </div>
+          {[0, 1, 2].map((index) => (
+            <div className="w-full absolute top-0 left-0 right-0 bottom-0 h-screen z-0">
+              <img
+                src={`/images/home/banner${index}.png`}
+                className={`w-full h-full transition-all duration-[1s] object-cover`}
+                style={{
+                  opacity: index !== activeImage ? "0%" : "100%",
+                }}
+                alt="banner"
+              />
+            </div>
+          ))}
 
           {/* hero title and search */}
           <div className="flex flex-col justify-start gap-[clamp(10px,3.75vw,200px)] h-screen mt-[300px] items-start relative z-[1]">
@@ -22,7 +33,7 @@ const Hero = () => {
               house?
             </div>
             {/*  search */}
-            <div className="w-[clamp(220px,41.666667vw,1500px)] px-[clamp(10px,2.5vw,100px)] py-[clamp(10px,1.25vw,30px)] bg-white rounded-[50px] shadow-[0px_4px_4px_0px_rgba(47,62,70,0.20)] inline-flex justify-start items-center gap-[clamp(5px,1.25vw,35px)]">
+            <div className="w-[clamp(220px,41.666667vw,1500px)] px-[clamp(10px,2.5vw,100px)] py-[clamp(10px,1.25vw,30px)] bg-white rounded-[clamp(10px,2.6047vw,150px)] shadow-[0px_4px_4px_0px_rgba(47,62,70,0.20)] inline-flex justify-start items-center gap-[clamp(5px,1.25vw,35px)]">
               <input
                 type="text"
                 placeholder="Search about projects"
@@ -66,20 +77,132 @@ const Hero = () => {
             </div>
           </div>
 
+          {/* catigories description */}
+          <div className="w-[clamp(20px,26.0416668vw,1000px)]  inline-flex flex-col justify-center items-center gap-[clamp(10px,1.25vw,100px)] relative z-[1]">
+            {[0, 1, 2].map((i) => (
+              <div
+                className={`transition-all duration-[1s]
+               ${
+                 activeImage === 0
+                   ? "-translate-y-[clamp(50px,9.89582vw,500px)] "
+                   : activeImage === 1
+                   ? "translate-y-0"
+                   : "translate-y-[clamp(50px,9.89582vw,500px)]"
+               }`}
+                key={i}
+              >
+                {activeImage === i && (
+                  <div className="flex justify-start items-stretch relative gap-[10px]">
+                    <div className="w-0 origin-top-left outline-2 outline-offset-[-1px] outline-white"></div>
+                    <div className="inline-flex relative z-[0] text-white flex-col justify-start items-start gap-2">
+                      <div className="self-stretch justify-center text-[clamp(5px,3.125vw,200px)] font-bold font-['Cinzel'] leading-[clamp(5px,3.28125vw,100px)] tracking-tight">
+                        UNI 1
+                      </div>
+                      <div className="self-stretch justify-center text-[clamp(2px,1.0416vw,100px)] font-bold font-['Lato'] capitalize leading-[clamp(5px,2.08333vw,100px)] tracking-wide">
+                        UNI Project Series A Group Of UNI Projects Has Been
+                        Implemented, Which Adds a New and Distinctive Look To
+                        The Real Estate Development Market.{" "}
+                      </div>
+                    </div>
+
+                    <div className="h-[10px] flex items-center justify-center w-[clamp(10px,7vw,200px)]  overflow-hidden -me-[clamp(10px,3vw,200px))] origin-top-left absolute end-0 top-1/2 z-10 ">
+                      <div className="border-t-1 border-white w-full h-full animateHerLine"></div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
           {/* catigories images */}
-          <div className="w-[clamp(50px,8.33332vw,300px)] inline-flex flex-col justify-start items-start gap-[clamp(10px,1.25vw,100px)] relative z-[1]">
-            <img
-              className="self-stretch h-[clamp(50px,8.33332vw,300px)] rounded-full border border-white"
-              src="https://placehold.co/160x160"
-            />
-            <img
-              className="self-stretch h-[clamp(50px,8.33332vw,300px)] rounded-full border border-white"
-              src="https://placehold.co/160x160"
-            />
-            <img
-              className="self-stretch h-[clamp(50px,8.33332vw,300px)] rounded-full border border-white"
-              src="https://placehold.co/160x160"
-            />
+          <div className="w-[calc(1.6*clamp(50px,8.33332vw,300px))] inline-flex flex-col justify-center items-center gap-[clamp(10px,1.25vw,100px)] relative z-[1]">
+            {[
+              `/images/home/banner0.png`,
+              `/images/home/banner1.png`,
+              `/images/home/banner2.png`,
+            ].map((image, index) => (
+              <div key={index}>
+                <div
+                  onClick={() => setSctiveImage(index)}
+                  className={`self-stretch transition-all duration-[1s] relative z-[3] ${
+                    index === activeImage
+                      ? "h-[calc(1.6*clamp(50px,8.33332vw,300px))] w-[calc(1.6*clamp(50px,8.33332vw,300px))]"
+                      : "h-[clamp(50px,8.33332vw,300px)] w-[clamp(50px,8.33332vw,300px)]"
+                  }  rounded-full border border-white`}
+                >
+                  <img className="w-full h-full rounded-full" src={image} />
+                </div>
+              </div>
+            ))}
+
+            {/* absolute animated circles  */}
+
+            <div
+              className={`absolute mt-[clamp(10px,2.6047vw,150px)] ms-[clamp(10px,2.6047vw,150px)] z-[2] transition-all duration-[1s] ${
+                activeImage === 0
+                  ? "-translate-y-[clamp(50px,9.89582vw,500px)] "
+                  : activeImage === 1
+                  ? "translate-y-0"
+                  : "translate-y-[clamp(50px,9.89582vw,500px)]"
+              } `}
+            >
+              <div className="w-[clamp(10px,16.302082vw,500px)] h-[clamp(10px,16.302082vw,500px)] bg-white opacity-[.1] rounded-full" />
+            </div>
+            <div
+              className={`absolute -mt-[clamp(10px,2.6047vw,150px)] -ms-[clamp(10px,2.6047vw,150px)] z-[2] transition-all duration-[1s] ${
+                activeImage === 0
+                  ? "-translate-y-[clamp(50px,9.89582vw,500px)] "
+                  : activeImage === 1
+                  ? "translate-y-0"
+                  : "translate-y-[clamp(50px,9.89582vw,500px)]"
+              } `}
+            >
+              <div className="w-[clamp(10px,16.302082vw,500px)] h-[clamp(10px,16.302082vw,500px)] bg-white opacity-[.1] rounded-full" />
+            </div>
+            <div
+              className={`absolute -mt-[clamp(10px,2.6047vw,150px)] -me-[clamp(10px,2.6047vw,150px)] z-[2] transition-all duration-[1s] ${
+                activeImage === 0
+                  ? "-translate-y-[clamp(50px,9.89582vw,500px)] "
+                  : activeImage === 1
+                  ? "translate-y-0"
+                  : "translate-y-[clamp(50px,9.89582vw,500px)]"
+              } `}
+            >
+              <div className="w-[clamp(10px,16.302082vw,500px)] h-[clamp(10px,16.302082vw,500px)] bg-white opacity-[.1] rounded-full" />
+            </div>
+            <div
+              className={`absolute -mb-[clamp(10px,2.6047vw,150px)] -ms-[clamp(10px,2.6047vw,150px)] z-[2] transition-all duration-[1s] ${
+                activeImage === 0
+                  ? "-translate-y-[clamp(50px,9.89582vw,500px)] "
+                  : activeImage === 1
+                  ? "translate-y-0"
+                  : "translate-y-[clamp(50px,9.89582vw,500px)]"
+              } `}
+            >
+              <div className="w-[clamp(10px,16.302082vw,500px)] h-[clamp(10px,16.302082vw,500px)] bg-white opacity-[.1] rounded-full" />
+            </div>
+            <div
+              className={`absolute -mt-[clamp(20px,4.6875vw,200px)] -ms-[clamp(10px,2.6047vw,150px)] z-[2] transition-all duration-[1s] ${
+                activeImage === 0
+                  ? "-translate-y-[clamp(50px,9.89582vw,500px)] "
+                  : activeImage === 1
+                  ? "translate-y-0"
+                  : "translate-y-[clamp(50px,9.89582vw,500px)]"
+              } `}
+            >
+              <div className="w-[clamp(10px,16.302082vw,500px)] h-[clamp(10px,16.302082vw,500px)] bg-white opacity-[.1] rounded-full" />
+            </div>
+            <div
+              className={`absolute -mt-[clamp(20px,4.6875vw,200px)] -me-[clamp(10px,2.6047vw,150px)] z-[2] transition-all duration-[1s] ${
+                activeImage === 0
+                  ? "-translate-y-[clamp(50px,9.89582vw,500px)] "
+                  : activeImage === 1
+                  ? "translate-y-0"
+                  : "translate-y-[clamp(50px,9.89582vw,500px)]"
+              } `}
+            >
+              <div className="w-[clamp(10px,16.302082vw,500px)] h-[clamp(10px,16.302082vw,500px)] bg-white opacity-[.1] rounded-full" />
+            </div>
           </div>
         </div>
       </div>

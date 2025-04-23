@@ -480,7 +480,7 @@
 480 ==> clamp(px,25vw,480px)
 481 ==> clamp(px,25.052086vw,481px)
 482 ==> clamp(px,25.1041668vw,482px)
-483 ==> clamp(px,25.156250000000004vw,483px)
+483 ==> clamp(px,25.1564vw,483px)
 484 ==> clamp(px,25.20832vw,484px)
 485 ==> clamp(px,25.2604168vw,485px)
 486 ==> clamp(px,25.3125vw,486px)
