@@ -38,8 +38,8 @@ const ShortsPage: NextPage = () => {
         function animate(time: number) {
             if (lastTime !== null) {
                 const delta = time - lastTime;
-                container.scrollLeft += speed * delta;
-                if (container.scrollLeft >= container.scrollWidth / 2) {
+                if(container) container.scrollLeft += speed * delta;
+                if (container &&container.scrollLeft >= container.scrollWidth / 2) {
                     container.scrollLeft -= container.scrollWidth / 2;
                 }
             }
