@@ -51,7 +51,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Image
-              src="https://placehold.co/104x48"
+              src="/images/logo.svg"
               alt="Logo"
               width={104}
               height={48}
