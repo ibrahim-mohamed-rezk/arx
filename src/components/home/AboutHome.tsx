@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const AboutHome = () => {
   return (
@@ -9,9 +10,9 @@ const AboutHome = () => {
       >
         {/* Image gallery - responsive layout */}
         <div className=" flex items-center justify-center p-5 w-full">
-          <img className="w-full h-full object-cover" src="https://placehold.co/384x600" alt="about us" />
+          <Image fill className="w-full h-full object-cover" src="https://placehold.co/384x600" alt="about us" />
           <div>
-            <img src="https://placehold.co/127x101" alt="logo" />
+            <Image fill src="https://placehold.co/127x101" alt="logo" />
           </div>
         </div>
         

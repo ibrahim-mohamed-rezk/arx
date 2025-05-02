@@ -45,9 +45,9 @@ const Header = () => {
   ];
 
   return (
-    <header className="w-full z-50 fixed top-0 bg-sky-800/0 backdrop-blur-sm">
+    <header className="w-full z-50 fixed top-0 bg-black ">
       <div className="w-full px-[10px] lg:px-[clamp(10px,16.614582vw,1000px)]">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-1">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Image

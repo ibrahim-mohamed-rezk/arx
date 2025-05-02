@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const Hero = () => {
   const [activeImage, setSctiveImage] = useState(0);
@@ -11,8 +12,9 @@ const Hero = () => {
         <div className="w-full flex justify-between items-center">
           {/* hero background */}
           {[0, 1, 2].map((index) => (
-            <div className="w-full absolute top-0 left-0 right-0 bottom-0 h-screen z-0">
-              <img
+            <div key={index} className="w-full absolute top-0 left-0 right-0 bottom-0 h-screen z-0">
+              <Image
+                fill
                 src={`/images/home/banner${index}.png`}
                 className={`w-full h-full transition-all duration-[1s] object-cover`}
                 style={{

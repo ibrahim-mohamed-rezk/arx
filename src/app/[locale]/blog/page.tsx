@@ -250,7 +250,7 @@ const BlogPage: NextPage = () => {
     ];
 
     return (
-        <div className="min-h-screen font-lato bg-white">
+        <div className="min-h-screen font-lato bg-white pb-20">
             <style jsx global>{`
                 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
                 

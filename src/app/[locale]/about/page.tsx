@@ -40,7 +40,7 @@ const AboutPage: React.FC = () => {
             </section>
 
             {/* VISION / MISSION / VALUES */}
-            <section className="max-w-7xl mx-auto py-16 px-8 lg:px-44 space-y-20">
+            <section className="max-w-7xl mx-auto py-16 px-8 lg:px-44 space-y-20 space-x-2">
                 {[
                     {
                         title: (
