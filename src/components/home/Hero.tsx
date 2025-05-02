@@ -7,8 +7,8 @@ const Hero = () => {
   const [activeImage, setSctiveImage] = useState(0);
 
   return (
-    <div className="w-full h-screen relative ">
-      <div className="w-full flex items-center justify-center px-[clamp(10px,3.6041667vw,200px)] fixed top-0 h-screen z-10">
+    <div className="w-full h-screen relative">
+      <div className="w-full flex items-center justify-center px-[clamp(10px,3.6041667vw,200px)] top-0 h-screen z-10">
         <div className="w-full flex justify-between items-center">
           {/* hero background */}
           {[0, 1, 2].map((index) => (
