@@ -149,8 +149,8 @@ const ProjectPage: React.FC = () => {
             </svg>
             ,
             content: (
-                <div className="flex flex-col items-center  gap-6 sm:flex-row sm:gap-10">
-                    <div className="flex flex-row md:flex-col bg-[#FFFFFF] gap-2 py-3 rounded-full px-7 overflow-x-auto md:overflow-visible   ">
+                <div className="flex lg:flex-row items-center  lg:gap-6 gap-0  flex-col  sm:gap-10">
+                    <div className="flex flex-row sm:flex-row md:flex-row lg:flex-col bg-[#FFFFFF] gap-2 py-3 rounded-full px-7 overflow-x-auto md:overflow-visible">
                         {featureTabs.map((item) => (
                             <button
                                 key={item.id}
@@ -549,9 +549,9 @@ const ProjectPage: React.FC = () => {
             </div>
 
             {/* Project Information Section */}
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:space-y-1 space-y-[150px] sm:py-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:space-y-1 space-y-[20px] sm:py-8">
                 <div className="flex flex-col items-center">
-                    <div className="w-full max-w-2xl flex flex-col items-center gap-2 p-14">
+                    <div className="w-full max-w-2xl flex flex-col items-center gap-2 py-8">
                         <h1
                             className="text-center text-black  font-['Lato'] leading-tight"
                             style={{
@@ -564,7 +564,7 @@ const ProjectPage: React.FC = () => {
                         <div className="w-24 h-px bg-gray-300"></div>
                     </div>
 
-                    <div className="w-full text-black text-sm md:text-base px-18  h-40   font-['Lato'] " style={{
+                    <div className="w-full h-fit text-black text-sm md:text-base lg:px-18 px-4 py-0  lg:pb-10 pb-1 font-['Lato'] " style={{
                         fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
                         lineHeight: 'clamp(1.25rem, 2vw, 1.5rem)'
                     }}>
@@ -574,10 +574,10 @@ const ProjectPage: React.FC = () => {
 
                 </div>
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-6 lg:gap-12 items-center justify-center">
-                    <button className="w-[320px]  px-4 py-2 bg-blue-600 text-white text-sm  rounded-md hover:bg-blue-700 transition">
+                    <button className="w-full sm:w-[320px] px-4 py-2 bg-[#035B8D] text-white text-sm rounded-md hover:bg-blue-700 transition">
                         register your interest with this project
                     </button>
-                    <button className="w-[320px]  px-4 py-2 bg-white text-blue-600 text-sm border border-blue-600  rounded-md hover:bg-gray-50 transition">
+                    <button className="w-full sm:w-[320px] px-4 py-2 bg-white text-blue-600 text-sm border border-blue-600 rounded-md hover:bg-gray-50 transition">
                         Download brochure
                     </button>
                 </div>
@@ -623,8 +623,8 @@ const ProjectPage: React.FC = () => {
             </div>
 
             {/* Location Section with Map Image */}
-            <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">
-                <div className="w-full md:w-1/2 h-[40vh] md:h-[50vh] relative">
+            <div className="flex flex-col lg:flex-row">
+                <div className="w-full md:w-full h-[50vh] md:h-[90vh] relative">
                     {/* Map image from import */}
                     <Image
                         src={mapImage}
@@ -634,36 +634,45 @@ const ProjectPage: React.FC = () => {
                     />
                     <div className="absolute inset-0 bg-blue-800/30 pointer-events-none"></div>
                 </div>
-                <div className="w-full md:w-1/2 h-[40vh] md:h-[50vh] bg-black text-white p-4 md:p-6 flex items-center">
-                    <div className="max-w-md mx-auto">
-                        <h2 className="text-center text-white  font-['Cinzel'] mb-3" style={{
-                            fontSize: 'clamp(1.5rem, 4vw, 2rem)',
-                            lineHeight: 'clamp(1.75rem, 5vw, 2.5rem)'
+                <div className="w-full md:w-full h-[60vh] sm:h-[80vh] md:h-[90vh] lg:h-[90vh] bg-[#060B0E] text-white flex items-center">
+                    <div className="w-full px-4 sm:px-6 md:px-22 lg:px-16 py-6 sm:py-10 md:py-36">
+                        <h2 className="text-center text-white font-['Cinzel'] mb-4 sm:mb-6 md:mb-10" style={{
+                            fontSize: 'clamp(1.125rem, 1vw + 1rem, 1.875rem)',
+                            lineHeight: 'clamp(1.5rem, 1.5vw + 1rem, 2.25rem)'
                         }}>
-                            Prime Location
+                            PRIME LOCATION
                         </h2>
 
-                        <p className="text-white mb-4 text-sm" style={{
-                            fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
-                            lineHeight: 'clamp(1.25rem, 2.5vw, 1.5rem)'
+                        <p className="text-white mb-6 sm:mb-8 md:mb-12" style={{
+                            fontSize: 'clamp(0.75rem, 0.5vw + 0.5rem, 1rem)',
+                            lineHeight: 'clamp(1.2rem, 0.7vw + 1rem, 1.5rem)'
                         }}>
                             Strategically situated in Downtown, the heart of the New Administrative Capital,
                             KÈNTRO TOWER enjoys an exceptional position surrounded by key landmarks.
                         </p>
 
-                        <div className="mb-4">
-                            <h3 className="text-white text-base  mb-1">Getting There</h3>
-                            <p className="text-white mb-3 text-xs" style={{
-                                fontSize: 'clamp(0.75rem, 1.5vw, 0.875rem)',
-                                lineHeight: 'clamp(1rem, 2vw, 1.25rem)'
+                        <div className="mb-6 sm:mb-8 md:mb-12">
+                            <h3 className="text-white font-medium mb-2 md:mb-4" style={{
+                                fontSize: 'clamp(0.813rem, 0.5vw + 0.6rem, 1rem)',
+                                lineHeight: 'clamp(1.2rem, 0.7vw + 1rem, 1.5rem)'
+                            }}>Getting There</h3>
+                            <p className="text-white" style={{
+                                fontSize: 'clamp(0.75rem, 0.5vw + 0.5rem, 1rem)',
+                                lineHeight: 'clamp(1.2rem, 0.7vw + 1rem, 1.5rem)'
                             }}>
-                                With seamless access from major roads and proximity to 80% of the capital&#39;s iconic destinations,                                KÈNTRO TOWER stands as a central hub in the New Capital.
+                                With seamless access from major roads and proximity to 80% of the capital s iconic destinations,
+                                KÈNTRO TOWER stands as a central hub in the New Capital. Minutes away
+                                from UK Gold Market, Museum of Egypt, monorail station, and the Green River.
                             </p>
                         </div>
 
-                        <button className="px-4 py-2 border border-white text-white text-sm  rounded-md hover:bg-white/10 transition">
-                            Get directions
-                        </button>
+                        <div>
+                            <button className="px-5 py-1.5 bg-transparent border border-white text-white rounded-md hover:bg-white/10 transition inline-block" style={{
+                                fontSize: 'clamp(0.7rem, 0.3vw + 0.6rem, 0.875rem)'
+                            }}>
+                                Get Directions
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
