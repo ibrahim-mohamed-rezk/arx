@@ -4,15 +4,15 @@ import { useState } from "react";
 import Image from "next/image";
 
 const Hero = () => {
-  const [activeImage, setSctiveImage] = useState(0);
+  const [activeImage, setSctiveImage] = useState(1);
 
   return (
-    <div className="w-full h-screen relative">
-      <div className="w-full flex items-center justify-center px-[clamp(10px,3.6041667vw,200px)] top-0 h-screen z-10">
+    <div className="w-full relative">
+      <div className="w-full flex items-center justify-center px-[clamp(10px,3.6041667vw,200px)] top-0 z-10">
         <div className="w-full flex justify-between items-center">
           {/* hero background */}
           {[0, 1, 2].map((index) => (
-            <div key={index} className="w-full absolute top-0 left-0 right-0 bottom-0 h-screen z-0">
+            <div key={index} className="w-full absolute top-0 left-0 right-0 bottom-0 z-0">
               <Image
                 fill
                 src={`/images/home/banner${index}.png`}
@@ -26,7 +26,7 @@ const Hero = () => {
           ))}
 
           {/* hero title and search */}
-          <div className="flex flex-col justify-start gap-[clamp(10px,3.75vw,200px)] h-screen mt-[300px] items-start relative z-[1]">
+          <div className="flex flex-col py-5 justify-start gap-[clamp(10px,3.75vw,200px)] mt-[clamp(100px,12.021vw,250px)] items-start relative z-[1]">
             <div className="justify-center uppercase ms-[clamp(10px,4.73958vw,150px)] text-white text-[clamp(20px,6.6666667vw,250px)] font-bold font-['Cinzel'] leading-[clamp(20px,6.6666667vw,250px)] tracking-tight">
               Looking
               <br />
