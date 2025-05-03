@@ -116,7 +116,7 @@ const MedicalIcon = () => (
 );
 
 // Service Card Component
-const ServiceCard = ({ icon, title, description }) => {
+const ServiceCard = ({ icon, title, description }:{ icon: React.ReactNode, title: string, description: string}) => {
     return (
         <div className="flex flex-col items-center text-center">
             <div className="bg-gray-100 p-4 rounded-full mb-6 w-24 h-24 flex items-center justify-center">
