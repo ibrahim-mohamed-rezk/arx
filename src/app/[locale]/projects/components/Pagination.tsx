@@ -42,7 +42,7 @@ const Pagination: React.FC<PaginationProps> = ({
         {/* Show the first page */}
         <button
           onClick={() => handlePageChange(1)}
-          className={`h-10 w-10 flex items-center justify-center rounded-md ${currentPage === 1 ? 'bg-black text-white' : 'text-gray-600 hover:bg-gray-100'
+          className={`h-[clamp(25px,2.083vw,40px)] w-[clamp(25px,2.083vw,40px)] flex items-center justify-center rounded-md ${currentPage === 1 ? 'bg-black text-white' : 'text-gray-600 hover:bg-gray-100'
             }`}
         >
           1
@@ -50,7 +50,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
         {/* Current page and surrounding pages */}
         {currentPage > 3 && (
-          <button className="h-10 w-10 flex items-center justify-center text-gray-600">
+          <button className="h-[clamp(25px,2.083vw,40px)] w-[clamp(25px,2.083vw,40px)] flex items-center justify-center text-gray-600">
             ...
           </button>
         )}
@@ -58,7 +58,7 @@ const Pagination: React.FC<PaginationProps> = ({
         {currentPage > 2 && (
           <button
             onClick={() => handlePageChange(currentPage - 1)}
-            className="h-10 w-10 flex items-center justify-center rounded-md text-gray-600 hover:bg-gray-100"
+            className="h-[clamp(25px,2.083vw,40px)] w-[clamp(25px,2.083vw,40px)] flex items-center justify-center rounded-md text-gray-600 hover:bg-gray-100"
           >
             {currentPage - 1}
           </button>
@@ -67,7 +67,7 @@ const Pagination: React.FC<PaginationProps> = ({
         {currentPage !== 1 && currentPage !== totalPages && (
           <button
             onClick={() => handlePageChange(currentPage)}
-            className="h-10 w-10 flex items-center justify-center rounded-md bg-black text-white"
+            className="h-[clamp(25px,2.083vw,40px)] w-[clamp(25px,2.083vw,40px)] flex items-center justify-center rounded-md bg-black text-white"
           >
             {currentPage}
           </button>
@@ -76,14 +76,14 @@ const Pagination: React.FC<PaginationProps> = ({
         {currentPage < totalPages - 1 && (
           <button
             onClick={() => handlePageChange(currentPage + 1)}
-            className="h-10 w-10 flex items-center justify-center rounded-md text-gray-600 hover:bg-gray-100"
+            className="h-[clamp(25px,2.083vw,40px)] w-[clamp(25px,2.083vw,40px)] flex items-center justify-center rounded-md text-gray-600 hover:bg-gray-100"
           >
             {currentPage + 1}
           </button>
         )}
 
         {currentPage < totalPages - 2 && (
-          <button className="h-10 w-10 flex items-center justify-center text-gray-600">
+          <button className="h-[clamp(25px,2.083vw,40px)] w-[clamp(25px,2.083vw,40px)] flex items-center justify-center text-gray-600">
             ...
           </button>
         )}
@@ -91,7 +91,7 @@ const Pagination: React.FC<PaginationProps> = ({
         {/* Show the last page */}
         <button
           onClick={() => handlePageChange(totalPages)}
-          className={`h-10 w-10 flex items-center justify-center rounded-md ${currentPage === totalPages ? 'bg-black text-white' : 'text-gray-600 hover:bg-gray-100'
+          className={`h-[clamp(25px,2.083vw,40px)] w-[clamp(25px,2.083vw,40px)] flex items-center justify-center rounded-md ${currentPage === totalPages ? 'bg-black text-white' : 'text-gray-600 hover:bg-gray-100'
             }`}
         >
           {totalPages}

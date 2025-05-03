@@ -1,16 +1,24 @@
 "use client";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import { useState } from "react";
 
 const Header = () => {
-  const [language, setLanguage] = useState("En");
+  const params = useParams()
+  const [language, setLanguage] = useState(params.locale === "ar" ? "Ar" : "En");
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
     setIsLangMenuOpen(false);
+
+    // Update the locale based on the selected language
+      const newLocale = lang === "Ar"  ? "ar" : "en";
+      
+      // Redirect to the same path but with the new locale
+      window.location.href = `/${newLocale}${window.location.pathname.replace(/^\/(en|ar)/, '')}`;
   };
 
   const toggleMobileMenu = () => {
@@ -25,10 +33,6 @@ const Header = () => {
     {
       label: "About Us",
       href: "/about",
-    },
-    {
-      label: "Services",
-      href: "/services",
     },
     {
       label: "Projects",
@@ -133,12 +137,6 @@ const Header = () => {
                     >
                       Arabic
                     </button>
-                    <button
-                      onClick={() => handleLanguageChange("Fr")}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      French
-                    </button>
                   </div>
                 </div>
               )}
@@ -207,14 +205,6 @@ const Header = () => {
                 }`}
               >
                 Arabic
-              </button>
-              <button
-                onClick={() => handleLanguageChange("Fr")}
-                className={`text-left py-2 text-sm ${
-                  language === "Fr" ? "text-white" : "text-gray-300"
-                }`}
-              >
-                French
               </button>
             </div>
           </div>
