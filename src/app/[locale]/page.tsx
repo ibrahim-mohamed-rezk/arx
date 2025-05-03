@@ -29,6 +29,7 @@ export default async function Home({
   };
 
   const HomeData = await feachData();
+  console.log(HomeData)
   return (
     <div>
       <Hero />

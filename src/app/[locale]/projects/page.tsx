@@ -2,9 +2,7 @@
 
 import React, { useState } from "react";
 import herobg from "../../../../public/images/home/525ab7523c86871fbf6680382ffeb83b63451acc (1).jpg";
-import AxiomTowerbg from "../../../../public/images/home/Axiom Tower.png";
 import HeroSection from "./components/Hero";
-import ProjectTile from "./components/ProjectTile";
 import Pagination from "./components/Pagination";
 import ProjectCard from "./components/ProjectCard";
 

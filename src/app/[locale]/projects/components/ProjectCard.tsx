@@ -4,7 +4,10 @@ import Image from "next/image";
 
 const ProjectCard = ({ project }: { project?: ProjectType }) => {
   return (
-    <div className="w-full max-w-[480px] h-auto relative shadow-[1px_1px_10px_0px_rgba(191,191,191,0.50)] overflow-hidden">
+    <Link
+      href={`projects/${project?.id}`}
+      className="w-full max-w-[480px] h-auto relative shadow-[1px_1px_10px_0px_rgba(191,191,191,0.50)] overflow-hidden"
+    >
       <div className="w-full h-full relative">
         {/* Project Image */}
         <div className="relative w-full aspect-[2/1]">
@@ -24,7 +27,7 @@ const ProjectCard = ({ project }: { project?: ProjectType }) => {
               </div>
               <div className="text-dark-gray text-sm font-normal text-[#494D50] font-['Lato'] leading-normal tracking-tight mb-6">
                 New Administrative Capital - Downtown Plot NO. MU5-39, Area
-                3275m²." (Commercial - Medical - Offices) Consists Of 15
+                3275m².&quot; (Commercial - Medical - Offices) Consists Of 15
                 Mixed-Used Floors....
               </div>
               <div className="flex items-center gap-1 mt-4">
@@ -85,7 +88,7 @@ const ProjectCard = ({ project }: { project?: ProjectType }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
