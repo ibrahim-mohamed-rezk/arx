@@ -4,10 +4,7 @@ import Image from "next/image";
 
 const ProjectCard = ({ project }: { project?: ProjectType }) => {
   return (
-    <Link
-      href={`projects/${project?.id}`}
-      className="w-full max-w-[480px] h-auto relative shadow-[1px_1px_10px_0px_rgba(191,191,191,0.50)] overflow-hidden"
-    >
+    <div className="w-full max-w-[480px] h-auto relative shadow-[1px_1px_10px_0px_rgba(191,191,191,0.50)] overflow-hidden">
       <div className="w-full h-full relative">
         {/* Project Image */}
         <div className="relative w-full aspect-[2/1]">
@@ -64,7 +61,7 @@ const ProjectCard = ({ project }: { project?: ProjectType }) => {
                 </div>
               </div>
 
-              <div className="mt-auto">
+              <Link href={`projects/${project?.id}`} className="mt-auto">
                 <div className="w-full bg-[#060B0E] md:w-48 h-12 p-2 bg-text-text-on-color rounded-lg outline-1 outline-offset-[-1px] outline-text-text-on-color inline-flex justify-center items-center gap-4">
                   <div className="text-center text-white justify-center text-text-text-on-color-2 text-base font-bold font-['Lato'] capitalize leading-none tracking-wide">
                     explore
@@ -83,12 +80,12 @@ const ProjectCard = ({ project }: { project?: ProjectType }) => {
                     />
                   </svg>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

@@ -11,7 +11,7 @@ import YoussefImg from '/public/images/home/Youssef.png';
 
 const directors = [
     { name: 'Dr. Ahmed Omar', img: AhmedImg },
-    { name: 'Dr. Youssef Nabil', img: YoussefImg },
+    { name: 'Dr. Saad Omar', img: YoussefImg },
 ];
 
 const AboutPage: React.FC = () => {
