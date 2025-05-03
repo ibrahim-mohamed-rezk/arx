@@ -10,7 +10,7 @@ import Values from '../../../public/values.svg';
 
 const AboutHome: NextPage = () => {
   return (
-    <div className="w-full lg:w-[75%] mx-auto bg-white mb-30 font-['lato']">
+    <div className="w-full lg:w-[75%] mx-auto bg-white font-['lato']">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left side with image */}
