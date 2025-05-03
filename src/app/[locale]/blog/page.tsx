@@ -1,4 +1,5 @@
 "use client"
+import { Link } from '@/i18n/routing';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import { useEffect, useState, useRef, useCallback } from 'react';
@@ -507,7 +508,7 @@ const BlogPage: NextPage = () => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                         {blogPosts.map((post) => (
-                            <div key={post.id} className="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+                            <Link href={`/blog/${post.id}`} key={post.id} className="rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
                                 <div className="relative w-full" style={{ paddingBottom: '60%' }}>
                                     <div className="absolute inset-0 bg-gray-300">
                                         <Image
@@ -524,7 +525,7 @@ const BlogPage: NextPage = () => {
                                         {post.title}
                                     </h3>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </section>
