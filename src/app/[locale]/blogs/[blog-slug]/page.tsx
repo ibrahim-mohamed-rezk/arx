@@ -81,12 +81,12 @@ const BlogPage = async ({
             )
         )} */}
         <Image
-          src={blogData.cover}
+          src={blogData.image}
           alt={blogData.title}
           className="w-full h-auto object-cover max-h-[80vh] rounded-lg"
           priority
-          width={100}
-          height={50}
+          width={1920}
+          height={1080}
         />
         {/* Social Icons */}
         <div className="flex items-center  justify-between py-15 text-[clamp(1rem,1.5vw,1.125rem)]">
