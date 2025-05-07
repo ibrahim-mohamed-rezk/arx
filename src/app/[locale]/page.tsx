@@ -24,6 +24,7 @@ export default async function Home({
       );
       return response.data;
     } catch (error) {
+      console.error("Error fetching data:", error);
       throw error;
     }
   };
@@ -32,7 +33,7 @@ export default async function Home({
   console.log(HomeData)
   return (
     <div>
-      <Hero />
+      <Hero projects={HomeData.projects} />
       <AboutHome />
       <ShortsPage />
       <Services />

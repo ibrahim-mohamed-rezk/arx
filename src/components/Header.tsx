@@ -39,8 +39,8 @@ const Header = () => {
       href: "/projects",
     },
     {
-      label: "Blog",
-      href: "/blog",
+      label: "Blogs",
+      href: "/blogs",
     },
     {
       label: "Contact Us",

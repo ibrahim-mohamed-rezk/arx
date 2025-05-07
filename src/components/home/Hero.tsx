@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ProjectType } from "@/libs/types/types";
 
-const Hero = () => {
+const Hero = ({ projects }: { projects: ProjectType[] }) => {
   const [activeImage, setSctiveImage] = useState(1);
 
   return (
@@ -12,10 +13,15 @@ const Hero = () => {
         <div className="w-full flex justify-between items-center">
           {/* hero background */}
           {[0, 1, 2].map((index) => (
-            <div key={index} className="w-full absolute top-0 left-0 right-0 bottom-0 z-0">
+            <div
+              key={index}
+              className="w-full absolute top-0 left-0 right-0 bottom-0 z-0"
+            >
               <Image
                 fill
-                src={`/images/home/banner${index}.png`}
+                src={
+                  projects[index]?.image || `/images/home/banner${index}.png`
+                }
                 className={`w-full h-full transition-all duration-[1s] object-cover`}
                 style={{
                   opacity: index !== activeImage ? "0%" : "100%",
@@ -98,12 +104,10 @@ const Hero = () => {
                     <div className="w-0 origin-top-left outline-2 outline-offset-[-1px] outline-white"></div>
                     <div className="inline-flex relative z-[0] text-white flex-col justify-start items-start gap-2">
                       <div className="self-stretch justify-center text-[clamp(5px,3.125vw,200px)] font-bold font-['Cinzel'] leading-[clamp(5px,3.28125vw,100px)] tracking-tight">
-                        UNI 1
+                        {projects[i]?.title}
                       </div>
                       <div className="self-stretch justify-center text-[clamp(2px,1.0416vw,100px)] font-bold font-['Lato'] capitalize leading-[clamp(5px,2.08333vw,100px)] tracking-wide">
-                        UNI Project Series A Group Of UNI Projects Has Been
-                        Implemented, Which Adds a New and Distinctive Look To
-                        The Real Estate Development Market.{" "}
+                        {projects[i]?.description}
                       </div>
                     </div>
 
@@ -118,11 +122,7 @@ const Hero = () => {
 
           {/* catigories images */}
           <div className="w-[calc(1.6*clamp(50px,8.33332vw,300px))] inline-flex flex-col justify-center items-center gap-[clamp(10px,1.25vw,100px)] relative z-[1]">
-            {[
-              `/images/home/banner0.png`,
-              `/images/home/banner1.png`,
-              `/images/home/banner2.png`,
-            ].map((image, index) => (
+            {[0, 1, 2].map((index) => (
               <div key={index}>
                 <div
                   onClick={() => setSctiveImage(index)}
@@ -132,13 +132,17 @@ const Hero = () => {
                       : "h-[clamp(50px,8.33332vw,300px)] w-[clamp(50px,8.33332vw,300px)]"
                   }  rounded-full border border-white`}
                 >
-                  <img className="w-full h-full rounded-full" src={image} />
+                  <img
+                    className="w-full h-full rounded-full"
+                    src={
+                      projects[index]?.icon || `/images/home/banner${index}.png`
+                    }
+                  />
                 </div>
               </div>
             ))}
 
             {/* absolute animated circles  */}
-
             <div
               className={`absolute mt-[clamp(10px,2.6047vw,150px)] ms-[clamp(10px,2.6047vw,150px)] z-[2] transition-all duration-[1s] ${
                 activeImage === 0

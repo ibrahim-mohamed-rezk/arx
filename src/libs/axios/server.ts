@@ -2,7 +2,7 @@ import axios, { AxiosHeaders } from "axios";
 
 // Create an Axios instance
 const backendServer = axios.create({
-  baseURL: "https://safezone-co.top/api/v1/dashboard/",
+  baseURL: "https://arx-test.com/api/v1/",
   headers: {
     "Content-Type": "multipart/form-data",
   },
