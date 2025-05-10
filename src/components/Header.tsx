@@ -10,7 +10,7 @@ const Header = () => {
   const [language, setLanguage] = useState(params.locale === "ar" ? "Ar" : "En");
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const t = useTranslations("Header");
+  const t = useTranslations("header");
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
     setIsLangMenuOpen(false);
