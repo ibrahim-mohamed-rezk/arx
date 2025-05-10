@@ -56,7 +56,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Image
-              src="/images/logo.svg"
+              src="https://storage.googleapis.com/furniture-hub/arx/settings/ARX%20Logo%20(1).png"
               alt="Logo"
               width={104}
               height={48}
