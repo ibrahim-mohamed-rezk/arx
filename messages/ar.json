@@ -5,6 +5,10 @@
         "projects": "المشاريع",
         "contact": "اتصل بنا",
         "blog": "المدونة"
+    },
+    "home": {
+        "hero_title": "دعنا",
+        "hero_subtitle": "نجعل",
+        "hero_description": "هذا يحدث!"
     }
-    
 }

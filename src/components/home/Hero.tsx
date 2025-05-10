@@ -3,10 +3,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ProjectType } from "@/libs/types/types";
+import { useTranslations } from "next-intl";
 
 const Hero = ({ projects }: { projects: ProjectType[] }) => {
   const [activeImage, setSctiveImage] = useState(1);
-
+  const t = useTranslations("home");
   return (
     <div className="w-full relative">
       <div className="w-full flex items-center justify-center px-[clamp(10px,3.6041667vw,200px)] top-0 z-10">
@@ -34,11 +35,11 @@ const Hero = ({ projects }: { projects: ProjectType[] }) => {
           {/* hero title and search */}
           <div className="flex flex-col py-5 justify-start gap-[clamp(10px,3.75vw,200px)] mt-[clamp(100px,12.021vw,250px)] items-start relative z-[1]">
             <div className="justify-center uppercase ms-[clamp(10px,4.73958vw,150px)] text-white text-[clamp(20px,6.6666667vw,250px)] font-bold font-['Cinzel'] leading-[clamp(20px,6.6666667vw,250px)] tracking-tight">
-              Looking
+              {t("hero_title")}
               <br />
-              for a new
+              {t("hero_subtitle")}
               <br />
-              house?
+              {t("hero_description")}
             </div>
             {/*  search */}
             <div className="w-[clamp(220px,41.666667vw,1500px)] px-[clamp(10px,2.5vw,100px)] py-[clamp(10px,1.25vw,30px)] bg-white rounded-[clamp(10px,2.6047vw,150px)] shadow-[0px_4px_4px_0px_rgba(47,62,70,0.20)] inline-flex justify-start items-center gap-[clamp(5px,1.25vw,35px)]">
