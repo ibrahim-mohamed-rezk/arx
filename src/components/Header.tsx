@@ -1,5 +1,6 @@
 "use client";
 import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useState } from "react";
@@ -9,7 +10,7 @@ const Header = () => {
   const [language, setLanguage] = useState(params.locale === "ar" ? "Ar" : "En");
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const t = useTranslations("Header");
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
     setIsLangMenuOpen(false);
@@ -27,23 +28,23 @@ const Header = () => {
 
   const navLinks = [
     {
-      label: "Home",
+      label: t('home'),
       href: "/",
     },
     {
-      label: "About Us",
+      label: t("about"),
       href: "/about",
     },
     {
-      label: "Projects",
+      label: t("projects"),
       href: "/projects",
     },
     {
-      label: "Blogs",
+      label: t("blog"),
       href: "/blogs",
     },
     {
-      label: "Contact Us",
+      label: t("contact"),
       href: "/contact",
     },
   ];
