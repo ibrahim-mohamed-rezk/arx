@@ -19,7 +19,7 @@ const AboutHome: NextPage = () => {
           <div className="md:w-1/2">
             <div className="relative h-96 justify-end flex">
               <Image
-                src={about}
+                src="https://storage.googleapis.com/furniture-hub/arx/about_us/About%20us.webp"
                 alt="Luxury Real Estate Building"
                 width={300}
                 height={40}
