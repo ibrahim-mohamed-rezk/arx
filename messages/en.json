@@ -11,5 +11,15 @@
         "hero_subtitle": "It",
         "hero_description": "happen!",
         "search_placeholder": "Search about projects"
+    },
+    "about":{
+        "title": "About Us",
+        "description": "REDEFINING LUXURY REAL ESTATE WITH 25+ YEARS OF EXCELLENCE.",
+        "vision_title" : "VISION",
+        "vision_description": "To lead urban development with sustainable and ambitious horizons that reflect our global vision—shaping the future from the heart of the world to the entire world.",
+        "mission_title" : "MISSION",
+        "mission_description": "We deliver integrated, high-quality real estate solutions with cultural depth and global standards, tailored to the goals of our partners—clients, investors, suppliers, and teams—while ensuring sustainable development.",
+        "values_title" : "VALUES",
+        "values_description": "We operate with quality that sets the standard, with integrity that builds trust, with a client-first mindset that drives satisfaction, with initiative that fuels progress, and with accountability that delivers real results."
     }
 }

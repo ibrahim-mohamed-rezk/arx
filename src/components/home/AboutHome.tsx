@@ -7,8 +7,10 @@ import SVGComponent from '../../../public/logo';
 import Vision from '../../../public/cityscape-svgrepo-com.svg';
 import Mission from '../../../public/real-estate-investment-svgrepo-com.svg';
 import Values from '../../../public/values.svg';
+import { useTranslations } from 'use-intl';
 
 const AboutHome: NextPage = () => {
+  const t = useTranslations("about");
   return (
     <div className="w-full lg:w-[75%] mx-auto bg-white font-['lato']">
       <div className="max-w-6xl mx-auto px-4 py-12">
@@ -32,10 +34,10 @@ const AboutHome: NextPage = () => {
           {/* Right side with content */}
           <div className="md:w-2/3">
             <div className="text-sm  text-[#035B8D] mb-2">
-              ABOUT US
+              {t("title")}
             </div>
             <h1 className="text-4xl font-bold  text-gray-900 mb-6">
-              REDEFINING LUXURY REAL ESTATE WITH 25+ YEARS OF EXCELLENCE.
+              {t("description")}
             </h1>
 
             {/* Three columns section */}
@@ -49,11 +51,10 @@ const AboutHome: NextPage = () => {
                   height={40}
                   className="mb-4"
                 />
-                <h3 className="text-fluid-lg  mb-2">Vision</h3>
+                <h3 className="text-fluid-lg  mb-2">{t("vision_title")}</h3>
                 <p className="text-fluid-base text-gray-600">
-                  Enhancing communities through innovative real estate
-                  projects. Selective creativity with advanced design principles
-                  to ensure client investment.
+                  {t("vision_description")}
+
                 </p>
               </div>
 
@@ -66,10 +67,9 @@ const AboutHome: NextPage = () => {
                   height={40}
                   className="mb-4"
                 />
-                <h3 className="text-fluid-lg  mb-2">Mission</h3>
+                <h3 className="text-fluid-lg  mb-2">{t("mission_title")}</h3>
                 <p className="text-fluid-base text-gray-600">
-                  We curate core assets that allow sustainable and sophisticated
-                  urban developments beyond conventional market trends.
+                  {t("mission_description")}
                 </p>
               </div>
 
@@ -82,11 +82,9 @@ const AboutHome: NextPage = () => {
                   height={40}
                   className="mb-4"
                 />
-                <h3 className="text-fluid-lg  mb-2">Values</h3>
+                <h3 className="text-fluid-lg  mb-2">{t("values_title")}</h3>
                 <p className="text-fluid-base text-gray-600">
-                  Transparency. We uphold honesty and clarity in all our
-                  dealings. Respect. We foster a culture of mutual respect and
-                  integrity.
+                  {t("values_description")}
                 </p>
               </div>
             </div>
