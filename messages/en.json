@@ -9,6 +9,7 @@
     "home": {
         "hero_title": "Let's make",
         "hero_subtitle": "It",
-        "hero_description": "happen!"
+        "hero_description": "happen!",
+        "search_placeholder": "Search about projects"
     }
 }

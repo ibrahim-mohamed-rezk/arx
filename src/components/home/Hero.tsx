@@ -45,7 +45,7 @@ const Hero = ({ projects }: { projects: ProjectType[] }) => {
             <div className="w-[clamp(220px,41.666667vw,1500px)] px-[clamp(10px,2.5vw,100px)] py-[clamp(10px,1.25vw,30px)] bg-white rounded-[clamp(10px,2.6047vw,150px)] shadow-[0px_4px_4px_0px_rgba(47,62,70,0.20)] inline-flex justify-start items-center gap-[clamp(5px,1.25vw,35px)]">
               <input
                 type="text"
-                placeholder="Search about projects"
+                placeholder={t("search_placeholder")}
                 className="w-full outline-none text-dark-gray text-[clamp(8px,1.0416vw,40px)] font-bold font-['Lato'] capitalize tracking-wide"
               />
               <button

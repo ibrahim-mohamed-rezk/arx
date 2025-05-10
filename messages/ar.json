@@ -9,6 +9,7 @@
     "home": {
         "hero_title": "دعنا",
         "hero_subtitle": "نجعل",
-        "hero_description": "هذا يحدث!"
+        "hero_description": "هذا يحدث!",
+        "search_placeholder": "ابحث عن المشاريع"
     }
 }
