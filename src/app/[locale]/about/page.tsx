@@ -6,8 +6,6 @@ import VisionImg from '/public/images/home/VISION.png';
 import MissionImg from '/public/images/home/MISSION.png';
 import ValuesImg from '/public/images/home/VALUES.png';
 import PartnersBanner from '/public/images/home/OurSuccessPartners.png';
-import AhmedImg from '/public/images/home/ahmed.png';
-import YoussefImg from '/public/images/home/Youssef.png';
 
 const directors = [
     { name: 'Dr. Ahmed Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/2.webp" },
