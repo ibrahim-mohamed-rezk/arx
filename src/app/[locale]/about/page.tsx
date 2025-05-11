@@ -10,8 +10,10 @@ import AhmedImg from '/public/images/home/ahmed.png';
 import YoussefImg from '/public/images/home/Youssef.png';
 
 const directors = [
-    { name: 'Dr. Ahmed Omar', img: AhmedImg },
-    { name: 'Dr. Saad Omar', img: YoussefImg },
+    { name: 'Dr. Ahmed Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/2.webp" },
+    { name: 'Eng. Yasser Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/3%20(1).webp" },
+    { name: 'Dr. Saad Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/4.webp" },
+    { name: 'Dr. Osama Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/1%20(1).webp" },
 ];
 
 const AboutPage: React.FC = () => {
