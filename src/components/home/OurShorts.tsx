@@ -3,7 +3,6 @@
 
 import React, { useRef, useState, useEffect } from 'react'
 import Head from 'next/head'
-import Script from 'next/script'
 
 // Add type declaration for Instagram embed script
 declare global {
