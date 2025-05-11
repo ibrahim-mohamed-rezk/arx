@@ -27,6 +27,20 @@ const slides = [
     title: "O7 MALL – O7",
     location: "New Damietta",
   },
+  {
+    id: 2,
+    video: "https://www.youtube.com/embed/v5iIsDG2Ank",
+    thumbnail: sliderImage02,
+    title: "O7 MALL – O7",
+    location: "New Damietta",
+  },
+  {
+    id: 2,
+    video: "https://www.youtube.com/embed/veHaPbhSIC0",
+    thumbnail: sliderImage02,
+    title: "O7 MALL – O7",
+    location: "New Damietta",
+  },
 ];
 
 
