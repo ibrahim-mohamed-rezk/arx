@@ -2,12 +2,11 @@ import React from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import about from '../../../public/images/home/about.png';
 import SVGComponent from '../../../public/logo';
 import Vision from '../../../public/cityscape-svgrepo-com.svg';
 import Mission from '../../../public/real-estate-investment-svgrepo-com.svg';
 import Values from '../../../public/values.svg';
-import { useTranslations } from 'use-intl';
+import { useTranslations } from 'next-intl';
 
 const AboutHome: NextPage = () => {
   const t = useTranslations("about");
@@ -92,7 +91,7 @@ const AboutHome: NextPage = () => {
             {/* Learn More button */}
             <div className="mt-8 flex justify-end">
               <Link href="/about" passHref>
-                <span className="inline-flex items-center text-fluid-sm font-medium text-blue-600 hover:text-blue-800 cursor-pointer">
+                <span className="inline-flex  items-center text-fluid-sm font-medium text-blue-600 hover:text-blue-800 cursor-pointer">
                   Learn More
                   <svg
                     className="ml-1 w-4 h-4"
