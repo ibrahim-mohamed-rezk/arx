@@ -22,7 +22,7 @@ const slides = [
   },
   {
     id: 2,
-    video: "https://www.youtube.com/embed/Q7nGj9VeysA",
+    video: "https://www.youtube.com/embed/m7-WUN_tVpo",
     thumbnail: sliderImage02,
     title: "O7 MALL – O7",
     location: "New Damietta",
