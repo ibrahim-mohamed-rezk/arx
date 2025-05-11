@@ -30,6 +30,8 @@ export default async function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          <script async src="//www.instagram.com/embed.js"></script>
+
         </body>
       </NextIntlClientProvider>
     </html>
