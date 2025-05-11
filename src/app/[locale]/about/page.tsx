@@ -155,7 +155,6 @@ const AboutPage: React.FC = () => {
                     </h2>
                 </div>
                 <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-4 pb-10 items-center text-center">
-                    <span className="font-['Lato'] text-xl lg:w-40 w-full">A vision rooted in progress, driven by experience.</span>
                     {directors.map((dir, i) => (
                         <div key={i} className="bg-white shadow-lg rounded-lg overflow-hidden">
                             <Image
