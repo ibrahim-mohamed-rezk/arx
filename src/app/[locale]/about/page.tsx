@@ -161,7 +161,7 @@ const AboutPage: React.FC = () => {
                             <Image
                                 src={dir.img}
                                 alt={dir.name}
-                                width={400}
+                                width={300}
                                 height={800}
                                 className="w-full h-auto object-cover object-center"
                             />
