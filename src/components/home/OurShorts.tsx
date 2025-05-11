@@ -1,27 +1,95 @@
 // app/shorts/page.tsx
 'use client'
 
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import sliderImage01 from '../../../public/images/home/bba65e126777dbdbc37dcfc38ab04c9113908d13.png'
-import sliderImage02 from '../../../public/images/home/38577258a3711dfb21407d5e146a7d6d148fdf5a.png'
+
+// Update image imports to use public path
+const sliderImage01 = '/images/home/bba65e126777dbdbc37dcfc38ab04c9113908d13.png'
+const sliderImage02 = '/images/home/38577258a3711dfb21407d5e146a7d6d148fdf5a.png'
 
 const slides = [
-    { id: 1, img: sliderImage01, title: 'O7 MALL – O7', location: 'New Damietta' },
-    { id: 2, img: sliderImage02, title: 'O7 MALL – O7', location: 'New Damietta' },
-    { id: 3, img: sliderImage01, title: 'O7 MALL – O7', location: 'New Damietta' },
-    { id: 4, img: sliderImage02, title: 'O7 MALL – O7', location: 'New Damietta' },
+    { 
+        id: 1, 
+        video: "https://www.instagram.com/reel/DIl4o2RsaV9/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==", 
+        thumbnail: sliderImage01, 
+        title: 'O7 MALL – O7', 
+        location: 'New Damietta' 
+    },
+    { 
+        id: 2, 
+        video: "/videos/short2.mp4", 
+        thumbnail: sliderImage02, 
+        title: 'O7 MALL – O7', 
+        location: 'New Damietta' 
+    },
+    { 
+        id: 3, 
+        video: "/videos/short3.mp4", 
+        thumbnail: sliderImage01, 
+        title: 'O7 MALL – O7', 
+        location: 'New Damietta' 
+    },
+    { 
+        id: 4, 
+        video: "/videos/short4.mp4", 
+        thumbnail: sliderImage02, 
+        title: 'O7 MALL – O7', 
+        location: 'New Damietta' 
+    },
 ]
 
 export default function ShortsPage() {
     const containerRef = useRef<HTMLDivElement>(null)
+    const [activeVideo, setActiveVideo] = useState<number | null>(null)
+    const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
 
     const scroll = (dir: 'left' | 'right') => {
         if (!containerRef.current) return
         const width = containerRef.current.clientWidth
         containerRef.current.scrollBy({ left: dir === 'left' ? -width : width, behavior: 'smooth' })
     }
+
+    const handleVideoClick = (index: number) => {
+        if (activeVideo === index) {
+            // If clicking the active video, toggle play/pause
+            const video = videoRefs.current[index]
+            if (video) {
+                if (video.paused) {
+                    video.play()
+                } else {
+                    video.pause()
+                }
+            }
+        } else {
+            // If clicking a different video, stop the current one and play the new one
+            if (activeVideo !== null) {
+                const currentVideo = videoRefs.current[activeVideo]
+                if (currentVideo) {
+                    currentVideo.pause()
+                    currentVideo.currentTime = 0
+                }
+            }
+            setActiveVideo(index)
+            const newVideo = videoRefs.current[index]
+            if (newVideo) {
+                newVideo.play()
+            }
+        }
+    }
+
+    // Stop all videos when component unmounts
+    useEffect(() => {
+        return () => {
+            videoRefs.current.forEach(video => {
+                if (video) {
+                    video.pause()
+                    video.currentTime = 0
+                }
+            })
+        }
+    }, [])
 
     return (
         <>
@@ -30,7 +98,7 @@ export default function ShortsPage() {
                 <meta name="description" content="A glimpse into our journey, one reel at a time." />
             </Head>
 
-            <main className=" bg-gray-50">
+            <main className="bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4">
                     <h3 className="text-center text-sm font-semibold text-blue-600 uppercase">
                         Our Shorts
@@ -54,40 +122,50 @@ export default function ShortsPage() {
                         {/* Scrollable Track */}
                         <div className="px-15">
                             <div ref={containerRef} className="flex space-x-6 overflow-x-auto snap-x snap-mandatory no-scrollbar">
-                                {slides.map((s) => (
+                                {slides.map((s, index) => (
                                     <div
                                         key={s.id}
-                                        className="snap-start min-w-[280px] md:min-w-[320px] lg:min-w-[300px] h-[500px] bg-white rounded-xl overflow-hidden relative"
+                                        className="snap-start min-w-[280px] md:min-w-[320px] lg:min-w-[300px] h-[500px] bg-white rounded-xl overflow-hidden relative cursor-pointer"
+                                        onClick={() => handleVideoClick(index)}
                                     >
-                                        {/* Full-height Image */}
+                                        {/* Video Container */}
                                         <div className="relative w-full h-full">
-                                            <Image src={s.img} alt={s.title} fill className="object-cover" />
-                                        </div>
-
-                                        {/* Play Overlay */}
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className="w-16 h-16">
-                                                <svg width="91" height="91" viewBox="0 0 91 91" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        clipRule="evenodd"
-                                                        d="M45.0681 90.5488C69.9211 90.5488 90.0681 70.4018 90.0681 45.5488C90.0681 20.696 69.9211 0.548828 45.0681 0.548828C20.2153 0.548828 0.0681152 20.696 0.0681152 45.5488C0.0681152 70.4018 20.2153 90.5488 45.0681 90.5488ZM38.9821 25.501L67.2006 41.1778C70.6296 43.0828 70.6296 48.0148 67.2006 49.9198L38.9821 65.5968C34.9828 67.8183 30.0681 64.9268 30.0681 60.3518V30.7459C30.0681 26.171 34.9828 23.2792 38.9821 25.501Z"
-                                                        fill="white"
-                                                        fillOpacity="0.5"
-                                                    />
-                                                </svg>
+                                            <video
+                                                ref={(el) => {
+                                                    if (el) videoRefs.current[index] = el
+                                                }}
+                                                src={s.video}
+                                                poster={s.thumbnail}
+                                                className="w-full h-full object-cover"
+                                                playsInline
+                                                loop
+                                            />
+                                            
+                                            {/* Play/Pause Overlay */}
+                                            <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${activeVideo === index ? 'opacity-0' : 'opacity-100'}`}>
+                                                <div className="w-16 h-16">
+                                                    <svg width="91" height="91" viewBox="0 0 91 91" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                                                        <path
+                                                            fillRule="evenodd"
+                                                            clipRule="evenodd"
+                                                            d="M45.0681 90.5488C69.9211 90.5488 90.0681 70.4018 90.0681 45.5488C90.0681 20.696 69.9211 0.548828 45.0681 0.548828C20.2153 0.548828 0.0681152 20.696 0.0681152 45.5488C0.0681152 70.4018 20.2153 90.5488 45.0681 90.5488ZM38.9821 25.501L67.2006 41.1778C70.6296 43.0828 70.6296 48.0148 67.2006 49.9198L38.9821 65.5968C34.9828 67.8183 30.0681 64.9268 30.0681 60.3518V30.7459C30.0681 26.171 34.9828 23.2792 38.9821 25.501Z"
+                                                            fill="white"
+                                                            fillOpacity="0.5"
+                                                        />
+                                                    </svg>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        {/* Title Overlay at Bottom */}
-                                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                                            <h3 className="text-white text-lg font-semibold">{s.title}</h3>
-                                            <p className="text-gray-200 text-sm">{s.location}</p>
+                                            {/* Title Overlay at Bottom */}
+                                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                                                <h3 className="text-white text-lg font-semibold">{s.title}</h3>
+                                                <p className="text-gray-200 text-sm">{s.location}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
                             </div>
-            </div>
+                        </div>
 
                         {/* Right Arrow */}
                         <button
@@ -105,14 +183,14 @@ export default function ShortsPage() {
 
             {/* Hide scrollbar */}
             <style jsx global>{`
-        .no-scrollbar {
-          -ms-overflow-style: none; /* IE and Edge */
-          scrollbar-width: none;   /* Firefox */
-        }
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;           /* Chrome, Safari, Opera */
-        }
-      `}</style>
+                .no-scrollbar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+                .no-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+            `}</style>
         </>
     )
 }
