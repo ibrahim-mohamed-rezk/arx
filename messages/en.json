@@ -22,5 +22,9 @@
         "values_title" : "VALUES",
         "learn_more": "Learn More",
         "values_description": "We operate with quality that sets the standard, with integrity that builds trust, with a client-first mindset that drives satisfaction, with initiative that fuels progress, and with accountability that delivers real results."
+    },
+    "shorts":{
+        "title": "Our Shorts",
+        "description": "A glimpse into our journey, one reel at a time."
     }
 }

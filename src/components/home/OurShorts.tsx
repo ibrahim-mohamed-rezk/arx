@@ -3,6 +3,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Head from "next/head";
+import { useTranslations } from "next-intl";
 
 
 
@@ -48,7 +49,7 @@ export default function ShortsPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeVideo, setActiveVideo] = useState<number | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-
+const t = useTranslations("shorts")
 
   const scroll = (dir: "left" | "right") => {
     if (!containerRef.current) return;
@@ -112,10 +113,10 @@ export default function ShortsPage() {
       <main className="bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <h3 className="text-center text-sm font-semibold text-blue-600 uppercase">
-            Our Shorts
+            {t("title")}
           </h3>
           <h2 className="mt-2 text-center text-3xl font-serif">
-            A glimpse into our journey, one reel at a time.
+            {t("description")}
           </h2>
 
           <div className="relative mt-8">
