@@ -38,7 +38,7 @@ export default async function Home({
       <ShortsPage />
       <Services />
       <SupportersPage />
-      <ProjectAndBlog />
+      <ProjectAndBlog blogs={HomeData.blogs} />
     </div>
   );
 }

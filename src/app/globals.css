@@ -4,6 +4,10 @@
 
 @import "tailwindcss";
 
+button{
+    cursor: pointer;
+}
+
 
 .animateHerLine{
     animation: animateLine 1.5s infinite linear;
