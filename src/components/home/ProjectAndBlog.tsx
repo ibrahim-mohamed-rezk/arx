@@ -14,6 +14,7 @@ import pm3 from "../../../public/images/home/PrimeMiniste3.png";
 import { BlogType } from "@/libs/types/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import { Link } from "@/i18n/routing";
 
 type Slide = {
   title: string;
@@ -178,7 +179,7 @@ const ProjectAndBlog = ({ blogs }: { blogs: BlogType[] }) => {
           >
             {blogs?.map((post: BlogType, index: number) => (
               <SwiperSlide key={index}>
-                <div className="rounded overflow-hidden">
+                <Link href={`/blogs/${post.slug}`} className="rounded overflow-hidden">
                   <div className="relative w-full h-48">
                     <Image
                       src={post.image}
@@ -190,7 +191,7 @@ const ProjectAndBlog = ({ blogs }: { blogs: BlogType[] }) => {
                       <p className="text-sm font-medium line-clamp-1 text-white">{post.title}</p>
                     </div>
                   </div>
-                </div>
+                </Link>
               </SwiperSlide>
             ))}
           </Swiper>

@@ -26,5 +26,9 @@
     "shorts":{
         "title": "Our Shorts",
         "description": "A glimpse into our journey, one reel at a time."
+    },
+    "services":{
+        "title": "OUR SERVICES",
+        "description": "OUR MAIN FOCUS"
     }
 }
