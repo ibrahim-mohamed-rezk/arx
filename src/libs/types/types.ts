@@ -31,3 +31,10 @@ export interface BlogType{
     meta_keywords: string;
     category?: string;
 }
+
+export interface ServiceTypes{
+    id: number;
+    image: string;
+    title: string;
+    description: string;
+}
