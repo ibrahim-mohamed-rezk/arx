@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
           <div>
             <SVGComponent className="h-20 w-auto mb-2" />
             <p className="text-sm text-gray-400 leading-6">
-              With 20+ years in Egypt’s real estate market, ARX delivers exceptional services.
+              {t("footerDescription")}
             </p>
             <ul className="mt-4 space-y-1 text-sm text-gray-400">
               <li></li>
@@ -77,8 +77,8 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-semibold mb-4"><Link href="/contact">{t('contact')}</Link></h4>
             <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="mailto:info@arxeg.com" className="hover:text-white transition">📧 info@arxeg.com</a>
-                  <a href="tel:16591" className="hover:text-white transition">📞 16591</a>
+                  <a href="mailto:info@arxeg.com" className="hover:text-white transition">📧 info@arxeg.com</a><br />
+                  <a href="tel:16591" className="hover:text-white transition">📞 16591</a><br />
                   <a href="wa:201001703888" className="hover:text-white transition">📞 01001703888</a>
                 </li>
             </ul>
@@ -90,8 +90,8 @@ const Footer: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
             <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} ARX Developments</p>
             <div className="flex space-x-4 mt-3 sm:mt-0 text-gray-400">
-              <a href="https://www.facebook.com/Arxeg/"><FaFacebookF size={16} /></a> <br />
-              <a href="https://www.instagram.com/arx_development/"><FaInstagram size={16} /></a> <br />
+              <a href="https://www.facebook.com/Arxeg/"><FaFacebookF size={16} /></a>
+              <a href="https://www.instagram.com/arx_development/"><FaInstagram size={16} /></a>
               <a href="https://eg.linkedin.com/company/arxdevelopment"><FaLinkedinIn size={16} /></a>
             </div>
           </div>
