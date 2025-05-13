@@ -33,5 +33,11 @@
   "services": {
     "title": "خدماتنا",
     "description": "الخدمات الرئيسية لدينا"
+  },
+  "supporters":{
+    "years":"سنوات الخبرة",
+    "units":"الوحدات المباعة",
+    "constructions":"إجمالي المشاريع",
+    "clients":"إجمالي العملاء"
   }
 }
