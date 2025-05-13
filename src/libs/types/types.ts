@@ -38,3 +38,12 @@ export interface ServiceTypes{
     title: string;
     description: string;
 }
+
+export interface ShortsTypes{
+    id: number;
+    video: string;
+    background: string;
+    title?: string;
+    location?: string;
+    thumbnail?: string;
+}

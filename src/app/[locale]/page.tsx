@@ -35,7 +35,7 @@ export default async function Home({
     <div>
       <Hero projects={HomeData.projects} />
       <AboutHome />
-      <ShortsPage />
+      <ShortsPage shorts={HomeData.our_videos} />
       <Services services={HomeData.main_focus} />
       <SupportersPage />
       <ProjectAndBlog blogs={HomeData.blogs} />

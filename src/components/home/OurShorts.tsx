@@ -1,55 +1,19 @@
-// app/shorts/page.tsx
 "use client";
-
 import React, { useRef, useState, useEffect } from "react";
 import Head from "next/head";
 import { useTranslations } from "next-intl";
-
-
+import { ShortsTypes } from "@/libs/types/types";
+import Image from "next/image";
 
 // Update image imports to use public path
 const sliderImage01 =
   "/images/home/bba65e126777dbdbc37dcfc38ab04c9113908d13.png";
-const sliderImage02 =
-  "/images/home/38577258a3711dfb21407d5e146a7d6d148fdf5a.png";
 
-const slides = [
-  {
-    id: 1,
-    video: "https://www.youtube.com/embed/B6x-NpIfVNQ",
-    thumbnail: sliderImage01,
-    title: "O7 MALL – O7",
-    location: "New Damietta",
-  },
-  {
-    id: 2,
-    video: "https://www.youtube.com/embed/m7-WUN_tVpo",
-    thumbnail: sliderImage02,
-    title: "O7 MALL – O7",
-    location: "New Damietta",
-  },
-  {
-    id: 2,
-    video: "https://www.youtube.com/embed/v5iIsDG2Ank",
-    thumbnail: sliderImage02,
-    title: "O7 MALL – O7",
-    location: "New Damietta",
-  },
-  {
-    id: 2,
-    video: "https://www.youtube.com/embed/veHaPbhSIC0",
-    thumbnail: sliderImage02,
-    title: "O7 MALL – O7",
-    location: "New Damietta",
-  },
-];
-
-
-export default function ShortsPage() {
+export default function ShortsPage({shorts}:{shorts:ShortsTypes[]}) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeVideo, setActiveVideo] = useState<number | null>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-const t = useTranslations("shorts")
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const t = useTranslations("shorts");
 
   const scroll = (dir: "left" | "right") => {
     if (!containerRef.current) return;
@@ -60,45 +24,33 @@ const t = useTranslations("shorts")
     });
   };
 
-  const handleVideoClick = (index: number) => {
-    if (activeVideo === index) {
-      // If clicking the active video, toggle play/pause
-      const video = videoRefs.current[index];
-      if (video) {
-        if (video.paused) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      }
-    } else {
-      // If clicking a different video, stop the current one and play the new one
-      if (activeVideo !== null) {
-        const currentVideo = videoRefs.current[activeVideo];
-        if (currentVideo) {
-          currentVideo.pause();
-          currentVideo.currentTime = 0;
-        }
-      }
-      setActiveVideo(index);
-      const newVideo = videoRefs.current[index];
-      if (newVideo) {
-        newVideo.play();
-      }
-    }
+  const openVideoModal = (videoUrl: string) => {
+    setSelectedVideo(videoUrl);
+    setShowModal(true);
+    document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
   };
 
-  // Stop all videos when component unmounts
+  const closeVideoModal = () => {
+    setSelectedVideo(null);
+    setShowModal(false);
+    document.body.style.overflow = "auto"; // Re-enable scrolling
+  };
+
+  // Close modal on escape key press
   useEffect(() => {
-    return () => {
-      videoRefs.current.forEach((video) => {
-        if (video) {
-          video.pause();
-          video.currentTime = 0;
-        }
-      });
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && showModal) {
+        closeVideoModal();
+      }
     };
-  }, []);
+
+    window.addEventListener("keydown", handleEscKey);
+    return () => {
+      window.removeEventListener("keydown", handleEscKey);
+    };
+  }, [showModal]);
+
+  // Use the API data if available, otherwise fallback to static data
 
   return (
     <>
@@ -144,24 +96,38 @@ const t = useTranslations("shorts")
             <div className="px-15">
               <div
                 ref={containerRef}
-                className="flex space-x-6 overflow-x-auto snap-x snap-mandatory no-scrollbar"
+                className="flex space-x-6 overflow-x-auto snap-x snap-mandatory hideScrollbar"
               >
-                {slides.map((s, index) => (
+                {shorts.map((video: ShortsTypes, index: number) => (
                   <div
-                    key={s.id}
+                    key={video.id || index}
                     className="snap-start min-w-[280px] md:min-w-[320px] lg:min-w-[300px] h-[500px] bg-white rounded-xl overflow-hidden relative cursor-pointer"
-                    onClick={() => handleVideoClick(index)}
+                    onClick={() => openVideoModal(video.video)}
                   >
-                    {/* Video Container */}
+                    {/* Background Image */}
                     <div className="relative w-full h-full">
-                      <iframe
-                        className="w-full h-full"
-                        src={s.video}
-                        title={s.title}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
+                      <Image
+                        src={video.thumbnail || video.background || sliderImage01}
+                        alt={video.title || "Video thumbnail"}
+                        fill
+                        style={{ objectFit: "cover" }}
+                        className="brightness-90"
+                      />
+                      
+                      {/* Play button overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-16 h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5V19L19 12L8 5Z" fill="#0066CC"/>
+                          </svg>
+                        </div>
+                      </div>
+                      
+                      {/* Video info */}
+                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent text-white">
+                        <h3 className="font-bold text-lg">{video.title}</h3>
+                        {video.location && <p className="text-sm opacity-80">{video.location}</p>}
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -191,16 +157,34 @@ const t = useTranslations("shorts")
         </div>
       </main>
 
-      {/* Hide scrollbar */}
-      <style jsx global>{`
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
+      {/* Video Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+          <div className="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden">
+            <button
+              onClick={closeVideoModal}
+              className="absolute top-4 right-4 z-10 p-2 bg-black rounded-full text-white"
+              aria-label="Close modal"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <div className="aspect-video">
+              <iframe
+                className="w-full h-full"
+                src={selectedVideo + "?autoplay=1"}
+                title="Video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
+
+      
     </>
   );
 }
