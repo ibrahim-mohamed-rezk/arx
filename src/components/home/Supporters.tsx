@@ -25,7 +25,7 @@ const SupportersPage: React.FC = () => {
                     <span className="text-4xl font-bold">
                         2.5K<span className="text-2xl align-top">+</span>
                     </span>
-                    <p className="mt-2 text-sm">{t('units')}</p>
+                    <p className="mt-2 text-sm">{t("units")}</p>
                 </div>
                 <div className="relative md:border-r md:border-white/50">
                     <span className="text-4xl font-bold">
