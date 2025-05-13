@@ -37,10 +37,6 @@ const ProjectAndBlog = ({ blogs, testimonials }: { blogs: BlogType[], testimonia
   const nextProj = () => setProjIdx((i) => (i === lastIdx ? 0 : i + 1));
   const prevProj = () => setProjIdx((i) => (i === 0 ? lastIdx : i - 1));
 
-  // Blog & Testimonials state
-  const [testIdx, setTestIdx] = useState(0);
-  const cycle = (i: number, len: number) => (i + len) % len;
-
   return (
     <div className="space-y-24 py-12">
       {/* ---------------------------- */}
