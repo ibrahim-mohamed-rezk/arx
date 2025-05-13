@@ -110,7 +110,6 @@ export default function ShortsPage({shorts}:{shorts:ShortsTypes[]}) {
                         src={video.thumbnail || video.background || sliderImage01}
                         alt={video.title || "Video thumbnail"}
                         fill
-                        style={{ objectFit: "cover" }}
                         className="brightness-90"
                       />
                       
