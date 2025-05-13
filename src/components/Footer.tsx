@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from "@/i18n/routing";
 import SVGComponent from './../../public/logo';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { useTranslations } from "next-intl";
 
 const Footer: React.FC = () => {
+  const t = useTranslations("header");
+
   return (
     <div className="relative"> {/* spacing top for newsletter */}
 
@@ -34,12 +37,13 @@ const Footer: React.FC = () => {
           <div>
             <SVGComponent className="h-20 w-auto mb-2" />
             <p className="text-sm text-gray-400 leading-6">
-              With 25+ years in Egypt’s real estate market, ARX delivers exceptional services.
+              With 20+ years in Egypt’s real estate market, ARX delivers exceptional services.
             </p>
             <ul className="mt-4 space-y-1 text-sm text-gray-400">
-              <li>📍 New Cairo - New Damietta</li>
-              <li>📧 info@arx-eg.com</li>
-              <li>📞 16591</li>
+              <li></li>
+              <li><a href="https://maps.google.com/?q=30.026306,31.489864">📍 New Cairo-st 90, Top 90 Building</a></li>
+              <li><a href="https://maps.google.com/?q=31.438272,31.664551">📍 New Damietta, Third District, Street 15</a></li>
+              <li><a href="#">📍 Mansoura</a></li>
             </ul>
           </div>
 
@@ -47,18 +51,18 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/" className="hover:text-white transition">Home Page</Link></li>
-              <li><Link href="/about" className="hover:text-white transition">About Us</Link></li>
-              <li><Link href="/services" className="hover:text-white transition">Services</Link></li>
-              <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
-              <li><Link href="/faqs" className="hover:text-white transition">FAQs</Link></li>
-              <li><Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link></li>
+              <li><Link href="/" className="hover:text-white transition">{t('home')}</Link></li>
+              <li><Link href="/about" className="hover:text-white transition">{t("about")}</Link></li>
+              <li><Link href="/projects" className="hover:text-white transition">{t("projects")}</Link></li>
+              <li><Link href="/blogs" className="hover:text-white transition">{t("blog")}</Link></li>
+              {/* <li><Link href="/faqs" className="hover:text-white transition">FAQs</Link></li> */}
+              {/* <li><Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link></li> */}
             </ul>
           </div>
 
           {/* Projects */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Projects</h4>
+            <h4 className="text-white font-semibold mb-4"><Link href="/projects" >{t("projects")}</Link></h4>
             <ul className="space-y-2 text-sm">
               {['Full City', 'UNI6', 'Golden Project', 'UNI8'].map(item => (
                 <li key={item}>
@@ -70,13 +74,13 @@ const Footer: React.FC = () => {
 
           {/* Contact Us */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Contact Us</h4>
+            <h4 className="text-white font-semibold mb-4"><Link href="/contact">{t('contact')}</Link></h4>
             <ul className="space-y-2 text-sm">
-              {['Full City', 'UNI6', 'Golden Project', 'UNI8'].map(item => (
-                <li key={item}>
-                  <a href="#" className="hover:text-white transition">{item}</a>
+                <li>
+                  <a href="mailto:info@arxeg.com" className="hover:text-white transition">📧 info@arxeg.com</a>
+                  <a href="tel:16591" className="hover:text-white transition">📞 16591</a>
+                  <a href="wa:201001703888" className="hover:text-white transition">📞 01001703888</a>
                 </li>
-              ))}
             </ul>
           </div>
         </div>
