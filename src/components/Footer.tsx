@@ -90,10 +90,9 @@ const Footer: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
             <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} ARX Developments</p>
             <div className="flex space-x-4 mt-3 sm:mt-0 text-gray-400">
-              <a href="#"><FaFacebookF size={16} /></a>
-              <a href="#"><FaTwitter size={16} /></a>
-              <a href="#"><FaInstagram size={16} /></a>
-              <a href="#"><FaLinkedinIn size={16} /></a>
+              <a href="https://www.facebook.com/Arxeg/"><FaFacebookF size={16} /></a>
+              <a href="https://www.instagram.com/arx_development/"><FaInstagram size={16} /></a>
+              <a href="https://eg.linkedin.com/company/arxdevelopment"><FaLinkedinIn size={16} /></a>
             </div>
           </div>
         </div>
