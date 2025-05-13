@@ -52,7 +52,7 @@ const FAQsPage = () => {
                   Frequently Asked Questions
                 </h1>
                 <p className="text-center md:text-left text-dark-gray text-lg md:text-xl font-bold font-['Lato'] capitalize leading-relaxed md:leading-10 tracking-wide">
-                  Got questions? We've got answers!
+                  Got questions? We&apos;ve got answers!
                   <br /> Browse our FAQs to find everything you need to know.
                 </p>
               </div>
@@ -66,7 +66,7 @@ const FAQsPage = () => {
           <div className="w-full max-w-3xl flex flex-col justify-start items-center gap-6">
             <div className="w-full flex flex-col justify-start items-center gap-4">
               <h2 className="text-center text-2xl md:text-3xl font-bold font-['Lato'] uppercase leading-tight md:leading-10 tracking-tight text-actions-primary">
-                Didn't find an answer to your question?
+                Didn&apos;t find an answer to your question?
               </h2>
               <p className="text-center text-lg md:text-xl font-bold font-['Lato'] capitalize leading-relaxed md:leading-10 tracking-wide text-text-text-primary-2">
                 Get in touch with us for details on additional services.

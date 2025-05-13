@@ -133,11 +133,14 @@ const Hero = ({ projects }: { projects: ProjectType[] }) => {
                       : "h-[clamp(50px,8.33332vw,300px)] w-[clamp(50px,8.33332vw,300px)]"
                   }  rounded-full border border-white`}
                 >
-                  <img
-                    className="w-full h-full rounded-full"
+                  <Image
+                    className="w-full h-full rounded-full object-cover"
                     src={
                       projects[index]?.icon || `/images/home/banner${index}.png`
                     }
+                    alt={`Category ${index + 1} icon`}
+                    width={300}
+                    height={300}
                   />
                 </div>
               </div>

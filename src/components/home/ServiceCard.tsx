@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import Image from "next/image";
 
 const ServiceCard = ({
   icon,
@@ -23,7 +24,13 @@ const ServiceCard = ({
   return (
     <div className="flex flex-col items-center text-center">
       <div className="bg-gray-100 p-4 rounded-full mb-6 w-24 h-24 flex items-center justify-center">
-        <img src={icon} alt="service icon" />
+        <Image 
+          src={icon} 
+          alt={`${title} service icon`}
+          width={48}
+          height={48}
+          className="w-12 h-12 object-contain"
+        />
       </div>
       <h3 className="text-xl font-semibold mb-4">{title}</h3>
       {mounted && (
