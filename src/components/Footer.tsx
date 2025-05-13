@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "@/i18n/routing";
 import SVGComponent from './../../public/logo';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { useTranslations } from "next-intl";
 
 const Footer: React.FC = () => {
