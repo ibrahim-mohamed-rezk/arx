@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "@/i18n/routing";
 import SVGComponent from './../../public/logo';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
@@ -46,11 +47,12 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Links</h4>
             <ul className="space-y-2 text-sm">
-              {['Home Page', 'About Us', 'Services', 'Blog', 'FAQs', 'Privacy Policy'].map(item => (
-                <li key={item}>
-                  <a href="#" className="hover:text-white transition">{item}</a>
-                </li>
-              ))}
+              <li><Link href="/" className="hover:text-white transition">Home Page</Link></li>
+              <li><Link href="/about" className="hover:text-white transition">About Us</Link></li>
+              <li><Link href="/services" className="hover:text-white transition">Services</Link></li>
+              <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
+              <li><Link href="/faqs" className="hover:text-white transition">FAQs</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link></li>
             </ul>
           </div>
 
