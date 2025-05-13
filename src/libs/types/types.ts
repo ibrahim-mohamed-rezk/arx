@@ -39,6 +39,14 @@ export interface ServiceTypes{
     description: string;
 }
 
+export interface TestimonialType{
+    id: number;
+    image: string;
+    name: string;
+    role: string;
+    description: string;
+    
+}
 export interface ShortsTypes{
     id: number;
     video: string;

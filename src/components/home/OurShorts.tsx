@@ -100,15 +100,15 @@ export default function ShortsPage({shorts}:{shorts:ShortsTypes[]}) {
               >
                 {shorts.map((video: ShortsTypes, index: number) => (
                   <div
-                    key={video.id || index}
+                    key={video?.id || index}
                     className="snap-start min-w-[280px] md:min-w-[320px] lg:min-w-[300px] h-[500px] bg-white rounded-xl overflow-hidden relative cursor-pointer"
-                    onClick={() => openVideoModal(video.video)}
+                    onClick={() => openVideoModal(video?.video)}
                   >
                     {/* Background Image */}
                     <div className="relative w-full h-full">
                       <Image
-                        src={video.thumbnail || video.background || sliderImage01}
-                        alt={video.title || "Video thumbnail"}
+                        src={video?.thumbnail || video?.background || sliderImage01}
+                        alt={video?.title || "Video thumbnail"}
                         fill
                         className="brightness-90"
                       />
@@ -124,8 +124,8 @@ export default function ShortsPage({shorts}:{shorts:ShortsTypes[]}) {
                       
                       {/* Video info */}
                       <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent text-white">
-                        <h3 className="font-bold text-lg">{video.title}</h3>
-                        {video.location && <p className="text-sm opacity-80">{video.location}</p>}
+                        <h3 className="font-bold text-lg">{video?.title}</h3>
+                        {video?.location && <p className="text-sm opacity-80">{video?.location}</p>}
                       </div>
                     </div>
                   </div>

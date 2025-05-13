@@ -11,9 +11,9 @@ import "swiper/css/pagination";
 import pm1 from "../../../public/images/home/PrimeMiniste1.png";
 import pm2 from "../../../public/images/home/PrimeMiniste2.png";
 import pm3 from "../../../public/images/home/PrimeMiniste3.png";
-import { BlogType } from "@/libs/types/types";
+import { BlogType, TestimonialType } from "@/libs/types/types";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Link } from "@/i18n/routing";
 
 type Slide = {
@@ -29,15 +29,7 @@ const projectSlides: Slide[] = [
 ];
 
 
-const testimonials = [
-  {
-    text: "I could probably go into sales for you. I am completely blown away. After using SEO my business skyrocketed! The very best.",
-    author: "Grace Hall",
-    role: "Customer",
-  },
-];
-
-const ProjectAndBlog = ({ blogs }: { blogs: BlogType[] }) => {
+const ProjectAndBlog = ({ blogs, testimonials }: { blogs: BlogType[], testimonials: TestimonialType[] }) => {
   // Projects slider state
   const [projIdx, setProjIdx] = useState(0);
   const lastIdx = projectSlides.length - 1;
@@ -179,7 +171,10 @@ const ProjectAndBlog = ({ blogs }: { blogs: BlogType[] }) => {
           >
             {blogs?.map((post: BlogType, index: number) => (
               <SwiperSlide key={index}>
-                <Link href={`/blogs/${post.slug}`} className="rounded overflow-hidden">
+                <Link
+                  href={`/blogs/${post.slug}`}
+                  className="rounded overflow-hidden"
+                >
                   <div className="relative w-full h-48">
                     <Image
                       src={post.image}
@@ -188,7 +183,9 @@ const ProjectAndBlog = ({ blogs }: { blogs: BlogType[] }) => {
                       className="object-cover"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-black/10 bg-opacity-50 p-4">
-                      <p className="text-sm font-medium line-clamp-1 text-white">{post.title}</p>
+                      <p className="text-sm font-medium line-clamp-1 text-white">
+                        {post.title}
+                      </p>
                     </div>
                   </div>
                 </Link>
@@ -233,42 +230,88 @@ const ProjectAndBlog = ({ blogs }: { blogs: BlogType[] }) => {
       {/* ---------------------------- */}
       {/* Testimonials Section */}
       {/* ---------------------------- */}
-      <section className="container mx-auto px-4 mb-20">
+      <section className="container mx-auto px-4 mb-20 relative">
         <h2 className="text-center text-3xl font-black mb-6">
           Trusted by Clients
         </h2>
-        <div className="max-w-xl mx-auto text-center space-y-4">
-          <blockquote className="italic text-gray-700">
-            “{testimonials[testIdx].text}”
-          </blockquote>
-          <p className="font-semibold">
-            {testimonials[testIdx].author}{" "}
-            <span className="text-sm text-gray-500">
-              — {testimonials[testIdx].role}
-            </span>
-          </p>
-          <div className="flex items-center justify-center space-x-4">
-            <button
-              onClick={() =>
-                setTestIdx(cycle(testIdx - 1, testimonials.length))
-              }
-              className="text-gray-400 hover:text-gray-600"
+        <div className="max-w-xl mx-auto">
+          {/* Left Navigation Button */}
+          <button className="testimonial-prev-button absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#D9D9D9] hover:bg-[#035B8D] rounded-full shadow p-2 z-10">
+            <svg
+              className="w-5 h-5 text-white"
+              viewBox="0 0 18 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              &larr;
-            </button>
-            <span className="font-medium text-blue-600">
-              {String(testIdx + 1).padStart(2, "0")} /{" "}
-              {String(testimonials.length).padStart(2, "0")}
-            </span>
-            <button
-              onClick={() =>
-                setTestIdx(cycle(testIdx + 1, testimonials.length))
-              }
-              className="text-gray-400 hover:text-gray-600"
+              <path
+                d="M7.70711 2.25545C8.09763 1.86492 8.09763 1.23176 7.70711 0.841233C7.31658 0.450709 6.68342 0.450709 6.29289 0.841233L0.292893 6.84123C-0.0976311 7.23176 -0.0976311 7.86492 0.292893 8.25545L6.29289 14.2554C6.68342 14.646 7.31658 14.646 7.70711 14.2554C8.09763 13.8649 8.09763 13.2318 7.70711 12.8412L3.41421 8.54834L17 8.54834C17.5523 8.54834 18 8.10063 18 7.54834C18 6.99606 17.5523 6.54834 17 6.54834L3.41421 6.54834L7.70711 2.25545Z"
+                fill="#fff"
+              />
+            </svg>
+          </button>
+          
+          {/* Right Navigation Button */}
+          <button className="testimonial-next-button absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#D9D9D9] hover:bg-[#035B8D] rounded-full shadow p-2 z-10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-white"
+              viewBox="0 0 20 20"
+              fill="currentColor"
             >
-              &rarr;
-            </button>
-          </div>
+              <path
+                fillRule="evenodd"
+                d="M12.707 15.707a1 1 0 01-1.414-1.414L14.586 11H5a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+          
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1}
+            loop
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            navigation={{
+              prevEl: '.testimonial-prev-button',
+              nextEl: '.testimonial-next-button',
+            }}
+            className="testimonial-swiper w-full"
+          >
+            {testimonials.map((testimonial, index) => (
+              <SwiperSlide key={testimonial.id || index}>
+                <div className="text-center space-y-4">
+                  <p className="italic text-gray-700" dangerouslySetInnerHTML={{ __html: testimonial.description }} />
+                    
+                
+                  <div className="flex items-center justify-center space-x-3">
+                    {testimonial.image && (
+                      <div className="w-12 h-12 rounded-full overflow-hidden">
+                        <Image 
+                          src={testimonial.image} 
+                          alt={testimonial.name}
+                          width={48}
+                          height={48}
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <p className="font-semibold">
+                        {testimonial.name}{" "}
+                        <span className="text-sm text-gray-500">
+                          — {testimonial.role}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </section>
     </div>
