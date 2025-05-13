@@ -33,5 +33,12 @@
     "services":{
         "title": "OUR SERVICES",
         "description": "OUR MAIN FOCUS"
+    },
+    "supporters":{
+        "years":"Total Years Of Experience",
+        "units":"Units Sold",
+        "constructions":"Total Constructions",
+        "clients":"Total Clients"
+
     }
 }
