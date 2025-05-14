@@ -1,19 +1,34 @@
-"use client";
-
-import React, { useState } from "react";
 import herobg from "../../../../public/images/home/525ab7523c86871fbf6680382ffeb83b63451acc (1).jpg";
 import HeroSection from "./components/Hero";
-import Pagination from "./components/Pagination";
 import ProjectCard from "./components/ProjectCard";
+import { getData } from "@/libs/axios/server";
+import { AxiosHeaders } from "axios";
+import { ProjectType } from "@/libs/types/types";
+import { getTranslations } from "next-intl/server";
+const ProjectsPage = async ({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) => {
+  const { locale } = await params;
+  const t = await getTranslations("projects");
 
-const ProjectsPage: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(2);
-  const totalPages = 15;
+  const feachData = async () => {
+    try {
+      const response = await getData(
+        "properties",
+        {},
+        new AxiosHeaders({
+          lang: locale,
+        })
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  };
 
-  // Sample project data
-  const projects = Array(9).fill({
-    title: "Axiom Tower",
-  });
+  const projects = await feachData();
 
   return (
     <div className=" min-h-screen bg-white pb-20">
@@ -23,34 +38,29 @@ const ProjectsPage: React.FC = () => {
       {/* Main Title */}
       <div className="w-full container mx-auto px-4 py-8 md:py-12 lg:py-16">
         <h2 className="text-[clamp(20px,2.083vw,40px)]  text-center capitalize font-[700] font-['Cinzel'] max-w-5xl mx-auto px-3y">
-          Explore Our Landmark Developments Shaping the Future.
+          {t("title")}
         </h2>
       </div>
 
       {/* Projects Grid */}
-      <div className="w-full container mx-auto overflow-hidden">
+      <div className="w-full container mx-auto pb-20 overflow-hidden">
         <div className="flex gap-[clamp(10px,1.042vw,20px)] px-[10px] md:px-0 flex-wrap justify-center">
-          {projects.map((project, index) => (
-            // <ProjectTile
-            //     key={index}
-            //     index={index}
-            //     title={project.title}
-            //     backgroundImage={AxiomTowerbg}
-            // />
+          {projects.map((project: ProjectType, index: number) => (
             <ProjectCard
               key={index}
-              // project={project}
+              project={project}
+              locale={locale}
             />
           ))}
         </div>
       </div>
 
       {/* Pagination */}
-      <Pagination
+      {/* <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={setCurrentPage}
-      />
+      /> */}
     </div>
   );
 };

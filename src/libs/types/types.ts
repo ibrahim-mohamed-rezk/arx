@@ -17,6 +17,7 @@ export interface ProjectType{
     meta_description: string;
     meta_keywords: string;
     location: string;
+    catigories: string;
 }
 
 export interface BlogType{

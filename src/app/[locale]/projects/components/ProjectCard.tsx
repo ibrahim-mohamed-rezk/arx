@@ -1,15 +1,17 @@
+"use client";
 import { Link } from "@/i18n/routing";
 import { ProjectType } from "@/libs/types/types";
 import Image from "next/image";
-
-const ProjectCard = ({ project }: { project?: ProjectType }) => {
+import { useTranslations } from "next-intl";
+const ProjectCard = ({ project, locale }: { project?: ProjectType, locale: string }) => {
+  const t = useTranslations("projects");
   return (
     <div className="w-full max-w-[480px] h-auto relative shadow-[1px_1px_10px_0px_rgba(191,191,191,0.50)] overflow-hidden">
       <div className="w-full h-full relative">
         {/* Project Image */}
         <div className="relative w-full aspect-[2/1]">
           <Image
-            src="https://placehold.co/480x240"
+            src={project?.cover || ""}
             alt={project?.title || "Axiom Tower"}
             fill
             className="object-cover "
@@ -20,12 +22,10 @@ const ProjectCard = ({ project }: { project?: ProjectType }) => {
           <div className="flex flex-col md:flex-row justify-between">
             <div className="w-full md:w-1/2 mb-6 md:mb-0">
               <div className="text-[#060B0E] text-2xl md:text-4xl font-bold font-['Lato'] leading-tight tracking-tight mb-4">
-                Axiom Tower
+                {project?.title}
               </div>
               <div className="text-dark-gray text-sm font-normal text-[#494D50] font-['Lato'] leading-normal tracking-tight mb-6">
-                New Administrative Capital - Downtown Plot NO. MU5-39, Area
-                3275m².&quot; (Commercial - Medical - Offices) Consists Of 15
-                Mixed-Used Floors....
+                {project?.description}
               </div>
               <div className="flex items-center gap-1 mt-4">
                 <svg
@@ -42,7 +42,7 @@ const ProjectCard = ({ project }: { project?: ProjectType }) => {
                 </svg>
 
                 <div className="text-text-text-on-color text-[#060B0E] text-sm font-bold font-['Lato'] leading-normal tracking-wide">
-                  New Administrative Capital
+                  {project?.location}
                 </div>
               </div>
             </div>
@@ -51,23 +51,20 @@ const ProjectCard = ({ project }: { project?: ProjectType }) => {
               <div className="flex flex-wrap gap-2 mb-6">
                 <div className="px-2 bg-[#F1F3F3] rounded-[50px] inline-flex justify-center items-center">
                   <div className="text-center text-black text-xs font-normal font-['Lato'] capitalize leading-normal tracking-tight">
-                    commercial
+                    {project?.catigories}
                   </div>
                 </div>
-                <div className="px-2 bg-[#F1F3F3] rounded-[50px] inline-flex justify-center items-center">
-                  <div className="text-center text-black text-xs font-normal font-['Lato'] capitalize leading-normal tracking-tight">
-                    medical
-                  </div>
-                </div>
+               
               </div>
 
-              <Link href={`projects/${project?.id}`} className="mt-auto">
+              <Link href={`projects/${project?.slug}`} className="mt-auto">
                 <div className="w-full bg-[#060B0E] md:w-48 h-12 p-2 bg-text-text-on-color rounded-lg outline-1 outline-offset-[-1px] outline-text-text-on-color inline-flex justify-center items-center gap-4">
                   <div className="text-center text-white justify-center text-text-text-on-color-2 text-base font-bold font-['Lato'] capitalize leading-none tracking-wide">
-                    explore
+                    {t("explore")}
                   </div>
 
                   <svg
+                    className={`${locale === "ar" ? "mirror" : ""}`}
                     width="22"
                     height="16"
                     viewBox="0 0 22 16"

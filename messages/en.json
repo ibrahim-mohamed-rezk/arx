@@ -52,5 +52,11 @@
         "subscribe":"Subscribe",
         "placeholder":"Enter your email to Subscribe",
         "subscribe_description":"Subscribe to our weekly newsletter and receive updates via Email"
+    },
+    "projects":{
+        "title":"Explore Our Landmark Developments Shaping the Future.",
+        "name":"Projects",
+        "search_placeholder":"Search about projects",
+        "explore":"Explore"
     }
 }
