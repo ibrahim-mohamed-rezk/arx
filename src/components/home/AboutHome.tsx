@@ -1,12 +1,12 @@
 import React from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import SVGComponent from '../../../public/logo';
 import Vision from '../../../public/cityscape-svgrepo-com.svg';
 import Mission from '../../../public/real-estate-investment-svgrepo-com.svg';
 import Values from '../../../public/values.svg';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 const AboutHome: NextPage = () => {
   const t = useTranslations("about");
