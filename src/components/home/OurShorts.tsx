@@ -62,7 +62,7 @@ export default function ShortsPage({shorts}:{shorts:ShortsTypes[]}) {
         />
       </Head>
 
-      <main className="bg-gray-50">
+      <main className="bg-gray-50 py-10">
         <div className="max-w-7xl mx-auto px-4">
           <h3 className="text-center text-sm font-semibold text-blue-600 uppercase">
             {t("title")}
