@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 import pm1 from "../../../public/images/home/PrimeMiniste1.png";
 import pm2 from "../../../public/images/home/PrimeMiniste2.png";
 import pm3 from "../../../public/images/home/PrimeMiniste3.png";
-import { BlogType, TestimonialType } from "@/libs/types/types";
+import { BlogType, ProjectType, TestimonialType } from "@/libs/types/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Link } from "@/i18n/routing";
@@ -28,8 +28,15 @@ const projectSlides: Slide[] = [
   { title: "Metro Towers", location: "Cairo", image: pm3 },
 ];
 
-
-const ProjectAndBlog = ({ blogs, testimonials }: { blogs: BlogType[], testimonials: TestimonialType[] }) => {
+const ProjectAndBlog = ({
+  blogs,
+  testimonials,
+  projects,
+}: {
+  blogs: BlogType[];
+  testimonials: TestimonialType[];
+  projects: ProjectType[];
+}) => {
   // Projects slider state
   const [projIdx, setProjIdx] = useState(0);
   const lastIdx = projectSlides.length - 1;
@@ -63,22 +70,22 @@ const ProjectAndBlog = ({ blogs, testimonials }: { blogs: BlogType[], testimonia
           <div className="relative lg:col-span-3">
             <div className="flex overflow-hidden gap-6">
               {[
-                projectSlides[projIdx],
-                projectSlides[(projIdx + 1) % projectSlides.length],
-              ].map((slide, i) => (
+                projects[projIdx % projects.length],
+                projects[(projIdx + 1) % projects.length],
+              ].map((project, i) => (
                 <div key={i} className="flex-1 space-y-2">
                   <div className="relative w-full h-72 rounded overflow-hidden">
                     <Image
-                      src={slide.image}
-                      alt={slide.title}
+                      src={project.cover}
+                      alt={project.title}
                       fill
                       className="object-cover"
                     />
                   </div>
-                  <h3 className="font-semibold">{slide.title}</h3>
-                  <p className="text-sm text-gray-500 flex items-center">
+                  <h3 className="font-semibold">{project.title}</h3>
+                  <p className="text-sm text-gray-500 gap-1 flex items-center">
                     <span className="inline-block w-4 h-4 mr-1 bg-gray-300 rounded-full" />
-                    {slide.location}
+                    {project.location}
                   </p>
                 </div>
               ))}
@@ -245,7 +252,7 @@ const ProjectAndBlog = ({ blogs, testimonials }: { blogs: BlogType[], testimonia
               />
             </svg>
           </button>
-          
+
           {/* Right Navigation Button */}
           <button className="testimonial-next-button absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#D9D9D9] hover:bg-[#035B8D] rounded-full shadow p-2 z-10">
             <svg
@@ -261,7 +268,7 @@ const ProjectAndBlog = ({ blogs, testimonials }: { blogs: BlogType[], testimonia
               />
             </svg>
           </button>
-          
+
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={30}
@@ -272,22 +279,26 @@ const ProjectAndBlog = ({ blogs, testimonials }: { blogs: BlogType[], testimonia
               disableOnInteraction: false,
             }}
             navigation={{
-              prevEl: '.testimonial-prev-button',
-              nextEl: '.testimonial-next-button',
+              prevEl: ".testimonial-prev-button",
+              nextEl: ".testimonial-next-button",
             }}
             className="testimonial-swiper w-full"
           >
             {testimonials.map((testimonial, index) => (
               <SwiperSlide key={testimonial.id || index}>
                 <div className="text-center space-y-4">
-                  <p className="italic text-gray-700" dangerouslySetInnerHTML={{ __html: testimonial.description }} />
-                    
-                
+                  <p
+                    className="italic text-gray-700"
+                    dangerouslySetInnerHTML={{
+                      __html: testimonial.description,
+                    }}
+                  />
+
                   <div className="flex items-center justify-center space-x-3">
                     {testimonial.image && (
                       <div className="w-12 h-12 rounded-full overflow-hidden">
-                        <Image 
-                          src={testimonial.image} 
+                        <Image
+                          src={testimonial.image}
                           alt={testimonial.name}
                           width={48}
                           height={48}
