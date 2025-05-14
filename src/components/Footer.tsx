@@ -133,7 +133,7 @@ const Footer: React.FC = () => {
                 </a>
                 <br />
                 <a
-                  href="wa:201001703888"
+                  href="https://wa.me/201001703888"
                   className="hover:text-white transition"
                 >
                   📞 01001703888
