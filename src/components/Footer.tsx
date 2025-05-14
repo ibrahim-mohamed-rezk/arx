@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 
 const Footer: React.FC = () => {
   const t = useTranslations("header");
+  const t2 = useTranslations("subscribe");
 
   return (
     <div className="relative">
@@ -16,23 +17,23 @@ const Footer: React.FC = () => {
         <div className="bg-gradient-to-b from-[#0C0E11] to-[#1A1C1F] rounded-lg p-6 flex flex-col md:flex-row justify-between items-center shadow-lg">
           <div className=" space-y-5 text-center md:text-left mb-4 md:mb-0">
             <h3 className="text-lg font-semibold text-white">
-              Join Our Newsletter Now
+              {t2("join_us")}
             </h3>
             <p className="text-sm text-gray-400">
-              Subscribe to our weekly newsletter and receive updates via Email
+              {t2("subscribe_description")}
             </p>
           </div>
           <form className="flex w-full md:w-auto">
             <input
               type="email"
-              placeholder="Enter your email to Subscribe"
+              placeholder={t2("placeholder")}
               className="px-4 py-2 rounded-l-md text-black bg-white w-full md:w-72 focus:outline-none"
             />
             <button
               type="submit"
               className="bg-[#0053F0] hover:bg-blue-700 px-5 py-2 rounded-r-md text-white"
             >
-              Subscribe
+              {t2("subscribe")}
             </button>
           </form>
         </div>

@@ -39,6 +39,11 @@
         "units":"Units Sold",
         "constructions":"Total Constructions",
         "clients":"Total Clients"
-
+    },
+    "subscribe":{
+        "join_us":"Join Our Newsletter Now",
+        "subscribe":"Subscribe",
+        "placeholder":"Enter your email to Subscribe",
+        "subscribe_description":"Subscribe to our weekly newsletter and receive updates via Email"
     }
 }
