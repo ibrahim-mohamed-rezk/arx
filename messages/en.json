@@ -6,14 +6,21 @@
         "contact": "Contact",
         "blog": "Blog",
         "footerDescription":"With 20+ years in Egypt’s real estate market, ARX delivers exceptional services.",
-        "FAQs": "FQAs"
+        "FAQs": "FQAs",
+        "links": "Links"
 
     },
     "home": {
         "hero_title": "WE",
         "hero_subtitle": "CREATE",
         "hero_description": "ACHIEVEMENT",
-        "search_placeholder": "Search about projects"
+        "search_placeholder": "Search about projects",
+        "see_all_projects": "See All Projects",
+        "our_latest": "Our Latest",
+        "projects": "Projects",
+        "trusted_by_clients": "Trusted by Clients",
+        "our_blog": "Our Blog",
+        "latest_news_feeds": "Latest News Feeds"
     },
     "about":{
         "title": "About Us",

@@ -15,6 +15,7 @@ import { BlogType, ProjectType, TestimonialType } from "@/libs/types/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Link } from "@/i18n/routing";
+import { useLocale, useTranslations } from "next-intl";
 
 type Slide = {
   title: string;
@@ -40,6 +41,8 @@ const ProjectAndBlog = ({
   // Projects slider state
   const [projIdx, setProjIdx] = useState(0);
   const lastIdx = projectSlides.length - 1;
+  const t = useTranslations("home");
+  const locale = useLocale();
 
   const nextProj = () => setProjIdx((i) => (i === lastIdx ? 0 : i + 1));
   const prevProj = () => setProjIdx((i) => (i === 0 ? lastIdx : i - 1));
@@ -53,16 +56,29 @@ const ProjectAndBlog = ({
           {/* Left: Title + link (25% on lg) */}
           <div>
             <p className="text-sm uppercase font-medium text-gray-500">
-              Our Latest
+              {t("our_latest")}
             </p>
             <h2 className="mt-2 text-4xl font-extrabold text-gray-900">
-              Projects
+              {t("projects")}
             </h2>
             <a
               href="#"
-              className="mt-4 inline-block text-blue-600 font-medium hover:underline"
+              className="mt-4 items-center justify-center w-fit flex gap-1 text-blue-600 font-medium hover:underline"
             >
-              See All Projects &rarr;
+              {t("see_all_projects")}{" "}
+              <svg
+                className={`${locale === "ar" ? "mirror" : ""}`}
+                width="17"
+                height="17"
+                viewBox="0 0 17 17"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.50008 3.21484L7.56008 4.15484L11.2801 7.88151H3.16675V9.21484H11.2801L7.56008 12.9415L8.50008 13.8815L13.8334 8.54818L8.50008 3.21484Z"
+                  fill="#035B8D"
+                />
+              </svg>
             </a>
           </div>
 
@@ -73,7 +89,7 @@ const ProjectAndBlog = ({
                 projects[projIdx % projects.length],
                 projects[(projIdx + 1) % projects.length],
               ].map((project, i) => (
-                <div key={i} className="flex-1 space-y-2">
+                <Link href={`/projects/${project.slug}`} key={i} className="flex-1 space-y-2">
                   <div className="relative w-full h-72 rounded overflow-hidden">
                     <Image
                       src={project.cover}
@@ -87,7 +103,7 @@ const ProjectAndBlog = ({
                     <span className="inline-block w-4 h-4 mr-1 bg-gray-300 rounded-full" />
                     {project.location}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
 
@@ -139,8 +155,8 @@ const ProjectAndBlog = ({
       {/* ---------------------------- */}
       <section className="container mx-auto px-4">
         <div className="text-center mb-6">
-          <p className="text-sm text-blue-600 uppercase">Our Blog</p>
-          <h2 className="text-3xl font-black">Latest News Feeds</h2>
+          <p className="text-sm text-blue-600 uppercase">{t("our_blog")}</p>
+          <h2 className="text-3xl mt-1 font-black">{t("latest_news_feeds")}</h2>
         </div>
 
         <div className="relative">
@@ -235,7 +251,7 @@ const ProjectAndBlog = ({
       {/* ---------------------------- */}
       <section className="container mx-auto px-4 mb-20 relative">
         <h2 className="text-center text-3xl font-black mb-6">
-          Trusted by Clients
+          {t("trusted_by_clients")}
         </h2>
         <div className="max-w-xl mx-auto">
           {/* Left Navigation Button */}
