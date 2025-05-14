@@ -90,7 +90,7 @@ const AboutHome: NextPage = () => {
 
             {/* Learn More button */}
             <div className="mt-8 flex justify-end">
-              <Link href="/about" passHref>
+              <Link href="/about">
                 <span className="inline-flex  items-center text-fluid-sm font-medium text-blue-600 hover:text-blue-800 cursor-pointer">
                   {t("learn_more")}
                   <svg

@@ -6,7 +6,7 @@ import VisionImg from '/public/images/home/VISION.png';
 import MissionImg from '/public/images/home/MISSION.png';
 import ValuesImg from '/public/images/home/VALUES.png';
 import PartnersBanner from '/public/images/home/OurSuccessPartners.png';
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 
 const directors = [
     { name: 'Dr. Ahmed Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/2.webp" },
@@ -16,7 +16,7 @@ const directors = [
 ];
 
 const AboutPage: React.FC = () => {
-    const t = useTranslations("about");
+    // const t = useTranslations("about");
     return (
         <div className="text-gray-800">
             {/* HERO */}
