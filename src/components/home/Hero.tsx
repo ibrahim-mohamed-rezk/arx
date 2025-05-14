@@ -37,7 +37,10 @@ const Hero = ({ projects }: { projects: ProjectType[] }) => {
             <div className="justify-center uppercase ms-[clamp(10px,4.73958vw,150px)] text-white text-[clamp(20px,6.6666667vw,250px)] font-bold font-['Cinzel'] leading-[clamp(20px,6.6666667vw,250px)] tracking-tight">
               {t("hero_title")}
               <br />
-              {t("hero_subtitle")}
+              <span className="text-[#E2A12A]">
+                {t("hero_subtitle")}
+
+              </span>
               <br />
               {t("hero_description")}
             </div>
