@@ -17,8 +17,45 @@ export interface ProjectType{
     meta_description: string;
     meta_keywords: string;
     location: string;
-    catigories: string;
+    features: Array<{
+        id?: number;
+        key?: string;
+        value?: string;
+    }>;
+    amenities: Array<{
+        id: number;
+        type: string;
+        title: string;
+    }>;
+    property_floor_plans: Array<{
+        id: number;
+        property_listing_id: number;
+        image: string;
+        title: string;
+        description: string;
+        created_at: string;
+        updated_at: string;
+        
+    }>;
+    property_listing_images: Array<{
+        id: number;
+        image: string;
+    }>;
+    property_payment_plans: Array<{
+        id: number;
+        down_payment: string;
+        monthly_payment: string;
+        years: string;
+        text: string;
+    }>;
+    property_listing_videos: Array<{
+        id: number;
+        video: string;
+        type: string;
+    }>;
 }
+
+
 
 export interface BlogType{
     id: number;
