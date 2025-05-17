@@ -452,7 +452,7 @@ const ProjectPage: React.FC = () => {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentVideoSlide * 100}%)` }}
             >
-              {projectData?.property_listing_videos?.map((video, index) => (
+              {projectData?.property_listing_videos?.map((video) => (
                 <div key={video.id} className="w-full h-85 flex-shrink-0">
                   <div className="aspect-video h-full w-full bg-gray-800 rounded-md overflow-hidden relative">
                     {video.type === "youtube" ? (
