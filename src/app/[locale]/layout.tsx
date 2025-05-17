@@ -3,6 +3,7 @@ import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { NextIntlClientProvider } from "next-intl";
+import FloatingSocialIcons from "@/components/FloatingSocialIcons";
 
 export const metadata: Metadata = {
   title: "ARX Development",
@@ -32,6 +33,7 @@ export default async function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          <FloatingSocialIcons />
         </body>
       </NextIntlClientProvider>
     </html>
