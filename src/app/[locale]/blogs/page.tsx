@@ -5,7 +5,7 @@ import BlogVideos from "./BlogVideos";
 import { getData } from "@/libs/axios/server";
 import { AxiosHeaders } from "axios";
 import { BlogType } from "@/libs/types/types";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 const BlogsPage = async ({
   params,
@@ -30,7 +30,7 @@ const BlogsPage = async ({
 
   const { blogs: blogPosts } = await feachData();
 
-  const t = useTranslations("blog");
+  const t = await getTranslations("blog");
 
   return (
     <div className="min-h-screen font-lato bg-white pb-20">
