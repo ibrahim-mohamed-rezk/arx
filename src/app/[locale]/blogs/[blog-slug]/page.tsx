@@ -7,6 +7,7 @@ import PrimeMiniste2 from "../../../../../public/images/home/PrimeMiniste2.png";
 import PrimeMiniste3 from "../../../../../public/images/home/PrimeMiniste3.png";
 import { AxiosHeaders } from "axios";
 import { getData } from "@/libs/axios/server";
+import { BlogType } from "@/libs/types/types";
 
 // Load Lato font
 const lato = Lato({
@@ -51,7 +52,7 @@ const BlogPage = async ({
     }
   };
 
-  const blogData = await feachData();
+  const { blog, latest_blogs } = await feachData();
 
   //   const [current, setCurrent] = useState(0);
   //   const length = bannerImages.length;
@@ -81,8 +82,8 @@ const BlogPage = async ({
             )
         )} */}
         <Image
-          src={blogData.image}
-          alt={blogData.title}
+          src={blog.image}
+          alt={blog.title}
           className="w-full h-auto object-cover max-h-[80vh] rounded-lg"
           priority
           width={1920}
@@ -113,27 +114,29 @@ const BlogPage = async ({
         className={`${lato.className} max-w-4xl mx-auto px-4 py-8 font-sans`}
       >
         <h1 className="mt-2 font-bold text-[clamp(2rem,3vw,2.5rem)] leading-tight">
-          {blogData.title}
+          {blog.title}
         </h1>
 
         {/* Article Content */}
         <article
           className="mt-8 space-y-6 text-gray-700"
-          dangerouslySetInnerHTML={{ __html: blogData.description }}
+          dangerouslySetInnerHTML={{ __html: blog.description }}
         />
 
         {/* Gallery Images with Captions */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
-          {[PrimeMiniste1, PrimeMiniste2, PrimeMiniste3].map((src, idx) => (
+          {latest_blogs.map((src: BlogType, idx: number) => (
             <div key={idx} className="relative rounded-lg overflow-hidden">
               <Image
-                src={src}
-                alt={captions[idx]}
+                src={src.image}
+                alt={src.title}
                 className="object-cover w-full h-full"
+                width={1920}
+                height={1080}
               />
               <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 py-2 px-3">
-                <p className="text-white text-[clamp(0.875rem,1vw,1rem)]">
-                  {captions[idx]}
+                <p className="text-white line-clamp-1 text-[clamp(0.875rem,1vw,1rem)]">
+                  {src.title}
                 </p>
               </div>
             </div>
