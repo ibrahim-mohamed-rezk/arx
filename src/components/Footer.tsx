@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
             />
             <button
               type="submit"
-              className="bg-[#0053F0] hover:bg-blue-700 px-5 py-2 rounded-r-md text-white"
+              className="bg-[#E1A12B] hover:bg-blue-700 px-5 py-2 rounded-r-md text-white"
             >
               {t2("subscribe")}
             </button>
