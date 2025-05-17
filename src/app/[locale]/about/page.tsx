@@ -31,14 +31,14 @@ const AboutPage: React.FC = () => {
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 ">
                     <h1 className="text-[clamp(1.35rem,4vw,2.25rem)] font-['Cinzel'] mb-4 text-white">
-                        WHO WE <span >ARE?</span>
+                        {t("who_we")} <span >{t("are")}</span>
                     </h1>
                     <p className="text-[clamp(0.7rem,1.35vw,1.35rem)] text-white font-['Lato'] ">
-                        A team driven by passion and <span >innovation, dedicated to</span>
+                        {t("description")}
                     </p>
-                    <p className="text-[clamp(0.7rem,1.35vw,1.35rem)] text-white font-['Lato']  ">
+                    {/* <p className="text-[clamp(0.7rem,1.35vw,1.35rem)] text-white font-['Lato']  ">
                         excellence and creating <span >exceptional experiences. ✨</span>
-                    </p>
+                    </p> */}
                 </div>
             </section>
 
@@ -53,7 +53,7 @@ const AboutPage: React.FC = () => {
                             </div>
                         ),
                         text: t("vision_description"),
-                        image: VisionImg,
+                        image: "https://storage.googleapis.com/furniture-hub/arx/about_us/Vision.png",
                         reverse: false,
                     },
                     {
@@ -64,7 +64,7 @@ const AboutPage: React.FC = () => {
                             </div>
                         ),
                         text: t("mission_description"),
-                        image: MissionImg,
+                        image: "https://storage.googleapis.com/furniture-hub/arx/about_us/mission.png",
                         reverse: true,
                     },
                     {
@@ -75,7 +75,7 @@ const AboutPage: React.FC = () => {
                             </div>
                         ),
                         text: t("values_description"),
-                        image: ValuesImg,
+                        image: "https://storage.googleapis.com/furniture-hub/arx/about_us/value.png",
                         reverse: false,
                     },
                 ].map(({ title, text, image, reverse }, idx) => (
