@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
   const t2 = useTranslations("subscribe");
 
   return (
-    <div className="relative">
+    <div className="relative footer">
       {" "}
       {/* spacing top for newsletter */}
       {/* Newsletter Section Floating Above */}
