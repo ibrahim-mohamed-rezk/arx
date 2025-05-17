@@ -2,9 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 
 import Hero from '/public/images/home/aboutus.png';
-import VisionImg from '/public/images/home/VISION.png';
-import MissionImg from '/public/images/home/MISSION.png';
-import ValuesImg from '/public/images/home/VALUES.png';
 import PartnersBanner from '/public/images/home/OurSuccessPartners.png';
 import { useTranslations } from "next-intl";
 
