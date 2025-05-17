@@ -1,89 +1,125 @@
-"use client";
-import React, { useState } from "react";
+"use client"; 
+
+import { useEffect, useState } from "react";
+import {ChevronUp, Plus } from "lucide-react";
+import { AxiosHeaders } from "axios";
+import { getData } from "@/libs/axios/server";
+import { useLocale, useTranslations } from "next-intl";
+import { FQAType } from "@/libs/types/types";
 import { Link } from "@/i18n/routing";
 
-const FAQItem = ({ question }: { question: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
+export default function FAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const locale = useLocale();
+  const [fqas, setFqas] = useState<FQAType[]>([]);
+  const t = useTranslations("fqas");
+
+  const toggleFAQ = (index: number) => {
+    if (openIndex === index) {
+      setOpenIndex(null);
+    } else {
+      setOpenIndex(index);
+    }
+  };
+
+  useEffect(() => {
+    const feachData = async () => {
+      try {
+        const response = await getData(
+          "faqs",
+          {},
+          new AxiosHeaders({
+            lang: locale,
+          })
+        );
+        setFqas(response.data);
+      } catch (error) {
+        throw error;
+      }
+    };
+
+    feachData();
+  }, []);
 
   return (
-    <div
-      className="self-stretch px-4 sm:px-6 py-6 sm:py-9 bg-light-gray rounded-2xl"
-    >
-      <div 
-        className="flex justify-between items-center gap-4 cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <div className="text-black text-base sm:text-lg md:text-xl font-bold font-['Lato'] capitalize leading-normal sm:leading-10 tracking-wide">
-          {question}
-        </div>
-        <div className="flex-shrink-0 w-6 h-6 relative">
-          <div className="w-6 h-6 absolute overflow-hidden">
-            <div className={`w-3.5 h-3.5 left-[5px] top-[5px] absolute bg-actions-primary transition-transform ${isOpen ? 'rotate-45' : ''}`} />
+    <div className="w-full px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-24">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col gap-12 md:gap-16 lg:gap-24">
+          {/* Header Section */}
+          <div className="flex border-s-2 ps-4 border-[#000] flex-col items-start text-start">
+            <h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+              style={{ fontFamily: "Cinzel" }}
+            >
+              {t("frequently asked questions")}
+            </h1>
+            <p 
+              className="text-lg text-start md:text-xl text-gray-600 max-w-3xl"
+              style={{ fontFamily: "Lato" }}
+            >
+              {t("got questions? we've got answers!")}
+              <br /> {t("browse our faqs to find everything you need to know")}
+            </p>
           </div>
-        </div>
-      </div>
-      {isOpen && (
-        <div className="mt-4 text-gray-700 pl-0 sm:pl-6">
-          This is the answer to your question. We provide detailed information to help you understand our services better.
-        </div>
-      )}
-    </div>
-  );
-};
 
-const FAQsPage = () => {
-  const faqQuestions = [
-    "How Can I Find The Best Real Estate Agent To Help Me Buy Or Sell a Property?",
-    "What Documents Do I Need When Applying For A Mortgage?",
-    "How Long Does The Closing Process Typically Take?",
-    "What Are The Benefits Of Working With A Real Estate Developer?",
-    "How Do I Know If A Property Is A Good Investment?"
-  ];
+          {/* FAQ Items */}
+          <div className="space-y-4 md:space-y-6">
+            {fqas.map((item, index) => (
+              <div
+                key={index}
+                className="bg-gray-100 rounded-2xl p-4 md:p-6 cursor-pointer"
+              >
+                <div
+                  className="flex justify-between items-center gap-4"
+                  onClick={() => toggleFAQ(index)}
+                >
+                  <h3
+                    className="text-lg md:text-xl font-bold text-black flex-1"
+                    style={{ fontFamily: "Lato" }}
+                  >
+                    {item.request}
+                  </h3>
+                  <div className="flex-shrink-0">
+                    {openIndex === index ? (
+                      <ChevronUp size={24} className="text-blue-600" />
+                    ) : (
+                      <Plus size={24} className="text-blue-600" />
+                    )}
+                  </div>
+                </div>
 
-  return (
-    <div className="w-full max-w-full flex flex-col justify-start items-center py-12 px-4">
-      <div className="w-full max-w-7xl flex flex-col justify-start items-center gap-12 md:gap-24">
-        <div className="w-full max-w-5xl flex flex-col justify-start items-center gap-12 md:gap-24">
-          <div className="w-full flex flex-col justify-start items-start gap-12 md:gap-24">
-            <div className="w-full flex flex-col md:flex-row justify-start items-center gap-4">
-              <div className="hidden md:block w-20 h-0 origin-top-left rotate-90 outline outline-2 outline-offset-[-1px] outline-black" />
-              <div className="w-full max-w-3xl flex flex-col justify-start items-center md:items-start gap-6">
-                <h1 className="text-center text-4xl md:text-5xl lg:text-6xl font-bold font-['Cinzel'] leading-tight md:leading-[64px] tracking-tight">
-                  Frequently Asked Questions
-                </h1>
-                <p className="text-center md:text-left text-dark-gray text-lg md:text-xl font-bold font-['Lato'] capitalize leading-relaxed md:leading-10 tracking-wide">
-                  Got questions? We&apos;ve got answers!
-                  <br /> Browse our FAQs to find everything you need to know.
-                </p>
+                {openIndex === index && (
+                  <div
+                    className="mt-4 text-gray-700 text-base md:text-lg"
+                    style={{ fontFamily: "Lato" }}
+                  >
+                    {item.response}
+                  </div>
+                )}
               </div>
-            </div>
-            <div className="w-full flex flex-col justify-start items-start gap-4 sm:gap-6 md:gap-8">
-              {faqQuestions.map((question, index) => (
-                <FAQItem key={index} question={question} />
-              ))}
-            </div>
+            ))}
           </div>
-          <div className="w-full max-w-3xl flex flex-col justify-start items-center gap-6">
-            <div className="w-full flex flex-col justify-start items-center gap-4">
-              <h2 className="text-center text-2xl md:text-3xl font-bold font-['Lato'] uppercase leading-tight md:leading-10 tracking-tight text-actions-primary">
-                Didn&apos;t find an answer to your question?
-              </h2>
-              <p className="text-center text-lg md:text-xl font-bold font-['Lato'] capitalize leading-relaxed md:leading-10 tracking-wide text-text-text-primary-2">
-                Get in touch with us for details on additional services.
-              </p>
-            </div>
-            <Link href="/contact">
-              <button className="w-40 h-12 p-2.5 bg-actions-primary rounded-lg outline outline-1 outline-offset-[-1px] outline-actions-primary flex justify-center items-center gap-2.5 hover:bg-blue-700 transition-colors">
-                <span className="text-center text-white text-base font-bold font-['Lato'] capitalize leading-none tracking-wide">
-                  Contact Us
-                </span>
-              </button>
+
+          {/* Contact Section */}
+          <div className="text-center max-w-3xl mx-auto">
+            <h2
+              className="text-2xl md:text-3xl text-blue-600 font-bold uppercase mb-4"
+              style={{ fontFamily: "Lato" }}
+            >
+              {t("didn't find an answer to your question?")}
+            </h2>
+            <p
+              className="text-lg md:text-xl text-gray-800 font-bold mb-8"
+              style={{ fontFamily: "Lato" }}
+            >
+              {t("get in touch with us for details on additional services")}
+            </p>
+            <Link href="/contact" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transition-colors">
+              {t("contact us")}
             </Link>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default FAQsPage;
+}

@@ -66,6 +66,14 @@
     "name": "المشاريع",
     "search_placeholder": "ابحث عن المشاريع",
     "explore": "المزيد"
+  },
+  "fqas": {
+    "frequently asked questions": "الاسئلة الشائعة",
+    "got questions? we've got answers!": "لديك أسئلة؟ لدينا الإجابات!",
+    "browse our faqs to find everything you need to know": "استكشف أسئلتنا الشائعة لإيجاد كل ما تحتاج إليه.",
+    "didn't find an answer to your question?": "لم تجد إجابة على سؤالك؟",
+    "get in touch with us for details on additional services": "اتصل بنا للحصول على التفاصيل على الخدمات الإضافية.",
+    "contact us": "اتصل بنا"
   }
 
 }

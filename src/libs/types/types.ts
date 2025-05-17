@@ -94,3 +94,9 @@ export interface ShortsTypes{
     location?: string;
     thumbnail?: string;
 }
+
+export interface FQAType {
+  id: number;
+  request: string;
+  response: string;
+}

@@ -64,5 +64,13 @@
         "name":"Projects",
         "search_placeholder":"Search about projects",
         "explore":"Explore"
+    },
+    "fqas":{
+        "frequently asked questions":"Frequently Asked Questions",
+        "got questions? we've got answers!":"Got questions? We've got answers!",
+        "browse our faqs to find everything you need to know":"Browse our FAQs to find everything you need to know.",
+        "didn't find an answer to your question?":"Didn't find an answer to your question?",
+        "get in touch with us for details on additional services":"Get in touch with us for details on additional services.",
+        "contact us":"Contact Us"
     }
 }
