@@ -16,10 +16,7 @@ export interface ProjectType {
   meta_title: string;
   meta_description: string;
   meta_keywords: string;
-  catigories: Array<{
-    id: number;
-    name: string;
-  }>;
+  catigories: string;
   location: string;
   features: Array<{
     id?: number;
