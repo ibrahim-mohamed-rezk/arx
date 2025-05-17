@@ -20,13 +20,6 @@ const lato = Lato({
 //   { src: PrimeMiniste3, alt: "Prime Minister Office 3" },
 // ];
 
-// Captions for gallery images
-const captions = [
-  "Prime Minister Office 1",
-  "Prime Minister Office 2",
-  "Prime Minister Office 3",
-];
-
 const BlogPage = async ({
   params,
 }: {
