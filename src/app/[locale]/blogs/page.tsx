@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 const BlogsPage = async ({
   params,
 }: {
-  params: Promise<{ locale: string, "blog-slug": string }>;
+  params: Promise<{ locale: string; "blog-slug": string }>;
 }) => {
   const { locale } = await params;
   const feachData = async () => {
@@ -28,9 +28,9 @@ const BlogsPage = async ({
     }
   };
 
-    const { blogs: blogPosts } = await feachData();
-    
-    const t = useTranslations("blog");
+  const { blogs: blogPosts } = await feachData();
+
+  const t = useTranslations("blog");
 
   return (
     <div className="min-h-screen font-lato bg-white pb-20">
