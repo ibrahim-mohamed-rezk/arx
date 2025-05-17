@@ -6,17 +6,18 @@ import VisionImg from '/public/images/home/VISION.png';
 import MissionImg from '/public/images/home/MISSION.png';
 import ValuesImg from '/public/images/home/VALUES.png';
 import PartnersBanner from '/public/images/home/OurSuccessPartners.png';
-// import { useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
-const directors = [
-    { name: 'Dr. Ahmed Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/2.webp" },
-    { name: 'Eng. Yasser Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/3%20(1).webp" },
-    { name: 'Dr. Saad Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/4.webp" },
-    { name: 'Dr. Osama Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/1%20(1).webp" },
-];
+
 
 const AboutPage: React.FC = () => {
-    // const t = useTranslations("about");
+    const t = useTranslations("about");
+    const directors = [
+        { name: 'Dr. Ahmed Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/2.webp" ,describe:t("ahmed_describe")},
+        { name: 'Eng. Yasser Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/3%20(1).webp" ,describe:t("yasser_describe")},
+        { name: 'Dr. Saad Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/4.webp" ,describe:t("saad_describe")},
+        { name: 'Dr. Osama Omar', img: "https://storage.googleapis.com/furniture-hub/arx/about_us/1%20(1).webp" ,describe:t("osama_describe")},
+    ];
     return (
         <div className="text-gray-800">
             {/* HERO */}
@@ -48,21 +49,21 @@ const AboutPage: React.FC = () => {
                         title: (
                             <div className="flex items-center gap-4">
                                 <hr className="w-16 border-t-2 border-gray-800" />
-                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-semibold">VISION</span>
+                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-semibold">{t("vision_title")}</span>
                             </div>
                         ),
-                        text: 'Enhancing communities through innovative real estate projects, blending creativity with advanced strategies for optimal client investment.',
+                        text: t("vision_description"),
                         image: VisionImg,
                         reverse: false,
                     },
                     {
                         title: (
                             <div className="flex items-center justify-end gap-4">
-                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-semibold">MISSION</span>
+                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-semibold">{t("mission_title")}</span>
                                 <hr className="w-16 border-t-2 border-gray-800" />
                             </div>
                         ),
-                        text: 'We uphold core values that drive sustainable and sophisticated urban development aligned with global standards.',
+                        text: t("mission_description"),
                         image: MissionImg,
                         reverse: true,
                     },
@@ -70,10 +71,10 @@ const AboutPage: React.FC = () => {
                         title: (
                             <div className="flex items-center gap-4">
                                 <hr className="w-16 border-t-2 border-gray-800" />
-                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-semibold">VALUES</span>
+                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-semibold">{t("values_title")}</span>
                             </div>
                         ),
-                        text: 'Integrity, Innovation, Excellence, and Customer Focus guide every project we undertake.',
+                        text: t("values_description"),
                         image: ValuesImg,
                         reverse: false,
                     },
@@ -121,7 +122,7 @@ const AboutPage: React.FC = () => {
                             <p className="text-sm text-gray-600">Years Of Experience</p> */}
                         </div>
                         <div className="absolute flex flex-col items-center justify-center bg-white w-40 h-40 sm:w-48 sm:h-48 rounded-full border border-gray-200">
-                            <span className="text-[clamp(2rem,5vw,3rem)] font-['Cinzel'] text-blue-800">+25</span>
+                            <span className="text-[clamp(2rem,5vw,3rem)] font-['Cinzel'] text-blue-800">+20</span>
                             <p className="text-sm text-gray-600 font-['Lato']">Years Of Experience</p>
                         </div>
                     </div>
@@ -169,8 +170,8 @@ const AboutPage: React.FC = () => {
                             <div className="p-6 text-center">
                                 <h3 className="text-xl font-semibold mb-2">{dir.name}</h3>
                                 <p className="text-sm text-gray-600">
-                                    “We are committed to shaping tomorrow’s real estate landscape
-                                    through our unmatched vision.”
+                                    {dir.describe}
+                           
                                 </p>
                             </div>
                         </div>
