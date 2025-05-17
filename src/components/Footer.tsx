@@ -121,8 +121,6 @@ const Footer: React.FC = () => {
                   {t("FAQs")}
                 </Link>
               </li>
-              {/* <li><Link href="/faqs" className="hover:text-white transition">FAQs</Link></li> */}
-              {/* <li><Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link></li> */}
             </ul>
           </div>
 
