@@ -37,7 +37,7 @@ const ContactPage = () => {
                 />
                 <div className="absolute inset-0 bg-opacity-60 flex flex-col justify-start items-center pt-20 text-center px-4 z-10">
                     <h2 className="text-[clamp(2rem,5vw,3rem)] font-['Cinzel']">
-                        {t("contact_us")}
+                        {t("title")}
                     </h2>
                     <p className="mt-4 text-[clamp(0.875rem,2.5vw,1rem)] font-['Lato']">
                         {t("description_part_one")}
