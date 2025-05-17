@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "@/i18n/routing";
-import SVGComponent from './../../public/logo';
+import Image from 'next/image';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { useTranslations } from "next-intl";
 
@@ -43,7 +43,13 @@ const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ">
           {/* Logo + Description */}
           <div>
-            <SVGComponent className="h-20 w-auto mb-2" />
+            <Image
+              src="https://storage.googleapis.com/furniture-hub/arx/settings/ARX%20Logo%20(1).png"
+              alt="ARX Logo"
+              width={104}
+              height={48}
+              className="h-20 w-auto mb-2"
+            />
             <p className="text-sm text-gray-400 leading-6">
               {t("footerDescription")}
             </p>
