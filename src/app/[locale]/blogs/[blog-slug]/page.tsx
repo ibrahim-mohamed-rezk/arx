@@ -1,10 +1,6 @@
 import Image from "next/image";
 import { Lato } from "next/font/google";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
-// import BlogMain from "../../../../../public/images/home/BlogMain.png";
-import PrimeMiniste1 from "../../../../../public/images/home/PrimeMiniste1.png";
-import PrimeMiniste2 from "../../../../../public/images/home/PrimeMiniste2.png";
-import PrimeMiniste3 from "../../../../../public/images/home/PrimeMiniste3.png";
 import { AxiosHeaders } from "axios";
 import { getData } from "@/libs/axios/server";
 import { BlogType } from "@/libs/types/types";
