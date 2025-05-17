@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa6";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { useTranslations } from "next-intl";
 
 const iconWrapper =
     "w-8 h-8 flex items-center justify-center rounded-full bg-[#035B8D] text-white font-['Lato']";
@@ -23,7 +24,7 @@ const inputStyle =
 
 const ContactPage = () => {
     const [phone, setPhone] = useState("");
-
+    const t = useTranslations("contact"); 
     return (
         <div className="bg-white font-['Cinzel']">
             {/* Header Section */}
@@ -36,13 +37,13 @@ const ContactPage = () => {
                 />
                 <div className="absolute inset-0 bg-opacity-60 flex flex-col justify-start items-center pt-20 text-center px-4 z-10">
                     <h2 className="text-[clamp(2rem,5vw,3rem)] font-['Cinzel']">
-                        CONTACT US
+                        {t("contact_us")}
                     </h2>
                     <p className="mt-4 text-[clamp(0.875rem,2.5vw,1rem)] font-['Lato']">
-                        We’re Always Available For Your Real Estate Needs 24/7.
+                        {t("description_part_one")}
                     </p>
                     <p className="text-[clamp(0.875rem,2.5vw,1rem)] font-['Lato']">
-                        Our Team Is Ready To Assist And Answer Your Questions Anytime.
+                        {t("description_part_two")}
                     </p>
                 </div>
             </div>
@@ -53,10 +54,10 @@ const ContactPage = () => {
                     {/* Left Side - Info */}
                     <div className="space-y-4 text-gray-700 md:col-span-2">
                         <h3 className="text-[clamp(1.25rem,3vw,1.5rem)] font-['Lato'] text-[#035B8D]">
-                            Reach Us
+                            {t("reach_us")}
                         </h3>
                         <p className="text-[clamp(0.875rem,2.5vw,1rem)]">
-                            we’re here to help and always happy to hear from you! 📞
+                            {t("reach_us_description")}
                         </p>
                         <ul className="space-y-4 text-[clamp(0.875rem,2.5vw,1rem)]">
                             <li className="flex items-start gap-3">
@@ -64,7 +65,7 @@ const ContactPage = () => {
                                     <FaMapMarkerAlt />
                                 </span>
                                 <div>
-                                    <p className="font-['Lato']">Office Address</p>
+                                    <p className="font-['Lato']">{t("office_address")}</p>
                                     <p>
                                         New Cairo - south 90 St- top 90 building
                                         <br />
@@ -77,7 +78,7 @@ const ContactPage = () => {
                                     <FaPhoneAlt />
                                 </span>
                                 <div>
-                                    <p className="font-['Lato']">Phone Number</p>
+                                    <p className="font-['Lato']">{t("phone_number")}</p>
                                     <p>16591</p>
                                 </div>
                             </li>
@@ -86,7 +87,7 @@ const ContactPage = () => {
                                     <FaEnvelope />
                                 </span>
                                 <div>
-                                    <p className="font-['Lato']">Email Us</p>
+                                    <p className="font-['Lato']">{t("email_us")}</p>
                                     <p>info@areeg.com</p>
                                 </div>
                             </li>
@@ -95,12 +96,12 @@ const ContactPage = () => {
                                     <FaCalendarAlt />
                                 </span>
                                 <div>
-                                    <p className="font-['Lato']">Schedule Meeting</p>
+                                    <p className="font-['Lato']">{t("schedule_meeting")}</p>
                                 </div>
                             </li>
                         </ul>
                         <div className="pt-4 border-t">
-                            <p className="text-sm font-['Lato'] mb-2">Follow Our Social Media</p>
+                            <p className="text-sm font-['Lato'] mb-2">{t("follow_social")}</p>
                             <div className="flex space-x-3">
                                 <span className={iconWrapper}>
                                     <FaFacebookF />
@@ -121,29 +122,29 @@ const ContactPage = () => {
                     {/* Right Side - Form */}
                     <div className="space-y-6 md:col-span-3">
                         <h3 className="text-[clamp(1.25rem,3vw,1.5rem)] font-['Lato'] pt-12 text-[#035B8D]">
-                            Send Us A Message
+                            {t("send_message")}
                         </h3>
                         <form className="space-y-4 font-['Lato']">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label htmlFor="name" className="block text-sm mb-1">
-                                        Name
+                                        {t("form.name")}
                                     </label>
                                     <input
                                         id="name"
                                         type="text"
-                                        placeholder="Enter your name"
+                                        placeholder={t("form.name_placeholder")}
                                         className={inputStyle}
                                     />
                                 </div>
                                 <div>
                                     <label htmlFor="email" className="block text-sm mb-1">
-                                        Email
+                                        {t("form.email")}
                                     </label>
                                     <input
                                         id="email"
                                         type="email"
-                                        placeholder="Enter your email"
+                                        placeholder={t("form.email_placeholder")}
                                         className={inputStyle}
                                     />
                                 </div>
@@ -152,7 +153,7 @@ const ContactPage = () => {
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label htmlFor="phone" className="block text-sm mb-1">
-                                        Phone Number
+                                        {t("form.phone")}
                                     </label>
                                     <PhoneInput
                                         international
@@ -160,32 +161,32 @@ const ContactPage = () => {
                                         value={phone}
                                         onChange={(value) => setPhone(value || "")}
                                         id="phone"
-                                        placeholder="Enter phone number"
+                                        placeholder={t("form.phone_placeholder")}
                                         className="w-full bg-gray-100 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#035B8D] font-['Lato']"
                                         inputClass="phone-input"
                                     />
                                 </div>
                                 <div>
                                     <label htmlFor="interest" className="block text-sm mb-1">
-                                        Subject
+                                        {t("form.subject")}
                                     </label>
                                     <select id="interest" className={inputStyle}>
-                                        <option>Interested In</option>
-                                        <option>Commercial</option>
-                                        <option>Housing</option>
-                                        <option>Administrative</option>
-                                        <option>Medical</option>
+                                        <option>{t("form.subject_options.interested")}</option>
+                                        <option>{t("form.subject_options.commercial")}</option>
+                                        <option>{t("form.subject_options.housing")}</option>
+                                        <option>{t("form.subject_options.administrative")}</option>
+                                        <option>{t("form.subject_options.medical")}</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div>
                                 <label htmlFor="message" className="block text-sm mb-1">
-                                    Message
+                                    {t("form.message")}
                                 </label>
                                 <textarea
                                     id="message"
-                                    placeholder="Enter your message"
+                                    placeholder={t("form.message_placeholder")}
                                     className={inputStyle}
                                     rows={4}
                                 ></textarea>
@@ -196,12 +197,10 @@ const ContactPage = () => {
                                     type="submit"
                                     className="bg-[#035B8D] text-white px-6 py-2 rounded hover:bg-opacity-90 w-full sm:w-auto"
                                 >
-                                    Send
+                                    {t("form.send")}
                                 </button>
                             </div>
                         </form>
-
-
                     </div>
                 </div>
             </div>
