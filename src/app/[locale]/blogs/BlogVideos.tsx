@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -6,7 +7,7 @@ const BlogVideos = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState("");
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-
+  const t = useTranslations("blog");
   const featuredCards = [
     {
       id: 1,
@@ -54,7 +55,7 @@ const BlogVideos = () => {
           className="text-xl md:text-2xl font-bold"
           style={{ fontSize: "clamp(1.25rem, 1vw + 1rem, 1.5rem)" }}
         >
-          OUR NEW VIDEOS
+          {t("our_videos")}
         </h2>
         <div className="h-0.5 bg-gray-200 flex-grow ml-4"></div>
       </div>

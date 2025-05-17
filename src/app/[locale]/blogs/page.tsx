@@ -5,6 +5,7 @@ import BlogVideos from "./BlogVideos";
 import { getData } from "@/libs/axios/server";
 import { AxiosHeaders } from "axios";
 import { BlogType } from "@/libs/types/types";
+import { useTranslations } from "next-intl";
 
 const BlogsPage = async ({
   params,
@@ -29,7 +30,7 @@ const BlogsPage = async ({
 
     const { blogs: blogPosts } = await feachData();
     
-
+    const t = useTranslations("blog");
 
   return (
     <div className="min-h-screen font-lato bg-white pb-20">
@@ -38,7 +39,7 @@ const BlogsPage = async ({
         <BlogVideos />
 
         {/* Additional content - Interview excerpt */}
-        <div className="mb-12">
+        {/* <div className="mb-12">
           <div className="text-lg font-bold mb-2">
             Exclusive Interview From The Ramadan Iftar Party!
           </div>
@@ -47,7 +48,7 @@ const BlogsPage = async ({
             shares expert insights on the real estate market and investment
             opportunities in 2025!
           </p>
-        </div>
+        </div> */}
 
         {/* Blog Posts Section */}
         <section>
@@ -56,19 +57,19 @@ const BlogsPage = async ({
               className="inline-block mb-1 text-gray-500 uppercase tracking-wider"
               style={{ fontSize: "clamp(0.75rem, 0.5vw + 0.5rem, 0.875rem)" }}
             >
-              LATEST FROM FEED
+              {t("latest")}
             </div>
             <h2
               className="font-bold tracking-tight mb-2"
               style={{ fontSize: "clamp(1.5rem, 2vw + 1rem, 2.25rem)" }}
             >
-              WELCOME TO OUR BLOG, WHERE WE SHARE THE LATEST
+              {t("welcome_to_our_blog")}
             </h2>
             <p
               className="text-gray-700"
               style={{ fontSize: "clamp(1rem, 1vw + 0.5rem, 1.25rem)" }}
             >
-              NEWS, TIPS, AND INSPIRING IDEAS!
+              {t("welcome_to_our_blog_description")}
             </p>
           </div>
 

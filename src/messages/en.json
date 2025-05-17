@@ -47,5 +47,8 @@
       "message_placeholder": "Enter your message",
       "send": "Send"
     }
+  },
+  "videos": {
+    "our_videos": "Our New Videos"
   }
 } 

@@ -105,5 +105,12 @@
         "message_placeholder": "Enter your message",
         "send": "Send"
         }
+    },
+    "blog":{
+        "our_videos":"OUR NEW VIDEOS",
+        "latest":"LATEST FROM FEED",
+        "welcome_to_our_blog":"WELCOME TO OUR BLOG, WHERE WE SHARE THE LATEST",
+        "welcome_to_our_blog_description":"NEWS, TIPS, AND INSPIRING IDEAS!"
     }
+
 }

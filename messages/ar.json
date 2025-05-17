@@ -107,6 +107,14 @@
       "message_placeholder": "أدخل رسالتك",
       "send": "إرسال"
     }
+  },
+  "blog":{
+    "our_videos":"فيديوهاتنا الجديدة",
+    "latest":"أحدث الأخبار من الخلاصة",
+    "welcome_to_our_blog":"مرحباً بكم في مدونتنا، حيث نشارك أحدث الأخبار",
+    "welcome_to_our_blog_description":"أخبار ونصائح وأفكار ملهمة!"
+
+
   }
 
 }
