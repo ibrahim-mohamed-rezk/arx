@@ -16,6 +16,9 @@
     "subscribe": "Subscribe"
   },
   "contact": {
+    "title": "Contact Us",
+    "description_part_one": "We are available for real estate inquiries 24/7",
+    "description_part_two": "Our team is always ready to assist you with any inquiry",
     "reach_us": "Reach Us",
     "reach_us_description": "We're here to help and always happy to hear from you! 📞",
     "office_address": "Office Address",
@@ -24,6 +27,7 @@
     "schedule_meeting": "Schedule Meeting",
     "follow_social": "Follow Our Social Media",
     "send_message": "Send Us A Message",
+    "locations": "Our Locations",
     "form": {
       "name": "Name",
       "name_placeholder": "Enter your name",

@@ -208,7 +208,7 @@ const ContactPage = () => {
             {/* Locations Section */}
             <div className="text-center mt-20 px-4">
                 <h3 className="text-[clamp(1.5rem,4vw,2rem)] font-['Lato']">
-                    OUR LOCATIONS
+                    {t("locations")}
                 </h3>
                 <div className="mt-8 w-full h-96 bg-gray-200 flex justify-center items-center">
                     {/* Map Placeholder */}
