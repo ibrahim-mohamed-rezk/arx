@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-// import { StaticImageData } from 'next/image';
 import mapImage from "../../../../../public/images/home/c2b5e402a0df6277694731f6bd60841b5c331ca9.jpg";
 import heroSwiper from "../../../../../public/images/home/aa776c3816e1d51c033677ecbeb05bb997177ae0.png";
 import svg from "../../../../../public/images/home/452d25274c85a25c3f47bbc5a16dc095fbf48716.gif";
@@ -11,6 +10,8 @@ import { AxiosHeaders } from "axios";
 import { useLocale } from "next-intl";
 import { useParams } from "next/navigation";
 import { ProjectType } from "@/libs/types/types";
+import ContactForm from "./components/ContactForm";
+import PhotosSwiper from "./components/PhotosSwiper";
 
 interface TabContent {
   id: string;
@@ -31,6 +32,10 @@ const ProjectPage: React.FC = () => {
   const locale = useLocale();
   const { id } = useParams();
   const [projectData, setProjectData] = useState<ProjectType | null>(null);
+  const [openForm, setOpenForm] = useState(false);
+  const [activeFloor, setActiveFloor] = useState(
+    projectData?.property_payment_plans[0].id || 1
+  );
   // Create photo gallery images
   const photoGalleryImages = Array(6).fill("https://placehold.co/600x400");
 
@@ -44,7 +49,6 @@ const ProjectPage: React.FC = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   // State for photo swiper
-  const [currentPhotoSlide, setCurrentPhotoSlide] = useState(0);
 
   // State for video swiper
   const [currentVideoSlide, setCurrentVideoSlide] = useState(0);
@@ -94,15 +98,6 @@ const ProjectPage: React.FC = () => {
       }
     }, 5000);
 
-    // Photo swiper autoplay
-    const photoInterval = setInterval(() => {
-      if (activeTab === "photos") {
-        setCurrentPhotoSlide((prev) =>
-          prev === Math.ceil(photoGalleryImages.length / 3) - 1 ? 0 : prev + 1
-        );
-      }
-    }, 4000);
-
     // Video swiper autoplay
     const videoInterval = setInterval(() => {
       if (activeTab === "videos") {
@@ -114,7 +109,6 @@ const ProjectPage: React.FC = () => {
 
     return () => {
       clearInterval(heroInterval);
-      clearInterval(photoInterval);
       clearInterval(videoInterval);
     };
   }, [
@@ -195,6 +189,7 @@ const ProjectPage: React.FC = () => {
       ),
       content: (
         <div className="flex lg:flex-row items-center  lg:gap-6 gap-0  flex-col  sm:gap-10">
+          {/* tabs */}
           <div className="flex flex-row sm:flex-row md:flex-row lg:flex-col bg-[#FFFFFF] gap-2 py-3 rounded-full px-7 overflow-x-auto md:overflow-visible">
             {featureTabs.map((item) => (
               <button
@@ -217,7 +212,7 @@ const ProjectPage: React.FC = () => {
                 {[
                   {
                     label: "Space",
-                    value: "1200 sqm",
+                    value: projectData?.home_area,
                     icon: (
                       <svg
                         width="18"
@@ -237,56 +232,92 @@ const ProjectPage: React.FC = () => {
                     ),
                   },
                   {
-                    label: "Floors",
-                    value: "8",
-                    icon: (
-                      <svg
-                        width="22"
-                        height="22"
-                        viewBox="0 0 22 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M3.74759 14.1875L0.951172 15.5838C0.787109 15.6659 0.670906 15.7548 0.602563 15.8505C0.534172 15.9463 0.5 16.0762 0.5 16.2403C0.5 16.4044 0.534172 16.5343 0.602563 16.63C0.670906 16.7258 0.787109 16.8146 0.951172 16.8967L9.66017 21.2455C10.0156 21.4187 10.4622 21.4962 11 21.478C11.5378 21.4962 11.9844 21.4187 12.3398 21.2455L21.0488 16.8967C21.2129 16.8146 21.3291 16.7258 21.3974 16.63C21.4658 16.5343 21.5 16.4044 21.5 16.2403C21.5 16.0762 21.4658 15.9463 21.3974 15.8505C21.3291 15.7548 21.2129 15.6659 21.0488 15.5838L18.2524 14.1875L16.5736 15.0258L19.0058 16.2403L11.6788 19.899C11.6055 19.9336 11.4211 19.9914 11.0508 19.9788L11 19.9771L10.9492 19.9788C10.5789 19.9914 10.3945 19.9336 10.3212 19.899L2.99422 16.2403L5.42637 15.0258L3.74759 14.1875ZM1.61459 16.9294C1.61459 16.9294 1.61492 16.9292 1.61553 16.9289L1.61483 16.9292L1.61459 16.9294ZM0.951172 10.3533L3.76705 8.94718L5.44583 9.7855L2.99422 11.0097L10.3212 14.6684C10.3945 14.703 10.5789 14.7608 10.9492 14.7482L11 14.7465L11.0508 14.7482C11.4211 14.7608 11.6055 14.703 11.6788 14.6684L19.0058 11.0097L16.5542 9.7855L18.233 8.94718L21.0488 10.3533C21.2129 10.4353 21.3291 10.5242 21.3974 10.62C21.4658 10.7157 21.5 10.8456 21.5 11.0097C21.5 11.1738 21.4658 11.3037 21.3974 11.3994C21.3291 11.4952 21.2129 11.584 21.0488 11.6661L12.3398 16.0149C11.9844 16.1881 11.5378 16.2656 11 16.2474C10.4622 16.2656 10.0156 16.1881 9.66017 16.0149L0.951172 11.6661C0.787109 11.584 0.670906 11.4952 0.602516 11.3994C0.534172 11.3037 0.5 11.1738 0.5 11.0097C0.5 10.8456 0.534172 10.7157 0.602516 10.62C0.670906 10.5242 0.787109 10.4353 0.951172 10.3533ZM9.66017 0.735058L0.951172 5.08384C0.787109 5.16592 0.670906 5.25479 0.602516 5.35051C0.534172 5.44628 0.5 5.57617 0.5 5.74028C0.5 5.90439 0.534172 6.03428 0.602516 6.13004C0.670906 6.22576 0.787109 6.31464 0.951172 6.39671L9.66017 10.7455C10.0156 10.9187 10.4622 10.9962 11 10.9779C11.5378 10.9962 11.9844 10.9187 12.3398 10.7455L21.0488 6.39671C21.2129 6.31464 21.3291 6.22576 21.3974 6.13004C21.4658 6.03428 21.5 5.90439 21.5 5.74028C21.5 5.57617 21.4658 5.44628 21.3974 5.35051C21.3291 5.25479 21.2129 5.16592 21.0488 5.08384L12.3398 0.735058C11.9844 0.561855 11.5378 0.484371 11 0.502605C10.4622 0.484371 10.0156 0.561855 9.66017 0.735058ZM1.61464 10.3206L1.61469 10.3207L1.61553 10.3211C1.61492 10.3208 1.61464 10.3206 1.61464 10.3206ZM11 2.00345L11.0508 2.00171C11.4211 1.98915 11.6055 2.047 11.6788 2.08159L19.0058 5.74028L11.6788 9.39896C11.6055 9.43356 11.4211 9.4914 11.0508 9.47884L11 9.4771L10.9492 9.47884C10.5789 9.4914 10.3945 9.43356 10.3212 9.39896L2.99422 5.74028L10.3212 2.08159C10.3945 2.047 10.5789 1.98915 10.9492 2.00171L11 2.00345Z"
-                          fill="#060B0E"
-                        />
-                      </svg>
-                    ),
-                  },
-                  {
-                    label: "Rooms",
-                    value: "100",
+                    label: "Price",
+                    value: `${projectData?.start_price} - ${projectData?.end_price}`,
                     icon: (
                       <svg
                         width="24"
-                        height="22"
-                        viewBox="0 0 24 22"
+                        height="24"
+                        viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          d="M21.5998 7.80039H2.3998M21.5998 7.80039C22.4835 7.80039 23.1998 7.08404 23.1998 6.20039V3.00039C23.1998 2.11674 22.4835 1.40039 21.5998 1.40039H2.3998C1.51615 1.40039 0.799805 2.11674 0.799805 3.00039V6.20039C0.799805 7.08404 1.51615 7.80039 2.3998 7.80039M21.5998 7.80039C22.4835 7.80039 23.1998 8.51674 23.1998 9.40039V12.6004C23.1998 13.484 22.4835 14.2004 21.5998 14.2004M2.3998 7.80039C1.51615 7.80039 0.799805 8.51674 0.799805 9.40039V12.6004C0.799805 13.484 1.51615 14.2004 2.3998 14.2004M21.5998 14.2004H2.3998M21.5998 14.2004C22.4835 14.2004 23.1998 14.9167 23.1998 15.8004V19.0004C23.1998 19.8841 22.4835 20.6004 21.5998 20.6004H2.3998C1.51615 20.6004 0.799805 19.8841 0.799805 19.0004V15.8004C0.799805 14.9167 1.51615 14.2004 2.3998 14.2004M3.1998 4.60039H7.9998M3.1998 11.0004H7.9998M3.1998 17.4004H7.9998"
+                          d="M12 1V23M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6"
                           stroke="#060B0E"
-                          stroke-width="1.5"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                     ),
                   },
                   {
-                    label: "Type",
-                    value: "commercial",
+                    label: "Location",
+                    value: projectData?.location,
                     icon: (
                       <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          d="M19 0H1C0.734783 0 0.48043 0.105357 0.292893 0.292893C0.105357 0.48043 0 0.734783 0 1V19C0 19.2652 0.105357 19.5196 0.292893 19.7071C0.48043 19.8946 0.734783 20 1 20H19C19.2652 20 19.5196 19.8946 19.7071 19.7071C19.8946 19.5196 20 19.2652 20 19V1C20 0.734783 19.8946 0.48043 19.7071 0.292893C19.5196 0.105357 19.2652 0 19 0ZM12 2V18H8V2H12ZM2 2H6V18H2V2ZM18 18H14V2H18V18Z"
-                          fill="#060B0E"
+                          d="M12 13.43C13.7231 13.43 15.12 12.0331 15.12 10.31C15.12 8.58687 13.7231 7.19 12 7.19C10.2769 7.19 8.88 8.58687 8.88 10.31C8.88 12.0331 10.2769 13.43 12 13.43Z"
+                          stroke="#060B0E"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M3.62 8.49C5.59 -0.169998 18.42 -0.159998 20.38 8.5C21.53 13.58 18.37 17.88 15.6 20.54C13.59 22.48 10.41 22.48 8.39 20.54C5.63 17.88 2.47 13.57 3.62 8.49Z"
+                          stroke="#060B0E"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    ),
+                  },
+                  {
+                    label: "Building Date",
+                    value: projectData?.year_built,
+                    icon: (
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z"
+                          stroke="#060B0E"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M16 2V6"
+                          stroke="#060B0E"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M8 2V6"
+                          stroke="#060B0E"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M3 10H21"
+                          stroke="#060B0E"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                     ),
@@ -312,136 +343,63 @@ const ProjectPage: React.FC = () => {
 
             {activeFeatureTab === "Details" && (
               <>
-                {[
-                  { label: "Delivery Date", value: "December 2025" },
-                  { label: "Finishing Type", value: "Ultra Lux" },
-                  { label: "AC System", value: "Centralized" },
-                  { label: "Power System", value: "Ultra Lux" },
-                  { label: "Security System", value: "100" },
-                  { label: "View", value: "Overlooking a lake and walkway" },
-                  {
-                    label: "Windows Type",
-                    value: "Double Glazed Soundproof Glass",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="border-b border-[#B1B3B4] px-10"
-                  >
-                    <div className="flex justify-between items-center py-5">
-                      <div className="text-gray-800 capitalize text-sm">
-                        {item.label}
+                {projectData?.features.map(
+                  (item: { id?: number; key?: string; value?: string }) => (
+                    <div
+                      key={item.id}
+                      className="border-b border-[#B1B3B4] px-10"
+                    >
+                      <div className="flex justify-between items-center py-5">
+                        <div className="text-gray-800 capitalize text-sm">
+                          {item.key}
+                        </div>
+                        <div className="text-gray-700 text-sm">
+                          {item.value}
+                        </div>
                       </div>
-                      <div className="text-gray-700 text-sm">{item.value}</div>
                     </div>
-                  </div>
-                ))}
+                  )
+                )}
               </>
             )}
 
             {activeFeatureTab === "Amenities" && (
               <div className="grid grid-cols-2">
-                <div className="py-4 px-6 border-b border-r border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">Gym / Health Club</div>
-                </div>
-                <div className="py-4 px-6 border-b border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    24/7 Security Service
-                  </div>
-                </div>
-
-                <div className="py-4 px-6 border-b border-r border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    Reception / Luxury Lobby
-                  </div>
-                </div>
-                <div className="py-4 px-6 border-b border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">Elevators</div>
-                </div>
-
-                <div className="py-4 px-6 border-b border-r border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    High-Speed Internet
-                  </div>
-                </div>
-                <div className="py-4 px-6 border-b border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    Reception / Luxury Lobby
-                  </div>
-                </div>
-
-                <div className="py-4 px-6 border-b border-r border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    24/7 Security Service
-                  </div>
-                </div>
-                <div className="py-4 px-6 border-b border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    24/7 Security Service
-                  </div>
-                </div>
-
-                <div className="py-4 px-6 border-r border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    24/7 Security Service
-                  </div>
-                </div>
-                <div className="py-4 px-6">
-                  <div className="text-gray-800 text-sm"></div>
-                </div>
+                {projectData?.amenities.map(
+                  (item: { id: number; type: string; title: string }) => {
+                    if (item.type !== "amenity") return null;
+                    return (
+                      <div
+                        key={item.id}
+                        className="py-4 px-6 border-b border-r border-[#E5E7EB]"
+                      >
+                        <div className="text-gray-800 text-sm">
+                          {item.title}
+                        </div>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             )}
 
             {activeFeatureTab === "OutdoorFeatures" && (
               <div className="grid grid-cols-2">
-                <div className="py-4 px-6 border-b border-r border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">Gym / Health Club</div>
-                </div>
-                <div className="py-4 px-6 border-b border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    24/7 Security Service
-                  </div>
-                </div>
-
-                <div className="py-4 px-6 border-b border-r border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    Reception / Luxury Lobby
-                  </div>
-                </div>
-                <div className="py-4 px-6 border-b border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">Elevators</div>
-                </div>
-
-                <div className="py-4 px-6 border-b border-r border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    High-Speed Internet
-                  </div>
-                </div>
-                <div className="py-4 px-6 border-b border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    Reception / Luxury Lobby
-                  </div>
-                </div>
-
-                <div className="py-4 px-6 border-b border-r border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    24/7 Security Service
-                  </div>
-                </div>
-                <div className="py-4 px-6 border-b border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    24/7 Security Service
-                  </div>
-                </div>
-
-                <div className="py-4 px-6 border-r border-[#E5E7EB]">
-                  <div className="text-gray-800 text-sm">
-                    24/7 Security Service
-                  </div>
-                </div>
-                <div className="py-4 px-6">
-                  <div className="text-gray-800 text-sm"></div>
-                </div>
+                {projectData?.amenities.map(
+                  (item: { id: number; type: string; title: string }) => {
+                    if (item.type !== "out_door_feature") return null;
+                    return (
+                      <div
+                        key={item.id}
+                        className="py-4 px-6 border-b border-r border-[#E5E7EB]"
+                      >
+                        <div className="text-gray-800 text-sm">
+                          {item.title}
+                        </div>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             )}
           </div>
@@ -467,111 +425,7 @@ const ProjectPage: React.FC = () => {
           />
         </svg>
       ),
-      content: (
-        <div className="relative overflow-hidden py-3">
-          {/* Photo Swiper with indicators and arrows */}
-          <div className="relative">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentPhotoSlide * 100}%)` }}
-            >
-              {Array.from({
-                length: Math.ceil(photoGalleryImages.length / 3),
-              }).map((_, groupIndex) => (
-                <div key={groupIndex} className="w-full flex-shrink-0">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6">
-                    {photoGalleryImages
-                      .slice(groupIndex * 3, (groupIndex + 1) * 3)
-                      .map((_, imgIndex) => {
-                        const actualIndex = groupIndex * 3 + imgIndex;
-                        return (
-                          <div
-                            key={actualIndex}
-                            className="aspect-video bg-gray-200 rounded-md overflow-hidden relative"
-                          >
-                            <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-sm">
-                              Photo {actualIndex + 1}
-                            </div>
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Arrow navigation */}
-            <button
-              onClick={() =>
-                setCurrentPhotoSlide((prev) =>
-                  prev === 0
-                    ? Math.ceil(photoGalleryImages.length / 3) - 1
-                    : prev - 1
-                )
-              }
-              className="absolute left-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white z-10 hover:bg-black/70"
-              aria-label="Previous photos"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-            <button
-              onClick={() =>
-                setCurrentPhotoSlide((prev) =>
-                  prev === Math.ceil(photoGalleryImages.length / 3) - 1
-                    ? 0
-                    : prev + 1
-                )
-              }
-              className="absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white z-10 hover:bg-black/70"
-              aria-label="Next photos"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Swiper pagination indicators */}
-          <div className="flex justify-center gap-1 mt-3">
-            {Array.from({
-              length: Math.ceil(photoGalleryImages.length / 3),
-            }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentPhotoSlide(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  currentPhotoSlide === index ? "bg-blue-600" : "bg-gray-300"
-                }`}
-                aria-label={`Go to photo group ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-      ),
+      content: <PhotosSwiper activeTab="photos" projectData={projectData} />,
     },
     {
       id: "videos",
@@ -598,28 +452,23 @@ const ProjectPage: React.FC = () => {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentVideoSlide * 100}%)` }}
             >
-              {videoGalleryImages.map((_, index) => (
-                <div key={index} className="w-full h-85 flex-shrink-0">
+              {projectData?.property_listing_videos?.map((video) => (
+                <div key={video.id} className="w-full h-85 flex-shrink-0">
                   <div className="aspect-video h-full w-full bg-gray-800 rounded-md overflow-hidden relative">
-                    <div className="absolute h-full w-full inset-0 flex items-center justify-center text-gray-400 text-sm">
-                      Video {index + 1}
-                    </div>
-                    <div className="absolute h-full inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 text-white"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                    </div>
+                    {video.type === "youtube" ? (
+                      <iframe
+                        src={video.video}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <video
+                        src={video.video}
+                        className="w-full h-full"
+                        controls
+                      />
+                    )}
                   </div>
                 </div>
               ))}
@@ -629,7 +478,9 @@ const ProjectPage: React.FC = () => {
             <button
               onClick={() =>
                 setCurrentVideoSlide((prev) =>
-                  prev === 0 ? videoGalleryImages.length - 1 : prev - 1
+                  prev === 0
+                    ? (projectData?.property_listing_videos?.length || 1) - 1
+                    : prev - 1
                 )
               }
               className="absolute left-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white z-10 hover:bg-black/70"
@@ -653,7 +504,10 @@ const ProjectPage: React.FC = () => {
             <button
               onClick={() =>
                 setCurrentVideoSlide((prev) =>
-                  prev === videoGalleryImages.length - 1 ? 0 : prev + 1
+                  prev ===
+                  (projectData?.property_listing_videos?.length || 1) - 1
+                    ? 0
+                    : prev + 1
                 )
               }
               className="absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white z-10 hover:bg-black/70"
@@ -674,20 +528,6 @@ const ProjectPage: React.FC = () => {
                 />
               </svg>
             </button>
-          </div>
-
-          {/* Video swiper pagination indicators */}
-          <div className="flex justify-center gap-1 mt-2">
-            {videoGalleryImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentVideoSlide(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  currentVideoSlide === index ? "bg-blue-600" : "bg-gray-300"
-                }`}
-                aria-label={`Go to video ${index + 1}`}
-              />
-            ))}
           </div>
         </div>
       ),
@@ -710,14 +550,34 @@ const ProjectPage: React.FC = () => {
         </svg>
       ),
       content: (
-        <div className="space-y-3 py-3">
-          <div className="flex flex-col justify-end md:flex-row gap-3">
-            <div className="md:w-2/3">
-              <div className="aspect-video bg-white border border-gray-200 rounded-md overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-sm">
-                  Floor Plan Layout
-                </div>
-              </div>
+        <div className="flex lg:flex-row items-center justify-between w-full lg:gap-6 gap-0  flex-col  sm:gap-10">
+          {/* tabs */}
+          <div className="flex flex-row sm:flex-row md:flex-row lg:flex-col bg-[#FFFFFF] gap-2 py-3 rounded-full px-7 overflow-x-auto md:overflow-visible">
+            {projectData?.property_floor_plans.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setActiveFloor(item.id)}
+                className={`h-12 w-12 md:h-20 md:w-20 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${
+                  activeFloor === item.id ? "bg-black" : "bg-gray-500"
+                }`}
+              >
+                <span className="text-white text-xs md:text-sm text-center px-1">
+                  {item.title}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          <div className="w-fit  ">
+            <div className="w-fit">
+              <img
+                src={
+                  projectData?.property_floor_plans.find(
+                    (plan) => plan.id === activeFloor
+                  )?.image
+                }
+                alt=""
+              />
             </div>
           </div>
         </div>
@@ -855,17 +715,26 @@ const ProjectPage: React.FC = () => {
             {projectData?.description}
           </div>
         </div>
+
+        {/* Buttons Section */}
         <div className="flex flex-col gap-3 sm:flex-row sm:gap-6 lg:gap-12 items-center justify-center">
-          <button className="w-full sm:w-[320px] px-4 py-2 bg-[#035B8D] text-white text-sm rounded-md hover:bg-blue-700 transition">
+          <button
+            onClick={() => setOpenForm(true)}
+            className="w-full sm:w-[320px] px-4 py-2 bg-[#035B8D] text-white text-sm rounded-md hover:bg-blue-700 transition"
+          >
             register your interest with this project
           </button>
-          <button className="w-full sm:w-[320px] px-4 py-2 bg-white text-blue-600 text-sm border border-blue-600 rounded-md hover:bg-gray-50 transition">
+          <a
+            href={projectData?.brochure || "#"}
+            target="_blank"
+            download
+            className="w-full sm:w-[320px] px-4 py-2 bg-white text-blue-600 text-sm border border-blue-600 rounded-md hover:bg-gray-50 transition text-center"
+          >
             Download brochure
-          </button>
+          </a>
         </div>
       </div>
 
-      {/* Building Features Section with Interactive Tabs */}
       <div className="w-full py-6 md:py-8 bg-gray-100">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col items-center gap-2 mb-4">
@@ -986,6 +855,8 @@ const ProjectPage: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* Contact Form */}
+      <ContactForm isOpen={openForm} onClose={() => setOpenForm(false)} />
     </div>
   );
 };

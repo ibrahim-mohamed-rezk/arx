@@ -1,7 +1,31 @@
 "use client";
 
+import { useEffect, useState } from "react";
 
 const FloatingSocialIcons = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const footerSection = document.querySelector(".footer");
+      const scrollPosition = window.scrollY;
+
+      if (footerSection) {
+        const footerRect = footerSection.getBoundingClientRect();
+        const inFooterSection = footerRect.top <= window.innerHeight && footerRect.top >= 0;
+
+        // Hide if scroll position is less than 200px or in footer section
+        setIsVisible(!(scrollPosition <= 200 || inFooterSection));
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  if (!isVisible) return null;
+
   return (
     <div className="fixed bottom-8 end-8 z-50 flex flex-col gap-4">
       <button
@@ -15,7 +39,7 @@ const FloatingSocialIcons = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g clip-path="url(#clip0_195_1755)">
+          <g clipPath="url(#clip0_195_1755)">
             <path
               d="M8.01166 25.6939L8.49645 25.9363C10.5164 27.1482 12.7788 27.7138 15.0411 27.7138C22.1513 27.7138 27.9688 21.8964 27.9688 14.7861C27.9688 11.3926 26.5952 8.07986 24.1713 5.65591C21.7474 3.23197 18.5154 1.8584 15.0411 1.8584C7.93086 1.8584 2.11339 7.67587 2.19419 14.8669C2.19419 17.2909 2.92137 19.634 4.13335 21.654L4.45654 22.1387L3.16377 26.9058L8.01166 25.6939Z"
               fill="#00E676"
@@ -30,77 +54,6 @@ const FloatingSocialIcons = () => {
               <rect width="30" height="30" fill="white" />
             </clipPath>
           </defs>
-        </svg>
-      </button>
-
-      <button
-        className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-200"
-        aria-label="Share on Twitter"
-      >
-        <svg
-          width="30"
-          height="30"
-          viewBox="0 0 30 30"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M1.875 11.2084C1.875 7.94136 1.875 6.30787 2.51079 5.06005C3.07006 3.96245 3.96245 3.07006 5.06005 2.51079C6.30787 1.875 7.94136 1.875 11.2084 1.875H18.7916C22.0586 1.875 23.6921 1.875 24.9399 2.51079C26.0376 3.07006 26.93 3.96245 27.4892 5.06005C28.125 6.30787 28.125 7.94136 28.125 11.2084V18.7916C28.125 22.0586 28.125 23.6921 27.4892 24.9399C26.93 26.0376 26.0376 26.93 24.9399 27.4892C23.6921 28.125 22.0586 28.125 18.7916 28.125H11.2084C7.94136 28.125 6.30787 28.125 5.06005 27.4892C3.96245 26.93 3.07006 26.0376 2.51079 24.9399C1.875 23.6921 1.875 22.0586 1.875 18.7916V11.2084Z"
-            fill="white"
-          />
-          <path
-            d="M4.6875 22.0879C4.6875 22.8338 5.29686 23.4379 6.04763 23.4379H6.06718C5.30491 23.4379 4.6875 22.8338 4.6875 22.0879Z"
-            fill="#FBBC05"
-          />
-          <path
-            d="M16.3761 11.625V15.1496L21.128 11.3168V7.91249C21.128 7.16663 20.5186 6.5625 19.7678 6.5625H9.47305L9.46387 11.625H16.3761Z"
-            fill="#FBBC05"
-          />
-          <path
-            d="M16.3751 18.676H9.45142L9.44336 23.4381H19.7669C20.5188 23.4381 21.127 22.834 21.127 22.0881V19.0146L16.3751 15.1514V18.676Z"
-            fill="#34A853"
-          />
-          <path
-            d="M9.47269 6.5625L4.6875 11.625H9.46463L9.47269 6.5625Z"
-            fill="#EA4335"
-          />
-          <path
-            d="M4.6875 18.6758V22.0879C4.6875 22.8338 5.30491 23.4379 6.06718 23.4379H9.444L9.45197 18.6758H4.6875Z"
-            fill="#1967D2"
-          />
-          <path
-            d="M9.46463 11.625H4.6875V18.6754H9.45197L9.46463 11.625Z"
-            fill="#4285F4"
-          />
-          <path
-            d="M25.3059 20.887V9.29959C25.038 7.76173 23.3513 9.52459 23.3513 9.52459L21.1289 11.3167V19.0128L24.3102 21.5991C25.4588 21.7499 25.3059 20.887 25.3059 20.887Z"
-            fill="#34A853"
-          />
-          <path
-            d="M16.376 15.149L21.129 19.0134V11.3174L16.376 15.149Z"
-            fill="#188038"
-          />
-        </svg>
-      </button>
-
-      <button
-        className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-200"
-        aria-label="Share on LinkedIn"
-      >
-        <svg
-          width="30"
-          height="30"
-          viewBox="0 0 30 30"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M9.99999 13.125H20M9.99999 18.125H13.75M26.2549 15C26.2549 21.2133 21.2181 26.25 15.0049 26.25C12.4594 26.25 3.75578 26.25 3.75578 26.25C3.75578 26.25 5.70477 21.5701 4.92477 20.001C4.17595 18.4945 3.75488 16.7965 3.75488 15C3.75488 8.7868 8.79167 3.75 15.0049 3.75C21.2181 3.75 26.2549 8.7868 26.2549 15Z"
-            stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
         </svg>
       </button>
     </div>

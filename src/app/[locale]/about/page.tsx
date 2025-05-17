@@ -78,7 +78,7 @@ const AboutPage: React.FC = () => {
                 ].map(({ title, text, image, reverse }, idx) => (
                     <div
                         key={idx}
-                        className={`flex flex-col md:flex-row ${reverse ? 'md:flex-row-reverse' : ''} items-center md:space-x-8 md:space-x-reverse`}
+                        className={`flex flex-col md:flex-row ${reverse ? 'md:flex-row-reverse' : ''} items-center md:gap-8 md:space-x-8 md:space-x-reverse`}
                     >
                         <div className="md:w-1/2 text-center md:text-left">
                             <div className="mb-4">{title}</div>

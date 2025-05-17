@@ -33,7 +33,7 @@ const Hero = ({ projects }: { projects: ProjectType[] }) => {
           ))}
 
           {/* hero title and search */}
-          <div className="flex flex-col py-5 justify-start gap-[clamp(10px,3.75vw,200px)] mt-[clamp(100px,12.021vw,250px)] items-start relative z-[1]">
+          <div className="flex flex-col hero py-5 justify-start gap-[clamp(10px,3.75vw,200px)] mt-[clamp(100px,12.021vw,250px)] items-start relative z-[1]">
             <div className="justify-center uppercase ms-[clamp(10px,4.73958vw,150px)] text-white text-[clamp(20px,6.6666667vw,250px)] font-bold font-['Cinzel'] leading-[clamp(20px,6.6666667vw,250px)] tracking-tight">
               {t("hero_title")}
               <br />
