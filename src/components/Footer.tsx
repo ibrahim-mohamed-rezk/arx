@@ -1,12 +1,33 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useState } from "react";
 import { Link } from "@/i18n/routing";
-import Image from 'next/image';
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { useLocale, useTranslations } from "next-intl";
+import { getData } from "@/libs/axios/server";
+import { AxiosHeaders } from "axios";
+import { ProjectType } from "@/libs/types/types";
 
 const Footer: React.FC = () => {
   const t = useTranslations("header");
   const t2 = useTranslations("subscribe");
+  const [projects, setProjects] = useState<ProjectType[]>([]);
+  const locale  = useLocale();
+
+  useEffect(() => {
+    const feachData = async () => {
+      try {
+        const response = await getData("properties", {}, new AxiosHeaders({
+          lang: locale
+        }));
+        setProjects(response.data);
+      } catch (error) {
+        throw error;
+      }
+    };
+
+    feachData();
+  }, []);
 
   return (
     <div className="relative footer">
@@ -111,10 +132,10 @@ const Footer: React.FC = () => {
               <Link href="/projects">{t("projects")}</Link>
             </h4>
             <ul className="space-y-2 text-sm">
-              {["Full City", "UNI6", "Golden Project", "UNI8"].map((item) => (
-                <li key={item}>
+              {projects.map((item) => (
+                <li key={item.id}>
                   <a href="#" className="hover:text-white transition">
-                    {item}
+                    {item.title}
                   </a>
                 </li>
               ))}
@@ -141,9 +162,9 @@ const Footer: React.FC = () => {
                 <br />
                 <a
                   href="https://wa.me/201001703888"
-                  className="hover:text-white transition"
+                  className="hover:text-white transition flex items-center gap-2"
                 >
-                  📞 01001703888
+                  <FaWhatsapp size={16} /> 01001703888
                 </a>
               </li>
             </ul>
