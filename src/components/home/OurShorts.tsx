@@ -67,7 +67,7 @@ export default function ShortsPage({shorts}:{shorts:ShortsTypes[]}) {
           <h3 className="text-center text-sm font-semibold text-[#035B8D] uppercase">
             {t("title")}
           </h3>
-          <h2 className="mt-2 text-center text-3xl font-serif">
+          <h2 className="mt-2 text-center text-3xl font-serif uppercase">
             {t("description")}
           </h2>
 
