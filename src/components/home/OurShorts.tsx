@@ -64,7 +64,7 @@ export default function ShortsPage({shorts}:{shorts:ShortsTypes[]}) {
 
       <main className="bg-gray-50 py-10">
         <div className="max-w-7xl mx-auto px-4">
-          <h3 className="text-center text-sm font-semibold text-blue-600 uppercase">
+          <h3 className="text-center text-sm font-semibold text-[#035B8D] uppercase">
             {t("title")}
           </h3>
           <h2 className="mt-2 text-center text-3xl font-serif">
