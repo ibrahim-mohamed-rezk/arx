@@ -63,7 +63,7 @@ const ProjectAndBlog = ({
             </h2>
             <a
               href="#"
-              className="mt-4 items-center justify-center w-fit flex gap-1 text-blue-600 font-medium hover:underline"
+              className="mt-4 items-center justify-center w-fit flex gap-1 text-[#035B8D] font-medium hover:underline"
             >
               {t("see_all_projects")}{" "}
               <svg
@@ -155,7 +155,7 @@ const ProjectAndBlog = ({
       {/* ---------------------------- */}
       <section className="container mx-auto px-4">
         <div className="text-center mb-6">
-          <p className="text-sm text-blue-600 uppercase">{t("our_blog")}</p>
+          <p className="text-sm text-[#035B8D] uppercase">{t("our_blog")}</p>
           <h2 className="text-3xl mt-1 font-black">{t("latest_news_feeds")}</h2>
         </div>
 
