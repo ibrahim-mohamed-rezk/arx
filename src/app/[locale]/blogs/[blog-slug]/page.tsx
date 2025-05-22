@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Lato } from "next/font/google";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { AxiosHeaders } from "axios";
@@ -70,11 +69,10 @@ const BlogPage = async ({
               />
             )
         )} */}
-        <Image
+        <img
           src={blog.image}
           alt={blog.title}
           className="w-full h-auto object-cover max-h-[80vh] rounded-lg"
-          priority
           width={1920}
           height={1080}
         />
@@ -116,7 +114,7 @@ const BlogPage = async ({
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
           {latest_blogs.map((src: BlogType, idx: number) => (
             <div key={idx} className="relative rounded-lg overflow-hidden">
-              <Image
+              <img
                 src={src.image}
                 alt={src.title}
                 className="object-cover w-full h-full"
