@@ -155,8 +155,10 @@ const ProjectAndBlog = ({
       {/* ---------------------------- */}
       <section className="container mx-auto px-4">
         <div className="text-center mb-6">
-          <p className="text-sm text-[#035B8D] uppercase">{t("our_blog")}</p>
-          <h2 className="text-3xl mt-1 font-black">{t("latest_news_feeds")}</h2>
+          <h3 className="text-center text-lg  uppercase font-bold text-[#035B8D] mb-2">
+              {t("our_blog")}
+            </h3>
+          <h2 className="text-3xl mt-1 font-[Cinzel] font-black">{t("latest_news_feeds")}</h2>
         </div>
 
         <div className="relative">
