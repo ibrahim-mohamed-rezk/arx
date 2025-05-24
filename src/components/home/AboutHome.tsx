@@ -16,13 +16,13 @@ const AboutHome: NextPage = () => {
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left side with image */}
           <div className="md:w-1/2">
-            <div className="relative h-96 justify-end flex">
+            <div className="relative h-110 justify-end flex">
             <img
               src="https://storage.googleapis.com/furniture-hub/arx/about_us/About%20us%20(1).webp"
               alt="Luxury Real Estate Building"
               width="300"
               height="40"
-              className="rounded-lg shadow-lg h-full w-full object-cover"
+              className="rounded-lg shadow-lg "
             />
 
               <div className="absolute -bottom-6 shadow left-6 bg-[#F1F3F3] p-4 rounded-lg">
