@@ -32,10 +32,10 @@ const AboutHome: NextPage = () => {
 
           {/* Right side with content */}
           <div className="md:w-2/3">
-            <div className="text-sm  text-[#035B8D] mb-2">
+            <div className="text-lg  text-[#035B8D] mb-2">
               {t("title")}
             </div>
-            <h1 className="text-4xl font-bold  text-gray-900 mb-6">
+            <h1 className="text-4xl font-bold font-[Cinzel] text-gray-900 mb-6">
               {t("description")}
             </h1>
 
