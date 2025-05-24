@@ -251,7 +251,7 @@ const ProjectAndBlog = ({
       {/* Testimonials Section */}
       {/* ---------------------------- */}
       <section className="container mx-auto px-4 mb-20 relative">
-        <h2 className="text-center text-3xl font-black mb-6">
+        <h2 className="text-center font-[Cinzel] text-3xl font-black mb-6">
           {t("trusted_by_clients")}
         </h2>
         <div className="max-w-xl mx-auto">
