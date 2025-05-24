@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { AxiosHeaders } from "axios";
 import { getData } from "@/libs/axios/server";
 
-const baseUrl = "https://yourdomain.com"; // Replace with your domain
+const baseUrl = "https://www.arxeg.com"; // Replace with your domain
 const locales = ["en", "ar"];
 
 const staticPaths = ["", "/about", "/contact", "/fqas", "/projects", "/blogs"];
