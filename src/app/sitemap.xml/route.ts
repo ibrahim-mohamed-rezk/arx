@@ -14,7 +14,7 @@ async function getAllBlogs(locale: string) {
       {},
       new AxiosHeaders({ lang: locale })
     );
-    return response.data;
+    return response.data.blogs;
   } catch (error) {
     console.error(`Error fetching blogs for ${locale}:`, error);
     return [];
