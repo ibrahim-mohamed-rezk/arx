@@ -50,7 +50,7 @@ const AboutHome: NextPage = () => {
                   height={40}
                   className="mb-4"
                 />
-                <h3 className="text-fluid-lg  mb-2">{t("vision_title")}</h3>
+                <h3 className="text-fluid-lg font-bold  mb-2">{t("vision_title")}</h3>
                 <p className="text-fluid-base text-gray-600">
                   {t("vision_description")}
 
@@ -66,7 +66,7 @@ const AboutHome: NextPage = () => {
                   height={40}
                   className="mb-4"
                 />
-                <h3 className="text-fluid-lg  mb-2">{t("mission_title")}</h3>
+                <h3 className="text-fluid-lg font-bold  mb-2">{t("mission_title")}</h3>
                 <p className="text-fluid-base text-gray-600">
                   {t("mission_description")}
                 </p>
@@ -81,7 +81,7 @@ const AboutHome: NextPage = () => {
                   height={40}
                   className="mb-4"
                 />
-                <h3 className="text-fluid-lg  mb-2">{t("values_title")}</h3>
+                <h3 className="text-fluid-lg font-bold  mb-2">{t("values_title")}</h3>
                 <p className="text-fluid-base text-gray-600">
                   {t("values_description")}
                 </p>
