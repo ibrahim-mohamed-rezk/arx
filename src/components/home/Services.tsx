@@ -12,8 +12,8 @@ const ServicesPage = ({ services }: { services: ServiceTypes[] }) => {
     <div className="max-w-6xl mx-auto px-4 py-16">
       {/* Header Section */}
       <div className="text-center mb-16">
-        <h4 className="text-[#035B8D] mb-2">{t("title")}</h4>
-        <h2 className="text-3xl md:text-3xl font-bold">{t("description")}</h2>
+        <h4 className="text-[#035B8D] text-lg font-bold mb-2">{t("title")}</h4>
+        <h2 className="text-3xl font-[Cinzel] md:text-3xl font-bold">{t("description")}</h2>
       </div>
 
       {/* Services Grid */}
