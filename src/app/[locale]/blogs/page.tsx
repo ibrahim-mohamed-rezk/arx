@@ -1,5 +1,4 @@
 import { Link } from "@/i18n/routing";
-import Image from "next/image";
 import "/public/css/blogs.css";
 import BlogVideos from "./BlogVideos";
 import { getData } from "@/libs/axios/server";
@@ -85,11 +84,10 @@ const BlogsPage = async ({
                   style={{ paddingBottom: "60%" }}
                 >
                   <div className="absolute inset-0 bg-gray-300">
-                    <Image
+                    <img
                       src={post.cover || "/placeholder.jpg"}
                       alt={post.title}
-                      layout="fill"
-                      objectFit="cover"
+                      className="w-full h-full"
                     />
                   </div>
                 </div>

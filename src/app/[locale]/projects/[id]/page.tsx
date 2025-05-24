@@ -34,7 +34,7 @@ const ProjectPage: React.FC = () => {
   const [projectData, setProjectData] = useState<ProjectType | null>(null);
   const [openForm, setOpenForm] = useState(false);
   const [activeFloor, setActiveFloor] = useState(
-    projectData?.property_payment_plans[0].id || 1
+    projectData?.property_floor_plans[0]?.id || 1
   );
   // Create photo gallery images
   const photoGalleryImages = Array(6).fill("https://placehold.co/600x400");
@@ -553,7 +553,7 @@ const ProjectPage: React.FC = () => {
         <div className="flex lg:flex-row items-center justify-between w-full lg:gap-6 gap-0  flex-col  sm:gap-10">
           {/* tabs */}
           <div className="flex flex-row sm:flex-row md:flex-row lg:flex-col bg-[#FFFFFF] gap-2 py-3 rounded-full px-7 overflow-x-auto md:overflow-visible">
-            {projectData?.property_floor_plans.map((item) => (
+            {projectData?.property_floor_plans?.map((item) => (
               <button
                 key={item.id}
                 onClick={() => setActiveFloor(item.id)}
@@ -572,7 +572,7 @@ const ProjectPage: React.FC = () => {
             <div className="w-fit">
               <img
                 src={
-                  projectData?.property_floor_plans.find(
+                  projectData?.property_floor_plans?.find(
                     (plan) => plan.id === activeFloor
                   )?.image
                 }
@@ -585,7 +585,12 @@ const ProjectPage: React.FC = () => {
     },
   ];
 
+  if (!projectData) {
+    return <div>Loading...</div>;
+  }
+
   return (
+
     <div className="relative w-full overflow-hidden bg-white pb-30   py-7 rounded-bl-lg rounded-br-lg">
       <div
         className="relative w-full h-[90vh] overflow-hidden rounded-bl-lg rounded-br-lg "
