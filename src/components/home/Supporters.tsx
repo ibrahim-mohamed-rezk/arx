@@ -18,25 +18,25 @@ const SupportersPage: React.FC = () => {
                 <div className="absolute inset-0 bg-[#060B0EE0]" />
                 <div className="relative md:border-r md:border-white/50">
                     <span className="text-4xl font-bold font-[Cinzel]">
-                        20<span className="text-2xl align-top text-[#E2A12A]">+</span>
+                        20<span className="text-2xl font-bold align-top text-[#E2A12A]">+</span>
                     </span>
                     <p className="mt-2 text-sm font-[Cinzel]">{t("years")}</p>
                 </div>
                 <div className="relative md:border-r md:border-white/50">
                     <span className="text-4xl font-bold font-[Cinzel]">
-                        2.5K<span className="text-2xl align-top text-[#E2A12A]">+</span>
+                        2.5K<span className="text-2xl font-bold align-top text-[#E2A12A]">+</span>
                     </span>
                     <p className="mt-2 text-sm font-[Cinzel]">{t("units")}</p>
                 </div>
                 <div className="relative md:border-r md:border-white/50">
                     <span className="text-4xl font-bold font-[Cinzel]">
-                        170<span className="text-2xl align-top text-[#E2A12A]">+</span>
+                        170<span className="text-2xl align-top font-bold text-[#E2A12A]">+</span>
                     </span>
                     <p className="mt-2 text-sm font-[Cinzel]">{t("constructions")}</p>
                 </div>
                 <div className="relative">
                     <span className="text-4xl font-bold font-[Cinzel]">
-                        2K<span className="text-2xl align-top text-[#E2A12A]">+</span>
+                        2K<span className="text-2xl font-bold align-top text-[#E2A12A]">+</span>
                     </span>
                     <p className="mt-2 text-sm font-[Cinzel]">{t("clients")}</p>
                 </div>
