@@ -158,7 +158,10 @@ const ProjectAndBlog = ({
           <h3 className="text-center text-lg  uppercase font-bold text-[#035B8D] mb-2">
               {t("our_blog")}
             </h3>
-          <h2 className="text-3xl mt-1 font-[Cinzel] font-black">{t("latest_news_feeds")}</h2>
+            <h2 
+            className="mt-2 text-center font-[Cinzel] text-3xl md:text-4xl font-bold uppercase"
+            dangerouslySetInnerHTML={{ __html: t("latest_news_feeds") }}
+          />
         </div>
 
         <div className="relative">
