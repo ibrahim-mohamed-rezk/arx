@@ -195,10 +195,9 @@ const ProjectAndBlog = ({
                   className="rounded overflow-hidden"
                 >
                   <div className="relative w-full h-48">
-                    <Image
+                    <img
                       src={post.image}
                       alt={post.title}
-                      fill
                       className="object-cover"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-black/10 bg-opacity-50 p-4">
