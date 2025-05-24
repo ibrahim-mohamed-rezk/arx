@@ -68,7 +68,7 @@ export default function ShortsPage({shorts}:{shorts:ShortsTypes[]}) {
             {t("title")}
           </h3>
           <h2 
-            className="mt-2 text-center text-3xl md:text-4xl font-bold uppercase"
+            className="mt-2 text-center font-[Cinzel] text-3xl md:text-4xl font-bold uppercase"
             dangerouslySetInnerHTML={{ __html: t("description") }}
           />
 
