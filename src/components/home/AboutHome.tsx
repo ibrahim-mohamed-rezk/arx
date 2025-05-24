@@ -22,7 +22,7 @@ const AboutHome: NextPage = () => {
               alt="Luxury Real Estate Building"
               width="300"
               height="40"
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg h-full w-full object-cover"
             />
 
               <div className="absolute -bottom-6 shadow left-6 bg-[#F1F3F3] p-4 rounded-lg">
