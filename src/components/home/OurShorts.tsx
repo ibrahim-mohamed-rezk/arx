@@ -67,9 +67,10 @@ export default function ShortsPage({shorts}:{shorts:ShortsTypes[]}) {
           <h3 className="text-center text-sm font-medium text-[#035B8D] mb-2">
             {t("title")}
           </h3>
-          <h2 className="mt-2 text-center text-3xl md:text-4xl font-bold uppercase">
-            {t("description")}
-          </h2>
+          <h2 
+            className="mt-2 text-center text-3xl md:text-4xl font-bold uppercase"
+            dangerouslySetInnerHTML={{ __html: t("description") }}
+          />
 
           <div className="relative mt-8">
             {/* Left Arrow */}
