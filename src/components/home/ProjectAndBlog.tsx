@@ -55,7 +55,7 @@ const ProjectAndBlog = ({
         <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
           {/* Left: Title + link (25% on lg) */}
           <div>
-            <p className="text-sm uppercase font-extrabold font-[Cinzel] text-gray-900">
+            <p className="text-4xl uppercase font-extrabold font-[Cinzel] text-gray-900">
               {t("our_latest")}
             </p>
             <h2 className="mt-2 text-4xl font-extrabold font-[Cinzel] text-gray-900">
