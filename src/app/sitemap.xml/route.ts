@@ -1,21 +1,34 @@
 import { NextResponse } from "next/server";
+import { AxiosHeaders } from "axios";
+import { getData } from "@/libs/axios/server";
 
-const baseUrl = "https://yourdomain.com"; // change this!
+const baseUrl = "https://yourdomain.com"; // Replace with your domain
 const locales = ["en", "ar"];
 
 const staticPaths = ["", "/about", "/contact", "/fqas", "/projects", "/blogs"];
 
-// 👇 Real data fetch from your API
-async function getAllBlogs() {
-  const res = await fetch("https://arx-test.com/api/v1/blogs");
-  const json = await res.json();
-  return json.data || [];
+async function getAllBlogs(locale: string) {
+  try {
+    const response = await getData(
+      "blogs",
+      {},
+      new AxiosHeaders({ lang: locale })
+    );
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching blogs for ${locale}:`, error);
+    return [];
+  }
 }
 
 async function getAllProjects() {
-  const res = await fetch("https://arx-test.com/api/v1/properties");
-  const json = await res.json();
-  return json.data || [];
+  try {
+    const response = await getData("properties");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching projects:", error);
+    return [];
+  }
 }
 
 export async function GET() {
@@ -24,14 +37,13 @@ export async function GET() {
   // Static localized pages
   for (const locale of locales) {
     for (const path of staticPaths) {
-      const fullPath = path === "" ? "" : `${path}`;
-      urls.push(`${baseUrl}/${locale}${fullPath}`);
+      urls.push(`${baseUrl}/${locale}${path}`);
     }
   }
 
-  // Dynamic blogs
-  const blogs = await getAllBlogs();
+  // Dynamic localized blogs
   for (const locale of locales) {
+    const blogs = await getAllBlogs(locale);
     for (const blog of blogs) {
       if (blog.slug) {
         urls.push(`${baseUrl}/${locale}/blogs/${blog.slug}`);
@@ -39,7 +51,7 @@ export async function GET() {
     }
   }
 
-  // Dynamic projects
+  // Projects: use ID, assumed to be locale-independent
   const projects = await getAllProjects();
   for (const locale of locales) {
     for (const project of projects) {
@@ -49,7 +61,7 @@ export async function GET() {
     }
   }
 
-  // Build the sitemap XML
+  // Build XML
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls
