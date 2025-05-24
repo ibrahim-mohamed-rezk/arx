@@ -21,12 +21,16 @@ async function getAllBlogs(locale: string) {
   }
 }
 
-async function getAllProjects() {
+async function getAllProjects(locale: string) {
   try {
-    const response = await getData("properties");
+    const response = await getData(
+      "properties",
+      {},
+      new AxiosHeaders({ lang: locale })
+    );
     return response.data;
   } catch (error) {
-    console.error("Error fetching projects:", error);
+    console.error(`Error fetching blogs for ${locale}:`, error);
     return [];
   }
 }
@@ -50,16 +54,17 @@ export async function GET() {
       }
     }
   }
-
-  // Projects: use ID, assumed to be locale-independent
-  const projects = await getAllProjects();
+  
+  // Dynamic localized blogs
   for (const locale of locales) {
+    const projects = await getAllProjects(locale);
     for (const project of projects) {
-      if (project.id) {
-        urls.push(`${baseUrl}/${locale}/projects/${project.id}`);
+      if (project.slug) {
+        urls.push(`${baseUrl}/${locale}/projects/${project.slug}`);
       }
     }
   }
+
 
   // Build XML
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
