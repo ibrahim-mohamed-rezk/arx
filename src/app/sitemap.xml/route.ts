@@ -1,25 +1,27 @@
-// app/sitemap.xml/route.ts
 import { NextResponse } from "next/server";
 
-const baseUrl = "https://www.arxeg.com";
+const baseUrl = "https://yourdomain.com"; // change this!
 const locales = ["en", "ar"];
 
-// Static paths (no trailing slash)
 const staticPaths = ["", "/about", "/contact", "/fqas", "/projects", "/blogs"];
 
-// Dummy dynamic data – replace with your DB or CMS queries
+// 👇 Real data fetch from your API
 async function getAllBlogs() {
-  return [{ slug: "ai-trends" }, { slug: "nextjs-guide" }];
+  const res = await fetch("https://arx-test.com/api/v1/blogs");
+  const json = await res.json();
+  return json.data || [];
 }
 
 async function getAllProjects() {
-  return [{ id: "123" }, { id: "456" }];
+  const res = await fetch("https://arx-test.com/api/v1/properties");
+  const json = await res.json();
+  return json.data || [];
 }
 
 export async function GET() {
   const urls: string[] = [];
 
-  // Static paths
+  // Static localized pages
   for (const locale of locales) {
     for (const path of staticPaths) {
       const fullPath = path === "" ? "" : `${path}`;
@@ -27,34 +29,39 @@ export async function GET() {
     }
   }
 
-  // Dynamic: blogs/[blog-slug]
+  // Dynamic blogs
   const blogs = await getAllBlogs();
   for (const locale of locales) {
     for (const blog of blogs) {
-      urls.push(`${baseUrl}/${locale}/blogs/${blog.slug}`);
+      if (blog.slug) {
+        urls.push(`${baseUrl}/${locale}/blogs/${blog.slug}`);
+      }
     }
   }
 
-  // Dynamic: projects/[id]
+  // Dynamic projects
   const projects = await getAllProjects();
   for (const locale of locales) {
     for (const project of projects) {
-      urls.push(`${baseUrl}/${locale}/projects/${project.id}`);
+      if (project.id) {
+        urls.push(`${baseUrl}/${locale}/projects/${project.id}`);
+      }
     }
   }
 
+  // Build the sitemap XML
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${urls
-      .map(
-        (url) => `
-        <url>
-          <loc>${url}</loc>
-          <lastmod>${new Date().toISOString()}</lastmod>
-        </url>`
-      )
-      .join("")}
-  </urlset>`;
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls
+  .map(
+    (url) => `
+  <url>
+    <loc>${url}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </url>`
+  )
+  .join("")}
+</urlset>`;
 
   return new NextResponse(sitemap, {
     headers: {
