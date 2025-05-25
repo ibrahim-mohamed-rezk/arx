@@ -90,12 +90,12 @@ const PhotosSwiper = ({
                         key={image.id}
                         className="aspect-video bg-gray-200 rounded-md overflow-hidden relative group cursor-pointer"
                       >
-                        <Image
-                          src={image.image}
-                          alt={`Property image ${actualIndex + 1}`}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
+                      <img
+                        src={image.image}
+                        alt={`Property image ${actualIndex + 1}`}
+                        className="object-cover transition-transform duration-300 group-hover:scale-110 w-full h-full"
+                      />
+
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                       </div>
                     );
