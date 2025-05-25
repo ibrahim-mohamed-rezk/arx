@@ -18,12 +18,11 @@ const Hero = ({ projects }: { projects: ProjectType[] }) => {
               key={index}
               className="w-full absolute top-0 left-0 right-0 bottom-0 z-0"
             >
-              <Image
-                fill
+              <img
                 src={
                   projects[index]?.image || `/images/home/banner${index}.png`
                 }
-                className={`w-full h-full transition-all duration-[1s] object-cover`}
+                className={`w-full h-full transition-all duration-[1s] object-cover absolute inset-0`}
                 style={{
                   opacity: index !== activeImage ? "0%" : "100%",
                 }}
