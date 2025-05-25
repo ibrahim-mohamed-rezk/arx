@@ -1,7 +1,6 @@
 "use client";
 
 import { ProjectType } from "@/libs/types/types";
-import Image from "next/image";
 import { useEffect, useState, useCallback } from "react";
 
 const PhotosSwiper = ({
