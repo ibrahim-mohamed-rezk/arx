@@ -609,10 +609,9 @@ const ProjectPage: React.FC = () => {
         >
           <div className="relative w-full h-[90vh]">
             <div className="absolute inset-0">
-              <Image
+              <img
                 src={projectData?.image || ""}
                 alt={`project image`}
-                fill
                 className="object-cover"
               />
             </div>
@@ -716,9 +715,9 @@ const ProjectPage: React.FC = () => {
               fontSize: "clamp(0.875rem, 1.5vw, 1rem)",
               lineHeight: "clamp(1.25rem, 2vw, 1.5rem)",
             }}
-          >
-            {projectData?.description}
-          </div>
+            dangerouslySetInnerHTML={{ __html: projectData?.description }}
+          />
+          
         </div>
 
         {/* Buttons Section */}

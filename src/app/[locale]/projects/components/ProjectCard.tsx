@@ -3,7 +3,13 @@ import { Link } from "@/i18n/routing";
 import { ProjectType } from "@/libs/types/types";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-const ProjectCard = ({ project, locale }: { project?: ProjectType, locale: string }) => {
+const ProjectCard = ({
+  project,
+  locale,
+}: {
+  project?: ProjectType;
+  locale: string;
+}) => {
   const t = useTranslations("projects");
   return (
     <div className="w-full max-w-[480px] h-auto relative shadow-[1px_1px_10px_0px_rgba(191,191,191,0.50)] overflow-hidden">
@@ -24,9 +30,10 @@ const ProjectCard = ({ project, locale }: { project?: ProjectType, locale: strin
               <div className="text-[#060B0E] text-2xl md:text-4xl font-bold font-['Lato'] leading-tight tracking-tight mb-4">
                 {project?.title}
               </div>
-              <div className="text-dark-gray text-sm font-normal text-[#494D50] font-['Lato'] leading-normal tracking-tight mb-6">
-                {project?.description}
-              </div>
+              <div
+                className="text-dark-gray text-sm font-normal text-[#494D50] font-['Lato'] leading-normal tracking-tight mb-6"
+                dangerouslySetInnerHTML={{ __html: project?.description || "" }}
+              />
               <div className="flex items-center gap-1 mt-4">
                 <svg
                   width="16"
@@ -54,7 +61,6 @@ const ProjectCard = ({ project, locale }: { project?: ProjectType, locale: strin
                     {project?.catigories}
                   </div>
                 </div>
-               
               </div>
 
               <Link href={`projects/${project?.slug}`} className="mt-auto">
