@@ -47,8 +47,8 @@ const SupportersPage: React.FC = () => {
                 <Image
                     src={partnersImg}
                     alt="Our Partners"
-                    width={600}
-                    height={100}
+                    width={700}
+                    height={150}
                 />
             </div>
         </section>
