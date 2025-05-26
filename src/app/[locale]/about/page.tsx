@@ -122,7 +122,7 @@ const AboutPage: React.FC = () => {
                             <span className="text-[clamp(2rem,5vw,3rem)] font-['Cinzel'] text-blue-800">+20</span>
                             <p 
                               className="text-bold text-gray-600 font-['Lato']"
-                              dangerouslySetInnerHTML={{ __html: t("years_of_experience") }}
+                              dangerouslySetInnerHTML={{ __html: t("years") }}
                             />
                         </div>
                     </div>
@@ -161,11 +161,10 @@ const AboutPage: React.FC = () => {
                     {directors.map((dir, i) => (
                         <div key={i} className="bg-white shadow-lg rounded-lg overflow-hidden h-[500px] flex flex-col">
                             <div className="h-[300px] relative">
-                                <Image
+                                <img
                                     src={dir.img}
                                     alt={dir.name}
-                                    fill
-                                    className="object-cover object-center"
+                                    className="w-full h-full object-cover object-center"
                                 />
                             </div>
                             <div className="p-6 text-center flex-1 flex flex-col">
