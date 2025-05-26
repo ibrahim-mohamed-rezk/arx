@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full max-w-7xl lg:px-34">
         <div className="bg-gradient-to-b from-[#0C0E11] via-[#1A1C1F] to-[#2c2e31] rounded-lg p-6 flex flex-col md:flex-row justify-between items-center shadow-lg">
           <div className=" space-y-5 text-center md:text-left mb-4 md:mb-0">
-            <h3 className="text-lg font-semibold text-white">
+            <h3 className="text-lg font-[Cinzel] font-bold text-white">
               {t2("join_us")}
             </h3>
             <p className="text-sm text-gray-400">
