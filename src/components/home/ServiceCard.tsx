@@ -35,7 +35,7 @@ const ServiceCard = ({
       <h3 className="text-xl font-semibold mb-4">{title}</h3>
       {mounted && (
         <div 
-          className="text-gray-600 text-start"
+          className="text-gray-600 text-center"
           dangerouslySetInnerHTML={{ 
             __html: sanitizedDescription 
           }}
