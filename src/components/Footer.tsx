@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#">📍 Mansoura</a>
+                <a href="#">📍 Montaser Tower, El-Geish Street - Intersection of El-Sherif El-Radi Street - Mansoura Second Section</a>
               </li>
             </ul>
           </div>

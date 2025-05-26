@@ -46,7 +46,7 @@ const AboutPage: React.FC = () => {
                         title: (
                             <div className="flex items-center gap-4">
                                 <hr className="w-16 border-t-2 border-gray-800" />
-                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-semibold">{t("vision_title")}</span>
+                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-[Cinzel] font-semibold">{t("vision_title")}</span>
                             </div>
                         ),
                         text: t("vision_description"),
@@ -56,7 +56,7 @@ const AboutPage: React.FC = () => {
                     {
                         title: (
                             <div className="flex items-center justify-end gap-4">
-                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-semibold">{t("mission_title")}</span>
+                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-[Cinzel] font-semibold">{t("mission_title")}</span>
                                 <hr className="w-16 border-t-2 border-gray-800" />
                             </div>
                         ),
@@ -68,7 +68,7 @@ const AboutPage: React.FC = () => {
                         title: (
                             <div className="flex items-center gap-4">
                                 <hr className="w-16 border-t-2 border-gray-800" />
-                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-semibold">{t("values_title")}</span>
+                                <span className="text-[clamp(1.5rem,2.5vw,2rem)] font-[Cinzel] font-semibold">{t("values_title")}</span>
                             </div>
                         ),
                         text: t("values_description"),
@@ -120,7 +120,10 @@ const AboutPage: React.FC = () => {
                         </div>
                         <div className="absolute flex flex-col items-center justify-center bg-white w-40 h-40 sm:w-48 sm:h-48 rounded-full border border-gray-200">
                             <span className="text-[clamp(2rem,5vw,3rem)] font-['Cinzel'] text-blue-800">+20</span>
-                            <p className="text-sm text-gray-600 font-['Lato']">Years Of Experience</p>
+                            <p 
+                              className="text-bold text-gray-600 font-['Lato']"
+                              dangerouslySetInnerHTML={{ __html: t("years_of_experience") }}
+                            />
                         </div>
                     </div>
                     {/* Other Stats */}
@@ -129,19 +132,19 @@ const AboutPage: React.FC = () => {
                             <span className="text-[clamp(2rem,4vw,3rem)] font-['Cinzel'] text-[##024064]">
                                 2.5K<span className="text-4xl text-yellow-500 pb-50 mb-50">+</span>
                             </span>
-                            <span className="text-sm text-[##060B0E] mt-1">Units Sold</span>
+                            <span className="text-bold text-[##060B0E] mt-1">{t("units")}</span>
                         </div>
                         <div className="flex flex-col items-center">
                             <span className="text-[clamp(2rem,4vw,3rem)] font-['Cinzel'] text-[##024064]">
                                 170<span className="text-4xl text-yellow-500 pb-50 mb-50">+</span>
                             </span>
-                            <span className="text-sm text-[##060B0E] mt-1">Total Constructions</span>
+                            <span className="text-bold text-[##060B0E] mt-1">{t("constructions")}</span>
                         </div>
                         <div className="flex flex-col items-center">
                             <span className="text-[clamp(2rem,4vw,3rem)] font-['Cinzel'] text-[##024064]">
                                 2K<span className="text-4xl text-yellow-500 pb-50 mb-50">+</span>
                             </span>
-                            <span className="text-sm text-[##060B0E] mt-1">Customers Number</span>
+                            <span className="text-bold text-[##060B0E] mt-1">{t("clients")}</span>
                         </div>
                     </div>
                 </div>
@@ -154,21 +157,21 @@ const AboutPage: React.FC = () => {
                         Chairman Of The Board Of Directors Speech
                     </h2>
                 </div>
-                <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-4 pb-10 items-center text-center">
+                <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-4 pb-10 items-stretch text-center">
                     {directors.map((dir, i) => (
-                        <div key={i} className="bg-white shadow-lg rounded-lg overflow-hidden">
-                            <Image
-                                src={dir.img}
-                                alt={dir.name}
-                                width={300}
-                                height={800}
-                                className="w-full h-auto object-cover object-center"
-                            />
-                            <div className="p-6 text-center">
-                                <h3 className="text-xl font-semibold mb-2">{dir.name}</h3>
-                                <p className="text-sm text-gray-600">
+                        <div key={i} className="bg-white shadow-lg rounded-lg overflow-hidden h-[500px] flex flex-col">
+                            <div className="h-[300px] relative">
+                                <Image
+                                    src={dir.img}
+                                    alt={dir.name}
+                                    fill
+                                    className="object-cover object-center"
+                                />
+                            </div>
+                            <div className="p-6 text-center flex-1 flex flex-col">
+                                <h3 className="text-[clamp(1.25rem,2vw,1.5rem)] font-extrabold mb-2">{dir.name}</h3>
+                                <p className="text-sm text-gray-600 flex-1">
                                     {dir.describe}
-                           
                                 </p>
                             </div>
                         </div>

@@ -110,7 +110,7 @@ const ProjectAndBlog = ({
             {/* Next arrow → on the far LEFT */}
             <button
               onClick={nextProj}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 rounded-full p-2 shadow"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#035B8D] hover:bg-[#E1A12B] rounded-full p-2 shadow transition"
             >
               <span className="sr-only">Next</span>
               <svg

@@ -37,7 +37,10 @@
         "saad_describe": "Board member at ARX Real Estate Development, Saad brings deep industry expertise and forward-thinking leadership. He plays a key role in shaping ARX’s strategic direction, driving innovation and sustainability to ensure every project aligns with global standards and market expectations.",
         "osama_describe": "Board member of ARX Real Estate Development, Dr. Osama Omar leads with strategic vision and a passion for excellence, helping ARX push boundaries in real estate innovation, sustainability, and quality—setting the stage for lasting impact and continued success in the industry.",
         "who_we": "WHO WE ",
-        "are":"ARE?"
+        "are":"ARE?",
+        "units":"Units Sold",
+        "constructions":"Total Constructions",
+        "clients":"Total Clients"
     },
     "shorts":{
         "title": "OUR SHORTS",
