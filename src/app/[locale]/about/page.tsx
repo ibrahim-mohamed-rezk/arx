@@ -160,7 +160,7 @@ const AboutPage: React.FC = () => {
                 <div className="max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-4 pb-10 items-stretch text-center">
                     {directors.map((dir, i) => (
                         <div key={i} className="bg-white shadow-lg rounded-lg overflow-hidden h-[600px] flex flex-col">
-                            <div className="h-[300px] relative">
+                            <div className="h-[320px] relative">
                                 <img
                                     src={dir.img}
                                     alt={dir.name}
