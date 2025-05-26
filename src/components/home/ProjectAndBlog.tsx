@@ -62,7 +62,7 @@ const ProjectAndBlog = ({
               {t("projects")}
             </h2>
             <a
-              href="#"
+              href="/projects"
               className="mt-4 items-center justify-center w-fit flex gap-1 text-[#035B8D] font-medium hover:underline"
             >
               {t("see_all_projects")}{" "}
