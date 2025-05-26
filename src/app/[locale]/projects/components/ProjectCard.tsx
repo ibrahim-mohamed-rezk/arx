@@ -49,7 +49,7 @@ const ProjectCard = ({
                 </svg>
 
                 <div className="text-text-text-on-color text-[#060B0E] text-sm font-bold font-['Lato'] leading-normal tracking-wide">
-                  {project?.location}
+                  {project?.location} 
                 </div>
               </div>
             </div>
