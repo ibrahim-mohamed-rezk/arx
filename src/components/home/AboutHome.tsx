@@ -25,7 +25,7 @@ const AboutHome: NextPage = () => {
               className="rounded-lg shadow-lg "
             />
 
-              <div className="absolute -bottom-6 shadow left-6 bg-[#F1F3F3] p-4 rounded-lg">
+              <div className="absolute -bottom-6 shadow left-9 bg-[#F1F3F3] p-4 rounded-lg">
                 <SVGComponent className="h-25 w-20 mb-2" />
               </div>
             </div>
