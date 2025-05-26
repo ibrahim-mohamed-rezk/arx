@@ -61,9 +61,9 @@ const ProjectAndBlog = ({
             <h2 className="mt-2 text-4xl font-extrabold font-[Cinzel] text-gray-900">
               {t("projects")}
             </h2>
-            <a
+            <Link
               href="/projects"
-              className="mt-4 items-center justify-center w-fit flex gap-1 text-[#035B8D] font-medium hover:underline"
+              className="mt-4 items-center justify-center w-fit flex gap-1 text-[#035B8D] font-medium transition hover:text-[#E1A12B]"
             >
               {t("see_all_projects")}{" "}
               <svg
@@ -79,7 +79,7 @@ const ProjectAndBlog = ({
                   fill="#035B8D"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* Slider (75% on lg) */}
