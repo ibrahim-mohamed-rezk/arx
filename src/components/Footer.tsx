@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
       {/* spacing top for newsletter */}
       {/* Newsletter Section Floating Above */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full max-w-7xl lg:px-34">
-        <div className="bg-gradient-to-l from-[#0C0E11] via-[#1A1C1F] to-[#2c2e31] rounded-lg p-6 flex flex-col md:flex-row justify-between items-center shadow-lg">
+        <div className="bg-gradient-to-r from-[#494D50]  backdrop-blur-blur to-[#060B0E] rounded-lg p-6 flex flex-col md:flex-row justify-between items-center shadow-lg">
           <div className=" space-y-5 text-center md:text-left mb-4 md:mb-0">
             <h3 className="text-lg font-[Cinzel] font-bold text-white">
               {t2("join_us")}
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
       {/* Footer Content */}
-      <footer className="bg-gradient-to-l from-[#0C0E11] via-[#1A1C1F] to-[#2c2e31] text-gray-300 pt-28 pb-10 lg:px-44">
+      <footer className="bg-gradient-to-r  backdrop-blur-blur from-[#494D50] via-[#1C2023] to-[#060B0E] text-gray-300 pt-28 pb-10 lg:px-44">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ">
           {/* Logo + Description */}
           <div>
@@ -87,7 +87,10 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#">📍 Montaser Tower, El-Geish Street - Intersection of El-Sherif El-Radi Street - Mansoura Second Section</a>
+                <a href="#">
+                  📍 Montaser Tower, El-Geish Street - Intersection of El-Sherif
+                  El-Radi Street - Mansoura Second Section
+                </a>
               </li>
             </ul>
           </div>
