@@ -107,7 +107,7 @@ const Header = () => {
               className="flex items-center text-white font-bold font-['Lato'] text-sm"
               onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
             >
-              <img className="w-6 h-6 rounded-full overflow-hidden me-1.5" src={`/images/${language}.svg`} alt="lang" />
+              <img className="w-6 h-6 rounded-full overflow-hidden me-1.5" src={`/images/${language.toLocaleLowerCase()}.svg`} alt="lang" />
               {language}
               <svg
                 className={`ml-1 h-4 w-4 transition-transform ${
