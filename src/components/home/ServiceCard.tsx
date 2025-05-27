@@ -22,10 +22,10 @@ const ServiceCard = ({
   }, [description]);
 
   return (
-    <div className="flex flex-col items-center text-center">
+    <div className="flex hover:border-b hover:scale-[1.03] border-[#035B8D] duration-200 pb-1 rounded-lg cursor-pointer flex-col items-center text-center">
       <div className="bg-gray-100 p-4 rounded-full mb-6 w-24 h-24 flex items-center justify-center">
-        <Image 
-          src={icon} 
+        <Image
+          src={icon}
           alt={`${title} service icon`}
           width={48}
           height={48}
@@ -34,10 +34,10 @@ const ServiceCard = ({
       </div>
       <h3 className="text-xl font-semibold mb-4">{title}</h3>
       {mounted && (
-        <div 
+        <div
           className="text-gray-600 text-center"
-          dangerouslySetInnerHTML={{ 
-            __html: sanitizedDescription 
+          dangerouslySetInnerHTML={{
+            __html: sanitizedDescription,
           }}
         />
       )}
