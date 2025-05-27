@@ -49,7 +49,7 @@ const BlogVideos = () => {
   };
 
   return (
-    <section className="mb-12">
+    <section className="mb-12 mt-12">
       <div className="flex items-center justify-between mb-4">
         <h2
           className="text-xl md:text-2xl font-bold"
