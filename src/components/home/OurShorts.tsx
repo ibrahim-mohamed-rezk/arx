@@ -3,7 +3,6 @@ import React, { useRef, useState, useEffect } from "react";
 import Head from "next/head";
 import { useTranslations } from "next-intl";
 import { ShortsTypes } from "@/libs/types/types";
-import Image from "next/image";
 
 // Update image imports to use public path
 const sliderImage01 =
