@@ -3,7 +3,6 @@ import React, { useRef, useState, useEffect } from "react";
 import Head from "next/head";
 import { useTranslations } from "next-intl";
 import { ShortsTypes } from "@/libs/types/types";
-import Image from "next/image";
 
 // Update image imports to use public path
 const sliderImage01 =
@@ -107,11 +106,10 @@ export default function ShortsPage({shorts}:{shorts:ShortsTypes[]}) {
                   >
                     {/* Background Image */}
                     <div className="relative w-full h-full">
-                      <Image
+                      <img
                         src={video?.thumbnail || video?.background || sliderImage01}
                         alt={video?.title || "Video thumbnail"}
-                        fill
-                        className="brightness-90"
+                        className="brightness-90 w-full h-full object-cover"
                       />
                       
                       {/* Play button overlay */}

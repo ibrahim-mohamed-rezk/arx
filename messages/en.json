@@ -32,17 +32,21 @@
         "values_title" : "VALUES",
         "learn_more": "Learn More",
         "values_description": "At Arx, we uphold quality, integrity, and client focus—driven by initiative, growth, and accountability to build trust and deliver lasting value in every project.",
-        "ahmed_describe": "Chairman of ARX Real Estate Development, Dr. Ahmed Omar combines decades of experience with a visionary approach, leading the company to redefine excellence through innovation, quality, and trust—setting new industry benchmarks and guiding ARX to global leadership in real estate.",
-        "yasser_describe": "CEO of ARX Real Estate Development, Yasser Omar drives the company forward with strategic insight and market awareness, delivering innovative, high-quality projects focused on sustainability, client satisfaction, and growth—ensuring ARX remains competitive and influential in today’s evolving real estate landscape.",
-        "saad_describe": "Board member at ARX Real Estate Development, Saad brings deep industry expertise and forward-thinking leadership. He plays a key role in shaping ARX’s strategic direction, driving innovation and sustainability to ensure every project aligns with global standards and market expectations.",
-        "osama_describe": "Board member of ARX Real Estate Development, Dr. Osama Omar leads with strategic vision and a passion for excellence, helping ARX push boundaries in real estate innovation, sustainability, and quality—setting the stage for lasting impact and continued success in the industry.",
+        "ahmed_describe": "Dr. Ahmed Omar combines decades of experience with a visionary approach, leading the company to redefine excellence through innovation, quality, and trust—setting new industry benchmarks and guiding ARX to global leadership in real estate.",
+        "yasser_describe": "Yasser Omar drives the company forward with strategic insight and market awareness, delivering innovative, high-quality projects focused on sustainability, client satisfaction, and growth—ensuring ARX remains competitive and influential in today’s evolving real estate landscape.",
+        "saad_describe": "Saad brings deep industry expertise and forward-thinking leadership. He plays a key role in shaping ARX’s strategic direction, driving innovation and sustainability to ensure every project aligns with global standards and market expectations.",
+        "osama_describe": "Dr. Osama Omar leads with strategic vision and a passion for excellence, helping ARX push boundaries in real estate innovation, sustainability, and quality—setting the stage for lasting impact and continued success in the industry.",
         "who_we": "WHO WE ",
         "are":"ARE?",
         "years":"Total Years Of Experience",
 
         "units":"Units Sold",
         "constructions":"Total Constructions",
-        "clients":"Total Clients"
+        "clients":"Total Clients",
+        "ahmed_job": "Chairman of ARX Real Estate Development",
+        "yasser_job": "CEO of ARX Real Estate Development",
+        "saad_job": "Board member at ARX Real Estate Development",
+        "osama_job": "Board member of ARX Real Estate Development"
     },
     "shorts":{
         "title": "OUR SHORTS",
