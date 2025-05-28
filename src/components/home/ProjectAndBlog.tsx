@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Image, { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
