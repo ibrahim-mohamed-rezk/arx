@@ -19,7 +19,7 @@ const Hero = ({ projects }: { projects: ProjectType[] }) => {
             >
               <img
                 src={
-                  projects[index]?.image || `/images/home/banner${index}.png`
+                  projects[index]?.hero_image || `/images/home/banner${index}.png`
                 }
                 className={`w-full h-full transition-all duration-[1s] object-cover absolute inset-0`}
                 style={{
