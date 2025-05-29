@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Image, { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -89,12 +89,15 @@ const ProjectAndBlog = ({
                 projects[projIdx % projects.length],
                 projects[(projIdx + 1) % projects.length],
               ].map((project, i) => (
-                <Link href={`/projects/${project.slug}`} key={i} className="flex-1 space-y-2">
+                <Link
+                  href={`/projects/${project.slug}`}
+                  key={i}
+                  className="flex-1 space-y-2"
+                >
                   <div className="relative w-full h-72 rounded overflow-hidden">
-                    <Image
+                    <img
                       src={project.cover}
                       alt={project.title}
-                      fill
                       className="object-cover"
                     />
                   </div>
@@ -156,9 +159,9 @@ const ProjectAndBlog = ({
       <section className="container mx-auto px-4">
         <div className="text-center mb-6">
           <h3 className="text-center text-lg  uppercase font-bold text-[#035B8D] mb-2">
-              {t("our_blog")}
-            </h3>
-            <h2 
+            {t("our_blog")}
+          </h3>
+          <h2
             className="mt-2 text-center font-[Cinzel] text-3xl md:text-4xl font-bold uppercase"
             dangerouslySetInnerHTML={{ __html: t("latest_news_feeds") }}
           />
@@ -317,12 +320,10 @@ const ProjectAndBlog = ({
                   <div className="flex items-center justify-center space-x-3">
                     {testimonial.image && (
                       <div className="w-12 h-12 rounded-full overflow-hidden">
-                        <Image
+                        <img
                           src={testimonial.image}
                           alt={testimonial.name}
-                          width={48}
-                          height={48}
-                          className="object-cover"
+                          className="object-cover w-full h-full"
                         />
                       </div>
                     )}
