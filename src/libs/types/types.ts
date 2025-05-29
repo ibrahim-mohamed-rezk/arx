@@ -11,6 +11,7 @@ export interface ProjectType {
   start_price: string;
   end_price: string;
   title: string;
+  hero_title: string;
   description: string;
   keywords: string;
   slug: string;

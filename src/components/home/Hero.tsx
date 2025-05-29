@@ -110,7 +110,7 @@ const Hero = ({ projects }: { projects: ProjectType[] }) => {
                       </div>
                       <div 
                         className="self-stretch justify-center text-[clamp(2px,1.0416vw,100px)] font-bold font-['Lato'] capitalize leading-[clamp(5px,2.08333vw,100px)] tracking-wide"
-                        dangerouslySetInnerHTML={{ __html: projects[i]?.description || '' }}
+                        dangerouslySetInnerHTML={{ __html: projects[i]?.hero_title || '' }}
                       />
                     </div>
 
