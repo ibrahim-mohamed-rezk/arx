@@ -1,6 +1,5 @@
 "use client";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import React, { useState } from "react";
 
 const BlogVideos = () => {
@@ -67,12 +66,10 @@ const BlogVideos = () => {
             className="relative w-full h-full cursor-pointer"
             onClick={() => openModal(featuredVideos[0].videoUrl)}
           >
-            <Image
+            <img
               src={featuredVideos[0].thumbnail}
               alt={featuredVideos[0].title}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg"
+              className="w-full h-full object-cover rounded-lg"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-70 rounded-lg"></div>
             <div className="absolute inset-0 flex items-center justify-center">
@@ -120,12 +117,10 @@ const BlogVideos = () => {
               onClick={() => openModal(card.videoUrl)}
             >
               <div className="absolute inset-0 bg-gray-300">
-                <Image
+                <img
                   src={card.thumbnail}
                   alt={card.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-lg"
+                  className="w-full h-full object-cover rounded-lg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
