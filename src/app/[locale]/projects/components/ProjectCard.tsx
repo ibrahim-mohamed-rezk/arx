@@ -48,6 +48,7 @@ const ProjectCard = ({
 
                 <div className="text-text-text-on-color text-[#060B0E] text-sm font-bold font-['Lato'] leading-normal tracking-wide">
                   {project?.location} 
+                  
                 </div>
               </div>
             </div>
