@@ -2,6 +2,7 @@ export interface ProjectType {
   id: number;
   propert_listing_no: string | null;
   image: string;
+  hero_image: string;
   cover: string;
   icon: string;
   home_area: string;
@@ -10,6 +11,7 @@ export interface ProjectType {
   start_price: string;
   end_price: string;
   title: string;
+  hero_title: string;
   description: string;
   keywords: string;
   slug: string;

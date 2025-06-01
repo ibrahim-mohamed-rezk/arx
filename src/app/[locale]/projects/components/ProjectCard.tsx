@@ -1,7 +1,6 @@
 "use client";
 import { Link } from "@/i18n/routing";
 import { ProjectType } from "@/libs/types/types";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 const ProjectCard = ({
   project,
@@ -16,11 +15,10 @@ const ProjectCard = ({
       <div className="w-full h-full relative">
         {/* Project Image */}
         <div className="relative w-full aspect-[2/1]">
-          <Image
+          <img
             src={project?.cover || ""}
             alt={project?.title || "Axiom Tower"}
-            fill
-            className="object-cover "
+            className="w-full h-full object-cover"
           />
         </div>
 
@@ -32,7 +30,7 @@ const ProjectCard = ({
               </div>
               <div
                 className="text-dark-gray text-sm font-normal text-[#494D50] font-['Lato'] leading-normal tracking-tight mb-6"
-                dangerouslySetInnerHTML={{ __html: project?.description || "" }}
+                dangerouslySetInnerHTML={{ __html: project?.hero_title || "" }}
               />
               <div className="flex items-center gap-1 mt-4">
                 <svg
@@ -50,6 +48,7 @@ const ProjectCard = ({
 
                 <div className="text-text-text-on-color text-[#060B0E] text-sm font-bold font-['Lato'] leading-normal tracking-wide">
                   {project?.location} 
+                  
                 </div>
               </div>
             </div>

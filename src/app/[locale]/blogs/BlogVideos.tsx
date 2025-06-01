@@ -1,6 +1,5 @@
 "use client";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import React, { useState } from "react";
 
 const BlogVideos = () => {
@@ -15,7 +14,7 @@ const BlogVideos = () => {
       subtitle: "",
       description: "Exclusive Interview From The Ramadan Iftar Party!",
       logo: "",
-      thumbnail: "https://storage.googleapis.com/furniture-hub/arx/reels/kentro.webp",
+      thumbnail: "https://storage.googleapis.com/furniture-hub/arx/blog-reels/470x705.jpg",
       videoUrl: "https://youtu.be/X6kSvaGAD9w?si=8YnLtRVfyxE6ByxL"
     },
     {
@@ -24,7 +23,7 @@ const BlogVideos = () => {
       subtitle: "Are equipped with amenities",
       description: "Our Special Projects",
       logo: "logo-lavie.png",
-      thumbnail: "https://storage.googleapis.com/furniture-hub/arx/reels/3%20(3).webp",
+      thumbnail: "https://storage.googleapis.com/furniture-hub/arx/blog-reels/470x705.jpg%20kentro.jpg",
       videoUrl: "https://youtu.be/BRBdIjdZNXM?si=hceamdX6UgV8Nany"
     },
   ];
@@ -33,7 +32,7 @@ const BlogVideos = () => {
     {
       id: 1,
       title: "Rise",
-      thumbnail: "https://storage.googleapis.com/furniture-hub/arx/reels/4%20(2).webp",
+      thumbnail: "https://storage.googleapis.com/furniture-hub/arx/blog-reels/784x784.jpg",
       videoUrl: "https://youtu.be/yOGEy0iIqeY?si=pmWOa18usZdGwYel"
     },
   ];
@@ -67,12 +66,10 @@ const BlogVideos = () => {
             className="relative w-full h-full cursor-pointer"
             onClick={() => openModal(featuredVideos[0].videoUrl)}
           >
-            <Image
+            <img
               src={featuredVideos[0].thumbnail}
               alt={featuredVideos[0].title}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg"
+              className="w-full h-full object-cover rounded-lg"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-70 rounded-lg"></div>
             <div className="absolute inset-0 flex items-center justify-center">
@@ -120,12 +117,10 @@ const BlogVideos = () => {
               onClick={() => openModal(card.videoUrl)}
             >
               <div className="absolute inset-0 bg-gray-300">
-                <Image
+                <img
                   src={card.thumbnail}
                   alt={card.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-lg"
+                  className="w-full h-full object-cover rounded-lg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
