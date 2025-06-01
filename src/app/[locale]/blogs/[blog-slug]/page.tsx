@@ -80,7 +80,12 @@ const BlogPage = async ({
         <div className="flex items-center  justify-between py-15 text-[clamp(1rem,1.5vw,1.125rem)]">
           {/* Date & Title */}
           <p className="text-gray-500 uppercase mt-4 text-[clamp(0.875rem,1vw,1rem)]">
-            Tuesday, 28 March 2023
+            {new Date(blog.created_at).toLocaleDateString('en-US', {
+              weekday: 'long',
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric'
+            })}
           </p>
           <div className="flex items-center mt-4 space-x-4 py-15 text-[clamp(1rem,1.5vw,1.125rem)]">
             <a href="#" aria-label="Share on Facebook">
