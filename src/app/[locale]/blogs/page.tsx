@@ -35,7 +35,7 @@ const BlogsPage = async ({
     <div className="min-h-screen font-lato bg-white pb-20">
       <main className="container mx-auto px-4 md:px-6 lg:px-8 py-8">
         {/* Video Section */}
-        <BlogVideos />
+        {/* <BlogVideos /> */}
 
         {/* Additional content - Interview excerpt */}
         {/* <div className="mb-12">
