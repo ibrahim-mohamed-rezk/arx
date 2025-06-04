@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { NextIntlClientProvider } from "next-intl";
 import FloatingSocialIcons from "@/components/FloatingSocialIcons";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "ARX Development",
@@ -28,6 +29,54 @@ export default async function RootLayout({
 
   return (
     <html dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
+      <head>
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "ARXEG",
+              description: "{{ settings('meta_description_ar') }}",
+              telephone: "+2{{settings('phone')}}",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress:
+                  "New Damietta, Elhay Al Motamayez, Damietta, Egypt",
+                addressLocality: "Damietta",
+                addressRegion: "Damietta",
+                postalCode: "34524",
+                addressCountry: "Egypt",
+              },
+              url: "https://www.arxeg.com/",
+              logo: "https://www.arxeg.com/public/assets/web/ASSETS/imgs/template/logo.png",
+              sameAs: [
+                "https://www.facebook.com/arxeg",
+                "https://www.instagram.com/arxeg",
+                "https://www.linkedin.com/company/arxeg",
+              ],
+            }),
+          }}
+        />
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "ARXEG",
+              url: "https://www.arxeg.com/",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://www.arxeg.com/shop?q={query}",
+                "query-input": "required name=query",
+              },
+            }),
+          }}
+        />
+      </head>
       <NextIntlClientProvider locale={locale}>
         <body className="relative">
           <Header />

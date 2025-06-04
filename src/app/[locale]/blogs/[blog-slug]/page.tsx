@@ -3,6 +3,7 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { AxiosHeaders } from "axios";
 import { getData } from "@/libs/axios/server";
 import { BlogType } from "@/libs/types/types";
+import Script from "next/script";
 
 // Load Lato font
 const lato = Lato({
@@ -42,6 +43,33 @@ const BlogPage = async ({
 
   const { blog, latest_blogs } = await feachData();
 
+  // Generate JSON-LD data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${blogSlug}`,
+    },
+    headline: blog.title,
+    description: blog.description.replace(/<[^>]*>/g, "").substring(0, 160), // Strip HTML tags and limit to 160 chars
+    image: blog.image,
+    author: {
+      "@type": "Person",
+      name: blog.author || "ARX Team",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "ARX",
+      logo: {
+        "@type": "ImageObject",
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`,
+      },
+    },
+    datePublished: blog.created_at,
+    dateModified: blog.updated_at || blog.created_at,
+  };
+
   //   const [current, setCurrent] = useState(0);
   //   const length = bannerImages.length;
 
@@ -55,6 +83,11 @@ const BlogPage = async ({
 
   return (
     <div className="mb-[100px]">
+      <Script
+        id="blog-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Full-Width Automatic Slider */}
       <div className="relative max-w-7xl mx-auto w-full overflow-hidden p-5 px-10 pt-20 rounded-lg">
         {/* {bannerImages.map(
@@ -80,11 +113,11 @@ const BlogPage = async ({
         <div className="flex items-center  justify-between py-15 text-[clamp(1rem,1.5vw,1.125rem)]">
           {/* Date & Title */}
           <p className="text-gray-500 uppercase mt-4 text-[clamp(0.875rem,1vw,1rem)]">
-            {new Date(blog.created_at).toLocaleDateString('en-US', {
-              weekday: 'long',
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric'
+            {new Date(blog.created_at).toLocaleDateString("en-US", {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+              year: "numeric",
             })}
           </p>
           <div className="flex items-center mt-4 space-x-4 py-15 text-[clamp(1rem,1.5vw,1.125rem)]">

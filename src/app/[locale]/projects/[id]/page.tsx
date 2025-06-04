@@ -65,6 +65,27 @@ const ProjectPage: React.FC = () => {
     { id: "OutdoorFeatures", name: "Outdoor Features", isActive: false },
   ];
 
+  // Add JSON-LD structured data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: projectData?.title || "",
+    description: projectData?.description || "",
+    image: projectData?.image ? [projectData.image] : [],
+    brand: {
+      "@type": "Organization",
+      name: "ARX Real Estate Development",
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "EGP",
+      price: projectData?.start_price || "",
+      itemCondition: "https://schema.org/NewCondition",
+      availability: "https://schema.org/InStock",
+      url: typeof window !== "undefined" ? window.location.href : "",
+    },
+  };
+
   // featch project data
   useEffect(() => {
     const feachData = async () => {
@@ -590,278 +611,293 @@ const ProjectPage: React.FC = () => {
   }
 
   return (
-
-    <div className="relative w-full overflow-hidden bg-white pb-30   py-7 rounded-bl-lg rounded-br-lg">
-      <div
-        className="relative w-full h-[90vh] overflow-hidden rounded-bl-lg rounded-br-lg "
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onWheel={handleWheel}
-      >
-        {/* Swiper slides */}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="relative w-full overflow-hidden bg-white pb-30   py-7 rounded-bl-lg rounded-br-lg">
         <div
-          className="w-full transition-transform duration-500 ease-in-out text-4xl rounded-bl-lg rounded-br-lg"
-          //   style={{
-          //     height: `${backgroundImages.length * 90}vh`,
-          //     transform: `translateY(-${currentSlide * 90}vh)`,
-          //   }}
+          className="relative w-full h-[90vh] overflow-hidden rounded-bl-lg rounded-br-lg "
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onWheel={handleWheel}
         >
-          <div className="relative w-full h-[90vh]">
-            <div className="absolute inset-0">
-              <img
-                src={projectData?.image || ""}
-                alt={`project image`}
-                className="object-cover"
-              />
-            </div>
-          </div>
-          {/* {backgroundImages.map((image, index) => (
-            <div key={index} className="relative w-full h-[90vh]">
+          {/* Swiper slides */}
+          <div
+            className="w-full transition-transform duration-500 ease-in-out text-4xl rounded-bl-lg rounded-br-lg"
+            //   style={{
+            //     height: `${backgroundImages.length * 90}vh`,
+            //     transform: `translateY(-${currentSlide * 90}vh)`,
+            //   }}
+          >
+            <div className="relative w-full h-[90vh]">
               <div className="absolute inset-0">
-                <Image
-                  src={image}
-                  alt={`Slide ${index + 1}`}
-                  fill
+                <img
+                  src={projectData?.image || ""}
+                  alt={`project image`}
                   className="object-cover"
-                  priority={index === 0}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-zinc-950/50"></div>
               </div>
+            </div>
+            {/* {backgroundImages.map((image, index) => (
+              <div key={index} className="relative w-full h-[90vh]">
+                <div className="absolute inset-0">
+                  <Image
+                    src={image}
+                    alt={`Slide ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-zinc-950/50"></div>
+                </div>
 
-              {index === currentSlide && (
-                <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 opacity-100 transition-opacity duration-300">
-                  <div className="flex items-end justify-end">
-                    <div className="flex items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-4 h-4 text-white"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <div className="text-white text-xs md:text-sm  font-['Lato'] capitalize">
-                        New Administrative Capital
+                {index === currentSlide && (
+                  <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 opacity-100 transition-opacity duration-300">
+                    <div className="flex items-end justify-end">
+                      <div className="flex items-center gap-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-4 h-4 text-white"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <div className="text-white text-xs md:text-sm  font-['Lato'] capitalize">
+                          New Administrative Capital
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))} */}
-        </div>
-
-        {/* Vertical slide indicator dots */}
-        <div className="absolute left-13 top-1/2 transform -translate-y-1/2 flex flex-col gap-1">
-          {backgroundImages.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setIsTransitioning(true);
-                setCurrentSlide(i);
-                setTimeout(() => setIsTransitioning(false), 500);
-              }}
-              className={`w-3 h-${
-                i === currentSlide ? "6" : "3"
-              } rounded-full transition-all duration-300 ${
-                i === currentSlide ? "bg-[#E2A12D]" : "bg-white"
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* GIF chevron navigation */}
-        <div className="absolute left-8 bottom-8 z-10">
-          <button
-            onClick={handleNextSlide}
-            className={`transition-all duration-300 hover:scale-110 ${
-              currentSlide === backgroundImages.length - 1
-                ? " cursor-not-allowed"
-                : ""
-            }`}
-            disabled={currentSlide === backgroundImages.length - 1}
-            aria-label="Next slide"
-          >
-            <Image src={svg} alt="Next slide" width={50} height={40} priority />
-          </button>
-        </div>
-      </div>
-
-      {/* Project Information Section */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:space-y-1 space-y-[20px] sm:py-8">
-        <div className="flex flex-col items-center">
-          <div className="w-full max-w-2xl flex flex-col items-center gap-2 py-8">
-            <h1
-              className="text-center text-black  font-['Lato'] leading-tight"
-              style={{
-                fontSize: "clamp(1.5rem, 5vw, 2.5rem)",
-                lineHeight: "clamp(1.75rem, 6vw, 3rem)",
-              }}
-            >
-              {projectData?.title}
-            </h1>
-            <div className="w-24 h-px bg-gray-300"></div>
+                )}
+              </div>
+            ))} */}
           </div>
 
-          <div
-            className="w-full text-center h-fit text-black text-sm md:text-base lg:px-18 px-4 py-0  lg:pb-10 pb-1 font-['Lato'] "
-            style={{
-              fontSize: "clamp(0.875rem, 1.5vw, 1rem)",
-              lineHeight: "clamp(1.25rem, 2vw, 1.5rem)",
-            }}
-            dangerouslySetInnerHTML={{ __html: projectData?.description }}
-          />
-          
-        </div>
-
-        {/* Buttons Section */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:gap-6 lg:gap-12 items-center justify-center">
-          <button
-            onClick={() => setOpenForm(true)}
-            className="w-full sm:w-[320px] px-4 py-2 bg-[#035B8D] text-white text-sm rounded-md hover:bg-blue-700 transition"
-          >
-            register your interest with this project
-          </button>
-          <a
-            href={projectData?.brochure || "#"}
-            target="_blank"
-            download
-            className="w-full sm:w-[320px] px-4 py-2 bg-white text-blue-600 text-sm border border-blue-600 rounded-md hover:bg-gray-50 transition text-center"
-          >
-            Download brochure
-          </a>
-        </div>
-      </div>
-
-      <div className="w-full py-6 md:py-8 bg-gray-100">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col items-center gap-2 mb-4">
-            <h2
-              className="text-blue-600 text-lg md:text-xl py-6  font-['Lato'] uppercase"
-              style={{
-                fontSize: "clamp(1rem, 1.6vw, 1.25rem)",
-              }}
-            >
-              Building Features
-            </h2>
-            <div
-              className="text-center text-black  font-['Cinzel'] leading-tight max-w-[300px]"
-              style={{
-                fontSize: "clamp(1.25rem, 4vw, 2rem)",
-                lineHeight: "clamp(1.5rem, 2.5vw, 2.5rem)",
-              }}
-            >
-              Explore all the details that make this building stand out
-            </div>
-          </div>
-
-          {/* Interactive tab navigation */}
-          <div className="flex flex-wrap justify-center gap-2 mb-6 text-sm">
-            {tabs.map((tab) => (
+          {/* Vertical slide indicator dots */}
+          <div className="absolute left-13 top-1/2 transform -translate-y-1/2 flex flex-col gap-1">
+            {backgroundImages.map((_, i) => (
               <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-3 py-1.5 rounded-full text-sm flex items-center gap-1 min-w-0 sm:min-w-[120px] md:min-w-[150px] transition-colors duration-300  ${
-                  activeTab === tab.id
-                    ? "bg-black text-white"
-                    : "bg-white text-black"
+                key={i}
+                onClick={() => {
+                  setIsTransitioning(true);
+                  setCurrentSlide(i);
+                  setTimeout(() => setIsTransitioning(false), 500);
+                }}
+                className={`w-3 h-${
+                  i === currentSlide ? "6" : "3"
+                } rounded-full transition-all duration-300 ${
+                  i === currentSlide ? "bg-[#E2A12D]" : "bg-white"
                 }`}
-              >
-                <span className=" uppercase tr`uncate text-sm">{tab.icon}</span>
-                <span className=" uppercase truncate text-sm">{tab.name}</span>
-              </button>
+                aria-label={`Go to slide ${i + 1}`}
+              />
             ))}
           </div>
 
-          {/* Tab content */}
-          <div className="min-h-[300px] ">
-            {tabs.find((tab) => tab.id === activeTab)?.content}
+          {/* GIF chevron navigation */}
+          <div className="absolute left-8 bottom-8 z-10">
+            <button
+              onClick={handleNextSlide}
+              className={`transition-all duration-300 hover:scale-110 ${
+                currentSlide === backgroundImages.length - 1
+                  ? " cursor-not-allowed"
+                  : ""
+              }`}
+              disabled={currentSlide === backgroundImages.length - 1}
+              aria-label="Next slide"
+            >
+              <Image
+                src={svg}
+                alt="Next slide"
+                width={50}
+                height={40}
+                priority
+              />
+            </button>
           </div>
         </div>
-      </div>
 
-      {/* Location Section with Map Image */}
-      <div className="flex flex-col lg:flex-row">
-        <div className="w-full md:w-full h-[50vh] md:h-[90vh] relative">
-          {/* Map image from import */}
-          <Image
-            src={mapImage}
-            alt="Project Location Map"
-            fill
-            className="object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-blue-800/30 pointer-events-none"></div>
-        </div>
-        <div className="w-full md:w-full h-[60vh] sm:h-[80vh] md:h-[90vh] lg:h-[90vh] bg-[#060B0E] text-white flex items-center">
-          <div className="w-full px-4 sm:px-6 md:px-22 lg:px-16 py-6 sm:py-10 md:py-36">
-            <h2
-              className="text-center text-white font-['Cinzel'] mb-4 sm:mb-6 md:mb-10"
-              style={{
-                fontSize: "clamp(1.125rem, 1vw + 1rem, 1.875rem)",
-                lineHeight: "clamp(1.5rem, 1.5vw + 1rem, 2.25rem)",
-              }}
-            >
-              PRIME LOCATION
-            </h2>
-
-            <p
-              className="text-white mb-6 sm:mb-8 md:mb-12"
-              style={{
-                fontSize: "clamp(0.75rem, 0.5vw + 0.5rem, 1rem)",
-                lineHeight: "clamp(1.2rem, 0.7vw + 1rem, 1.5rem)",
-              }}
-            >
-              Strategically situated in Downtown, the heart of the New
-              Administrative Capital, KÈNTRO TOWER enjoys an exceptional
-              position surrounded by key landmarks.
-            </p>
-
-            <div className="mb-6 sm:mb-8 md:mb-12">
-              <h3
-                className="text-white font-medium mb-2 md:mb-4"
+        {/* Project Information Section */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:space-y-1 space-y-[20px] sm:py-8">
+          <div className="flex flex-col items-center">
+            <div className="w-full max-w-2xl flex flex-col items-center gap-2 py-8">
+              <h1
+                className="text-center text-black  font-['Lato'] leading-tight"
                 style={{
-                  fontSize: "clamp(0.813rem, 0.5vw + 0.6rem, 1rem)",
-                  lineHeight: "clamp(1.2rem, 0.7vw + 1rem, 1.5rem)",
+                  fontSize: "clamp(1.5rem, 5vw, 2.5rem)",
+                  lineHeight: "clamp(1.75rem, 6vw, 3rem)",
                 }}
               >
-                Getting There
-              </h3>
+                {projectData?.title}
+              </h1>
+              <div className="w-24 h-px bg-gray-300"></div>
+            </div>
+
+            <div
+              className="w-full text-center h-fit text-black text-sm md:text-base lg:px-18 px-4 py-0  lg:pb-10 pb-1 font-['Lato'] "
+              style={{
+                fontSize: "clamp(0.875rem, 1.5vw, 1rem)",
+                lineHeight: "clamp(1.25rem, 2vw, 1.5rem)",
+              }}
+              dangerouslySetInnerHTML={{ __html: projectData?.description }}
+            />
+          </div>
+
+          {/* Buttons Section */}
+          <div className="flex flex-col gap-3 sm:flex-row sm:gap-6 lg:gap-12 items-center justify-center">
+            <button
+              onClick={() => setOpenForm(true)}
+              className="w-full sm:w-[320px] px-4 py-2 bg-[#035B8D] text-white text-sm rounded-md hover:bg-blue-700 transition"
+            >
+              register your interest with this project
+            </button>
+            <a
+              href={projectData?.brochure || "#"}
+              target="_blank"
+              download
+              className="w-full sm:w-[320px] px-4 py-2 bg-white text-blue-600 text-sm border border-blue-600 rounded-md hover:bg-gray-50 transition text-center"
+            >
+              Download brochure
+            </a>
+          </div>
+        </div>
+
+        <div className="w-full py-6 md:py-8 bg-gray-100">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex flex-col items-center gap-2 mb-4">
+              <h2
+                className="text-blue-600 text-lg md:text-xl py-6  font-['Lato'] uppercase"
+                style={{
+                  fontSize: "clamp(1rem, 1.6vw, 1.25rem)",
+                }}
+              >
+                Building Features
+              </h2>
+              <div
+                className="text-center text-black  font-['Cinzel'] leading-tight max-w-[300px]"
+                style={{
+                  fontSize: "clamp(1.25rem, 4vw, 2rem)",
+                  lineHeight: "clamp(1.5rem, 2.5vw, 2.5rem)",
+                }}
+              >
+                Explore all the details that make this building stand out
+              </div>
+            </div>
+
+            {/* Interactive tab navigation */}
+            <div className="flex flex-wrap justify-center gap-2 mb-6 text-sm">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-3 py-1.5 rounded-full text-sm flex items-center gap-1 min-w-0 sm:min-w-[120px] md:min-w-[150px] transition-colors duration-300  ${
+                    activeTab === tab.id
+                      ? "bg-black text-white"
+                      : "bg-white text-black"
+                  }`}
+                >
+                  <span className=" uppercase tr`uncate text-sm">
+                    {tab.icon}
+                  </span>
+                  <span className=" uppercase truncate text-sm">
+                    {tab.name}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Tab content */}
+            <div className="min-h-[300px] ">
+              {tabs.find((tab) => tab.id === activeTab)?.content}
+            </div>
+          </div>
+        </div>
+
+        {/* Location Section with Map Image */}
+        <div className="flex flex-col lg:flex-row">
+          <div className="w-full md:w-full h-[50vh] md:h-[90vh] relative">
+            {/* Map image from import */}
+            <Image
+              src={mapImage}
+              alt="Project Location Map"
+              fill
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-blue-800/30 pointer-events-none"></div>
+          </div>
+          <div className="w-full md:w-full h-[60vh] sm:h-[80vh] md:h-[90vh] lg:h-[90vh] bg-[#060B0E] text-white flex items-center">
+            <div className="w-full px-4 sm:px-6 md:px-22 lg:px-16 py-6 sm:py-10 md:py-36">
+              <h2
+                className="text-center text-white font-['Cinzel'] mb-4 sm:mb-6 md:mb-10"
+                style={{
+                  fontSize: "clamp(1.125rem, 1vw + 1rem, 1.875rem)",
+                  lineHeight: "clamp(1.5rem, 1.5vw + 1rem, 2.25rem)",
+                }}
+              >
+                PRIME LOCATION
+              </h2>
+
               <p
-                className="text-white"
+                className="text-white mb-6 sm:mb-8 md:mb-12"
                 style={{
                   fontSize: "clamp(0.75rem, 0.5vw + 0.5rem, 1rem)",
                   lineHeight: "clamp(1.2rem, 0.7vw + 1rem, 1.5rem)",
                 }}
               >
-                With seamless access from major roads and proximity to 80% of
-                the capital s iconic destinations, KÈNTRO TOWER stands as a
-                central hub in the New Capital. Minutes away from UK Gold
-                Market, Museum of Egypt, monorail station, and the Green River.
+                Strategically situated in Downtown, the heart of the New
+                Administrative Capital, KÈNTRO TOWER enjoys an exceptional
+                position surrounded by key landmarks.
               </p>
-            </div>
 
-            <div>
-              <button
-                className="px-5 py-1.5 bg-transparent border border-white text-white rounded-md hover:bg-white/10 transition inline-block"
-                style={{
-                  fontSize: "clamp(0.7rem, 0.3vw + 0.6rem, 0.875rem)",
-                }}
-              >
-                Get Directions
-              </button>
+              <div className="mb-6 sm:mb-8 md:mb-12">
+                <h3
+                  className="text-white font-medium mb-2 md:mb-4"
+                  style={{
+                    fontSize: "clamp(0.813rem, 0.5vw + 0.6rem, 1rem)",
+                    lineHeight: "clamp(1.2rem, 0.7vw + 1rem, 1.5rem)",
+                  }}
+                >
+                  Getting There
+                </h3>
+                <p
+                  className="text-white"
+                  style={{
+                    fontSize: "clamp(0.75rem, 0.5vw + 0.5rem, 1rem)",
+                    lineHeight: "clamp(1.2rem, 0.7vw + 1rem, 1.5rem)",
+                  }}
+                >
+                  With seamless access from major roads and proximity to 80% of
+                  the capital s iconic destinations, KÈNTRO TOWER stands as a
+                  central hub in the New Capital. Minutes away from UK Gold
+                  Market, Museum of Egypt, monorail station, and the Green
+                  River.
+                </p>
+              </div>
+
+              <div>
+                <button
+                  className="px-5 py-1.5 bg-transparent border border-white text-white rounded-md hover:bg-white/10 transition inline-block"
+                  style={{
+                    fontSize: "clamp(0.7rem, 0.3vw + 0.6rem, 0.875rem)",
+                  }}
+                >
+                  Get Directions
+                </button>
+              </div>
             </div>
           </div>
         </div>
+        {/* Contact Form */}
+        <ContactForm isOpen={openForm} onClose={() => setOpenForm(false)} />
       </div>
-      {/* Contact Form */}
-      <ContactForm isOpen={openForm} onClose={() => setOpenForm(false)} />
-    </div>
+    </>
   );
 };
 
