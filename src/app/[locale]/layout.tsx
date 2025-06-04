@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { NextIntlClientProvider } from "next-intl";
 import FloatingSocialIcons from "@/components/FloatingSocialIcons";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "ARX Development",
@@ -30,7 +29,7 @@ export default async function RootLayout({
   return (
     <html dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
       <head>
-        <Script
+        <script
           id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -59,7 +58,7 @@ export default async function RootLayout({
             }),
           }}
         />
-        <Script
+        <script
           id="website-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
