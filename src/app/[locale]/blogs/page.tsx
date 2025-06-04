@@ -1,6 +1,5 @@
 import { Link } from "@/i18n/routing";
 import "/public/css/blogs.css";
-import BlogVideos from "./BlogVideos";
 import { getData } from "@/libs/axios/server";
 import { AxiosHeaders } from "axios";
 import { BlogType } from "@/libs/types/types";
