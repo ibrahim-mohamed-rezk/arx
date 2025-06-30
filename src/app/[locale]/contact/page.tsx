@@ -88,7 +88,7 @@ const ContactPage = () => {
                                 </span>
                                 <div>
                                     <p className="font-['Lato']">{t("email_us")}</p>
-                                    <p>info@areeg.com</p>
+                                    <p>info@arxeg.com</p>
                                 </div>
                             </li>
                             <li className="flex items-start gap-3">
